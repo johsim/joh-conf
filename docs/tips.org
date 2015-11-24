@@ -141,12 +141,37 @@ the linux distr. version might be too old.
 | ~C-u M-x shell~          | Öppnar ett andra shell       |
 
 
-*Special commands*
+*Ta bort intabbning/spaces* \\
+/Region/
+  1. Mark region
+  2. ~C-x TAB~
+  3. Move with ARW(l/r) or SHIFT + ARW(l/r)
 
-| M-o TAB                        | autocompleata tidigare                   |
-| M-ARW        | Resize window |
-|              |                    |
+/Repeated/
+  1. Mark region
+  2. ~C-u +/- NOF_TIMES~ (add/remove spaces)
+  3. ~C-x TAB~
 
+*neotree* \\
+Gives a tree structure in Emacs.
+| Command       | Description         |
+|---------------+---------------------|
+| ~M-x neotree~ | Open neotree        |
+| ~C-c C-c~     | Change root         |
+| ~TAB~         | Open/close dirs     |
+| ~H~           | Toggle hidden files |
+| ~A~           | Expands window      |
+
+** Org-Mode
+
+*Emphasis and monospace*
+#+BEGIN_EXAMPLE
+  * *FETSTILT*
+  * /KURSIVT/
+  * _UNDERSCORE_
+  * =verbatism=
+  * ~code~
+#+END_EXAMPLE
 
 *Enter easy templates* \\
 
@@ -175,103 +200,63 @@ Some of the supported languages are:
 | Org        | ~org~        |
 | Python     | ~python~     |
 | Shell      | ~sh~         |
-  
-
-*Ta bort intabbning/spaces* \\
-/Region/
-  1. Mark region
-  2. ~C-x TAB~
-  3. Move with ARW(l/r) or SHIFT + ARW(l/r)
-
-/Repeated/
-  1. Mark region
-  2. ~C-u +/- NOF_TIMES~ (add/remove spaces)
-  3. ~C-x TAB~
-
-*neotree* \\
-Gives a tree structure in Emacs.
-| Command       | Description         |
-|---------------+---------------------|
-| ~M-x neotree~ | Open neotree        |
-| ~C-c C-c~     | Change root         |
-| ~TAB~         | Open/close dirs     |
-| ~H~           | Toggle hidden files |
-| ~A~           | Expands window      |
-
-** Org-Mode
-
-# COMMENT
-
-  * *FETSTILT*
-  * /KURSIVT/
-  * _UNDERSCORE_
-  * =verbatism=
-  * ~code~
-
-_Kortkommandon_
- * M-RET = New dot
- * S-Arw = TODO/DONE + ABC
- * C-c C-x C-a = Archive old todos
-
-_Misc_
- * Checklist? http://orgmode.org/worg/org-contrib/org-checklist.html
-
-
-     #+NAME: <name>
-     #+BEGIN_SRC <language> <switches> <header arguments>
-       <body>
-     #+END_SRC
-
-
 
 *** LATEX
 
-I linux:
-apt-get install texlive
+Install in linux:
+#+BEGIN_SRC sh
+$ sudo apt-get install texlive
+#+END_SRC
 
-=CODE MODE= <-- Useful when writing variables that have _ and []
+*Spell check* \\
+#+BEGIN_SRC emacps-lisp
+$ M-x flyspell-buffer
+#+END_SRC
 
-Many pretty features, recommended!!
-
-_Spell check_
-
-Aktivera flyspell:
-> M-x flyspell-mode
-
-Kolla buffern:
-> M-x flyspell-buffer
-
-_List of tables_
+List of tables
+#+BEGIN_EXAMPLE
 #+TOC: tables
+#+END_EXAMPLE
 
-_Glossary_
-
+*Glossary without numbering*
+#+BEGIN_SRC latex
 \section*{Glossary}
-
-_Set line wrap_
-För att se till att en rad automatiskt fortsätter på nästa rad kan man göra två
-saker:
-
-> M-x visual-line-mode
-
-För att sätta margin på buffern sätt fill-column
-
-> C-x f RET 120
-
-För att aktivera window-margin-mode skriv:
-
-> M-x window-margin-mode
+#+END_SRC
 
 
-_Länka till todon_
+*Set line wrap* \\
+För att se till att en rad automatiskt fortsätter på nästa rad kan man göra två saker:
 
-För att länka till en fil i sin todo-list kör:
+#+BEGIN_SRC emacs-lisp
+M-x visual-line-mode
+#+END_SRC
 
-> M-x org-insert-link RET file: RET path/to/file
+För att sätta margin på buffern sätt ~fill-column~
 
-Om man vill länka till en rubrik, editera länken och lägg till ::NamnPaRubrik efter filepath
+#+BEGIN_SRC emacs-lisp
+ C-x f RET 120
+#+END_SRC
 
-> [[LATEX][example]]
+För att aktivera ~window-margin-mode~ skriv:
+
+#+BEGIN_SRC emacs-lisp
+M-x window-margin-mode
+#+END_SRC
+
+
+*References* \\
+För att referera/länka till vad som helst.
+
+#+BEGIN_EXAMPLE
+[[ reference ]]
+#+END_EXAMPLE
+
+Detta kan inkludera:
+ * Headings (hela namnet)
+ * Figures (path-to-figure)
+ * Tables etc. (label-name)
+ * etc.
+
 
 _Lås placement för figure_
 #+ATTR_LaTeX: placement=[H]
@@ -307,11 +292,6 @@ More tips:
 http://orgmode.org/worg/org-tutorials/org-latex-export.html
 http://orgmode.org/manual/LaTeX-specific-attributes.html
 
-*** HTML
-
-_Bootstraps_
-
- * Twitter bootstrap for emacs org mode, för att kunna generera finare html-filer
 
 * DOCKER
 
