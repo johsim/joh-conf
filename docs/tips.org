@@ -1,12 +1,15 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="orgstyle.css" />
 #+TITLE: Tips and tricks
 * TODO
+** TODO Check out css file: http://orgmode.org/worg/style/worg.css
 ** TODO Clean section [[EMACS]] (emacs)
 *** Sort commands
  * M-x commands
  * Special settings in .emacs file
  * 
 
+** TODO Connect project to bitbucket?
+** TODO ADd git section
 * ABBRIVATIONS
 
  * *VCS*: Version Control System 
