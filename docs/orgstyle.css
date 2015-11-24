@@ -99,6 +99,7 @@ table {
 	width: 15em;
 	float: left;
 	overflow: auto;
+	position: fixed
 }
 
 /* #main { */
