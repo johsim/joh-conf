@@ -265,13 +265,10 @@ _Referera inom dokumentet_
 Sätt namn/label på det som ska refereras
 #+LABEL: tab:test
 
-Referera genom:
-[[ tab:test ] ]
-
-Går även att referera till en rubrik direkt genom att skriva full name [[Org-Mode]] == [[Org-Mode] ]
-
-(utan onödiga mellanslag)
-
+_How to add footnotes_
+#+BEGIN_SRC 
+C-c C-x f
+#+END_SRC
 
 _In org file: (examples)_
 (without spaces)
