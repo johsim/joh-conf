@@ -118,28 +118,3 @@ if ! shopt -oq posix; then
   fi
 fi
 
-
-# Exports
-
-export PYTHONPATH=/home/autotest/scripts/:/home/autotest/automatedintegrationtest/
-
-
-function set_controller_ip() {
-export PF_CONTROLLER_IP=$1
-}
-
-function print_controller_ip() {
-echo "PF_CONTROLLER_IP=$PF_CONTROLLER_IP"
-}
-
-
-# Additional commands added after base installation.
-source /usr/local/bin/virtualenvwrapper.sh
-cd /home/autotest/
-alias make-html='make html SPHINXBUILD=/home/autotest/.virtualenv/testenv/bin/sphinx-build'
-alias pytest='py.test -s --color=yes'
-alias repo='cd ~/automatedintegrationtest/pftest/'
-alias cip=print_controller_ip
-alias scip=set_controller_ip
-workon testenv
-cip
