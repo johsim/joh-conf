@@ -7,6 +7,10 @@
  * Special settings in .emacs file
  * 
 
+* ABBRIVATIONS
+
+ * *VCS*: Version Control System 
+
 * GLOSSARY
 
  * *Parse*: Analysera en dataström (input) för att få fram en tolkning. Exempel: Parsa xml kod till python.
@@ -19,8 +23,11 @@
 
 * GENERAL
 
-_PHP Url commands_
+*PHP Url commands*
  * *?*: Skickar in variabler via url. Exempel: http://mywebsite.se/?variable=hej
+
+*Difference between Centralized VCS and Distributed VCS* \\
+In a /Central/ VCS, there idea is that there is only one central copy, and all developers commit only to this central copy. For a DVCS (/Distributed/ VCS), every developer have their own clone of the repository, which can be commited to the main branch. Every distribution of the repository is viewed as equal.
 
 * SOFTWARE ARCHITECTURE
 
@@ -110,25 +117,29 @@ the linux distr. version might be too old.
 ** Generally
 *Commands*
 
-| Commands                       | Description                              |
-|--------------------------------+------------------------------------------|
-| M-%                            | Search Replace (space = next)            |
-| Mark region + C-u -999 C-x TAB | Removes all intendation in marked region |
-| C-s RET C-y RET                | Paste a specific string to search for    |
-| C-e/a                          | End/beginning of line                    |
-| C-x-o                          | Change buffer                            |
-| C-l                            | Centrera skärmen runt                    |
-| C-< | Beginning of doc |
-| C-> |End of doc|
- * C-SPACE = Starta markering
- * M-a/e = Hoppa stycken
- * M-ARW = resize window
- * C-x C-v  = revert buffer, hämtar filen igen <-- reload file
- * C-x C-+/- = Ändrar sizen på fonten
- * C-x 0 = delete current window
- * M-x whitespace-cleanup
- * M-x shell RET = Shell in buffer
- * C-u M-x shell = Öppnar ett andra shell
+| Commands          | Description                           |
+|-------------------+---------------------------------------|
+| ~M-%~             | Search Replace (space = next)         |
+| ~C-s RET C-y RET~ | Paste a specific string to search for |
+| ~C-e/a~           | End/beginning of line                 |
+| ~C-x o~           | Change buffer                         |
+| ~C-l~             | Centrera skärmen runt                 |
+| ~C-<~             | Beginning of doc                      |
+| ~C->~             | End of doc                            |
+| ~C-SPC~           | Starta markering                      |
+| ~M-a/e~           | Hoppa stycken                         |
+| ~C-x C-v~         | revert buffer, hämtar filen igen      |
+| ~C-x C-+/-~       | Ändrar sizen på fonten                |
+| ~C-x 0~           | delete current window                 |
+ 
+
+*Extended commands*
+| Commands                 | Descriptions                 |
+|--------------------------+------------------------------|
+| ~M-x whitespace-cleanup~ | Clean whitespace after lines |
+| ~M-x shell RET~          | Shell in buffer              |
+| ~C-u M-x shell~          | Öppnar ett andra shell       |
+
 
 *Special commands*
 
@@ -166,25 +177,27 @@ Some of the supported languages are:
 | Shell      | ~sh~         |
   
 
-_Ta bort intabbning/spaces_
-Region
+*Ta bort intabbning/spaces* \\
+/Region/
   1. Mark region
-  2. C-x TAB
+  2. ~C-x TAB~
   3. Move with ARW(l/r) or SHIFT + ARW(l/r)
 
-Repeated
+/Repeated/
   1. Mark region
-  2. C-u +/- NOF_TIMES (add/remove spaces)
-  3. C-x TAB
+  2. ~C-u +/- NOF_TIMES~ (add/remove spaces)
+  3. ~C-x TAB~
 
-_neotree_
+*neotree* \\
 Gives a tree structure in Emacs.
+| Command       | Description         |
+|---------------+---------------------|
+| ~M-x neotree~ | Open neotree        |
+| ~C-c C-c~     | Change root         |
+| ~TAB~         | Open/close dirs     |
+| ~H~           | Toggle hidden files |
+| ~A~           | Expands window      |
 
- * M-x Open neotree
- * C-c C-c change root
- * TAB open/close dirs
- * H   Toggle hidden files
- * A   Expands window
 ** Org-Mode
 
 # COMMENT
@@ -210,18 +223,6 @@ _Misc_
      #+END_SRC
 
 
-_Tables_
-
-See Tbl plugin for fancy features
-
-|head|lines|here| + TAB -->
-
-| head | lines | here |
-|-   + TAB -->
-
-| head | lines | here |
-|------+-------+------|
-|      |       |      |
 
 *** LATEX
 
