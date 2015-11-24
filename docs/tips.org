@@ -1,0 +1,412 @@
+#+HTML_HEAD: <link rel="stylesheet" type="text/css" href="orgstyle.css" />
+#+TITLE: Tips and tricks
+* TODO
+** TODO Clean section [[EMACS]] (emacs)
+*** Sort commands
+ * M-x commands
+ * Special settings in .emacs file
+ * 
+
+* GLOSSARY
+
+ * *Parse*: Analysera en dataström (input) för att få fram en tolkning. Exempel: Parsa xml kod till python.
+ * *DHCP* (/Dynamic Host Configuration Protocol/): DHCP is used for allocation of  dynamic IP addresses to computers in a network.
+ * *SSL* (/Secure Sockets Layer/): The SSL protocol is used to encrypt data for secure data transmission.
+ * *Bootloader*: En bootloader är en programvara som i ett persondatorsystem av PC-typ tar över efter BIOS och laddar in operativsystemet från hårddisken till primärminnet.
+ * *GRUB*: Bootloader för Linux.
+ * *BIOS* (/Basic Input/Output System/): Det mest grundläggande programmet som körs i en PC-dator när den startas.
+ * *U-boot* (/Universial Bootloader/): Open source, primary boot loader used in embedded devices to package the instructions to boot the device's operating system kernel.
+
+* GENERAL
+
+_PHP Url commands_
+ * *?*: Skickar in variabler via url. Exempel: http://mywebsite.se/?variable=hej
+
+* SOFTWARE ARCHITECTURE
+
+*Lots of configuration*:
+If some part of the code requires a lot of settings to be able to configure something, consider putting all settings in a configuration file. This way it is easier to distinguish the logic of the functions and what is pure configuration.
+
+*General questions of code structure*:
+It is a good idea to study known modules to get a sense of what is customary when designing code. For example, if a class is designed to handle all communication over a certain session, it might be a good idea to study the 'sockets.py' in Python.
+
+* LINUX
+** General info
+*General tips:*
+ * Maximize/Minimize windows: ~F11~
+ * Switch between workspaces: ~Ctrl + Shift + ARW~
+ * It is possible to lock a window in Ubuntu so it's always possible to see it on all workspaces.
+
+*~source~ vs ~./~* \\
+~./script~ runs the script as an executable file, launching a new shell to run it. ~source script~ or ( ~. script~)  reads and executes commands from filename in the current shell environment.
+
+** CLI commands
+ * Print system information:
+  #+BEGIN_SRC sh
+  $ uname -a
+  #+END_SRC
+
+ * File information:
+  #+BEGIN_SRC sh
+  $ file <filename>
+  #+END_SRC
+
+ * If file crashes during startup:
+  #+BEGIN_SRC sh
+  $ strace <filename>
+  #+END_SRC
+
+ * Find something in a specific file:
+  #+BEGIN_SRC sh
+  $ find / -xdev -type f -print0 | xargs -0 grep -H "800x600"
+  #+END_SRC
+
+ * Overwrite file
+  #+BEGIN_SRC sh
+  $ echo 'hej' > file.txt
+  #+END_SRC
+
+ * Append to file
+  #+BEGIN_SRC sh
+  $ echo 'hej' >> file.txt
+  #+END_SRC
+
+ * Watch a command
+  #+BEGIN_SRC sh
+  $ watch -n1 df   
+  #+END_SRC
+
+ * scp over wlan
+  #+BEGIN_SRC sh
+  $ scp <localfile> user@localip:/<folder>  
+  #+END_SRC
+
+ * Open emacs within the terminal window
+  #+BEGIN_SRC sh
+  $ emacs -nw file_to_open
+  #+END_SRC
+
+** DEBUG
+*apt-get stop working* \\
+If apt-get stop working, e.g:
+
+#+BEGIN_SRC sh
+W: Failed to fetch http://se.archive.ubuntu.com/ubuntu/dists/utopic-updates/universe/binary-i386/Packages  404  Not Found
+#+END_SRC
+
+the linux distr. version might be too old.
+
+** CONF
+
+ * *Set names for IP addresses locally*: Edit /etc/hosts
+ * *Grid <3*: https://github.com/ssokolow/quicktile
+
+* C++
+*Linking*
+ * Linking statically(no space!): ~-Wl,-Bstatic~
+ * Show linking dependencies: ~ldd <filename>~
+
+* EMACS
+** Generally
+*Commands*
+
+| Commands                       | Description                              |
+|--------------------------------+------------------------------------------|
+| M-%                            | Search Replace (space = next)            |
+| Mark region + C-u -999 C-x TAB | Removes all intendation in marked region |
+| C-s RET C-y RET                | Paste a specific string to search for    |
+| C-e/a                          | End/beginning of line                    |
+| C-x-o                          | Change buffer                            |
+| C-l                            | Centrera skärmen runt                    |
+| C-< | Beginning of doc |
+| C-> |End of doc|
+ * C-SPACE = Starta markering
+ * M-a/e = Hoppa stycken
+ * M-ARW = resize window
+ * C-x C-v  = revert buffer, hämtar filen igen <-- reload file
+ * C-x C-+/- = Ändrar sizen på fonten
+ * C-x 0 = delete current window
+ * M-x whitespace-cleanup
+ * M-x shell RET = Shell in buffer
+ * C-u M-x shell = Öppnar ett andra shell
+
+*Special commands*
+
+| M-o TAB                        | autocompleata tidigare                   |
+| M-ARW        | Resize window |
+|              |                    |
+
+
+*Enter easy templates* \\
+
+ * Goto an empty line and insert: ~<s + TAB~
+
+ * This will insert:
+  #+BEGIN_EXAMPLE
+    #+BEGIN_SRC identifier
+
+    #+END_SRC
+  #+END_EXAMPLE
+
+Some of the supported languages are:
+
+#+CAPTION: Supported languages in source mode
+#+ATTR_HTML: :border 2
+| Language   | Identifier   |
+|------------+--------------|
+| C          | ~C~          |
+| C++        | ~cpp~        |
+| CSS        | ~css~        |
+| Emacs Lisp | ~emacs-lisp~ |
+| Java       | ~java~       |
+| LaTeX      | ~latex~      |
+| Make       | ~makefile~   |
+| Org        | ~org~        |
+| Python     | ~python~     |
+| Shell      | ~sh~         |
+  
+
+_Ta bort intabbning/spaces_
+Region
+  1. Mark region
+  2. C-x TAB
+  3. Move with ARW(l/r) or SHIFT + ARW(l/r)
+
+Repeated
+  1. Mark region
+  2. C-u +/- NOF_TIMES (add/remove spaces)
+  3. C-x TAB
+
+_neotree_
+Gives a tree structure in Emacs.
+
+ * M-x Open neotree
+ * C-c C-c change root
+ * TAB open/close dirs
+ * H   Toggle hidden files
+ * A   Expands window
+** Org-Mode
+
+# COMMENT
+
+  * *FETSTILT*
+  * /KURSIVT/
+  * _UNDERSCORE_
+  * =verbatism=
+  * ~code~
+
+_Kortkommandon_
+ * M-RET = New dot
+ * S-Arw = TODO/DONE + ABC
+ * C-c C-x C-a = Archive old todos
+
+_Misc_
+ * Checklist? http://orgmode.org/worg/org-contrib/org-checklist.html
+
+
+     #+NAME: <name>
+     #+BEGIN_SRC <language> <switches> <header arguments>
+       <body>
+     #+END_SRC
+
+
+_Tables_
+
+See Tbl plugin for fancy features
+
+|head|lines|here| + TAB -->
+
+| head | lines | here |
+|-   + TAB -->
+
+| head | lines | here |
+|------+-------+------|
+|      |       |      |
+
+*** LATEX
+
+I linux:
+apt-get install texlive
+
+=CODE MODE= <-- Useful when writing variables that have _ and []
+
+Many pretty features, recommended!!
+
+_Spell check_
+
+Aktivera flyspell:
+> M-x flyspell-mode
+
+Kolla buffern:
+> M-x flyspell-buffer
+
+_List of tables_
+#+TOC: tables
+
+_Glossary_
+
+\section*{Glossary}
+
+_Set line wrap_
+För att se till att en rad automatiskt fortsätter på nästa rad kan man göra två
+saker:
+
+> M-x visual-line-mode
+
+För att sätta margin på buffern sätt fill-column
+
+> C-x f RET 120
+
+För att aktivera window-margin-mode skriv:
+
+> M-x window-margin-mode
+
+
+_Länka till todon_
+
+För att länka till en fil i sin todo-list kör:
+
+> M-x org-insert-link RET file: RET path/to/file
+
+Om man vill länka till en rubrik, editera länken och lägg till ::NamnPaRubrik efter filepath
+
+> [[LATEX][example]]
+
+_Lås placement för figure_
+#+ATTR_LaTeX: placement=[H]
+
+_Referera inom dokumentet_
+Sätt namn/label på det som ska refereras
+#+LABEL: tab:test
+
+Referera genom:
+[[ tab:test ] ]
+
+Går även att referera till en rubrik direkt genom att skriva full name [[Org-Mode]] == [[Org-Mode] ]
+
+(utan onödiga mellanslag)
+
+
+_In org file: (examples)_
+(without spaces)
+
+#+ TITLE: Possibility to automate manual tool test cases
+#+ AUTHOR: Johanna Simonsson
+#+ DATE: November 12, 2015
+#+ BEGIN_abstract
+We demonstrate how to solve the Syracuse problem.
+#+END_abstract
+\newpage
+
+Ingen intabbning vid ny rad:
+\noindent
+
+
+More tips:
+http://orgmode.org/worg/org-tutorials/org-latex-export.html
+http://orgmode.org/manual/LaTeX-specific-attributes.html
+
+*** HTML
+
+_Bootstraps_
+
+ * Twitter bootstrap for emacs org mode, för att kunna generera finare html-filer
+
+* DOCKER
+
+*Free up space*
+ * Remove images
+  #+BEGIN_SRC sh
+  docker images
+  docker rmi ID
+  #+END_SRC
+
+ * Stop processes
+  #+BEGIN_SRC sh
+  docker ps -a
+  docker stop ID
+  docker rm -v ID  #-v flag is important!
+  #+END_SRC
+
+* PYTHON
+
+*python shell*
+ * *Continue line:*
+   #+BEGIN_SRC python
+   print("hej" \
+	 "då")
+   #+END_SRC
+
+
+_General functions_
+> os.sep = Gives the dir separator in the current OS.
+> re.search('def(.*)\(', string).group(1) = find string between 'def and '('
+
+* PYTEST
+
+*hook* \\
+En hook är där man som användare kan interagera/ändra någonting som redan
+pågår i ett program/system.
+
+  1. *Create Something*
+  2. /Hook implemented --> modify created/
+  3. *Continue*
+
+*@pytest.fixture(scope="function")* \\
+~def ctrl(request, ctrl):~ \\
+ * Scope för fixturer berättar hur länge en fixture ska 'hålla'.
+ * Request-input till en fixture gör at man kan lägga till en finalizer (teardown)
+
+*@pytest.mark.timeout(60)* \\
+Sätt time-out på långtidstester annars så dödas de av default-time-outen (satt till 0.5-1h)
+
+* VIRTUALBOX
+
+*Shrink VDMK size* \\
+If one is using a dynamically expanding image for their hard drive, where you set the maximum size of the disk,
+the system will only grow to fill that space if required. Unfortunately, whilst VirtualBox will dynamically
+expand the hard drive as it’s required, it won’t dynamically shrink it again if you free up space in the VM.
+To shrink the VM:
+
+1. Free up as much space as possible on the guest system.
+
+2. Install zerofree on the *Guest* system:
+  #+BEGIN_SRC sh
+  $ sudo apt-get install zerofree
+  #+END_SRC
+
+3. Start the *VM* (Virtual Machine) in *recovery mode* (from GRUB)
+
+4. Find out where / is mounted by studying the output of: (usually /dev/sda1)
+  #+BEGIN_SRC sh
+     $ mount
+  #+END_SRC
+
+5. If the boot device is mounted as rw, change it to read-only by entering:
+  #+BEGIN_SRC sh
+     $ mount -n -o remount,ro -t ext2 /dev/sda1 /
+  #+END_SRC
+
+6. To zero out the free space so the compact tool can work, enter:
+  #+BEGIN_SRC sh
+     $ zerofree /dev/sda1
+  #+END_SRC
+
+7. *Shutdown* the VM.
+
+8. Open a command prompt on the *Host* Machine (Windows) and navigate to the vmdk-file.
+
+9. Clone the vmdk-file to vdi format to be able to compact it:
+  #+BEGIN_SRC sh
+     $ vboxmanage clonehd mydisk.vmdk cloneddisk.vdi --format VDI
+  #+END_SRC
+
+10. To shrink the disk, run:
+  #+BEGIN_SRC sh
+      $ vboxmanage modifyhd --compact cloneddisk.vdi
+  #+END_SRC
+
+11. Clone the disk again to the right format:
+  #+BEGIN_SRC sh
+      $ vboxmanage clonehd cloneddist.vdi newdisk.vmdk --format VMDK
+  #+END_SRC
