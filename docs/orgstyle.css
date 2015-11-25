@@ -14,7 +14,7 @@
 /* @group Fonts */
 
 * {
-    font-family: "Georgia";
+    font-family: "Cambria";
 }
 
 h1, h2, h3, h4, h5, h6,
@@ -40,30 +40,56 @@ body {
 	padding: 0;
 	margin: 0;
 }
+
 h1 {
-	margin: 0;
-	font-size: 1.6666666666666667em;
-	line-height: 0.9em;
-	margin-bottom: 0.9em;
+    font-size:2.1em;
+    padding:0 0 30px 0;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 7%;
+    color: grey;
 }
+
+
 h2 {
-	margin: 0;
-	font-size: 1.5em;
-	line-height: 1em;
-	margin-bottom: 1em;
+    font-family:sans-serif;
+    font-size:1.45em;
+    line-height:16px;
+    padding:10px 0 10px 0;
+    color: black;
+    border-bottom: 1px solid #ddd;
 }
+
+.outline-text-2 {
+    margin-left: 0.1em
+}
+
 h3 {
-	margin: 0;
-	font-size: 1.3333333333333333em;
-	line-height: 1.125em;
-	margin-bottom: 1.125em;
+    font-family:sans-serif;
+    font-size:1.3em;
+    color: grey;
+    margin-left: 0.6em;
+    border-bottom: 1px solid #ddd;
 }
+
+/* #A34D32;*/
+
+
+.outline-text-3 {
+    margin-left: 0.9em;
+}
+
 h4 {
-	margin: 0;
-	font-size: 1.1666666666666667em;
-	line-height: 1.2857142857142858em;
-	margin-bottom: 1.2857142857142858em;
+    font-family:sans-serif;
+    font-size:1.2em;
+    margin-left: 1.2em;
+    color: black;
 }
+
+.outline-text-4 {
+    margin-left: 1.45em;
+}
+
 p, ul, blockquote, pre, td, th, label {
 	margin: 0;
 	font-size: 1em;
@@ -99,7 +125,7 @@ table {
 	width: 15em;
 	float: left;
 	overflow: auto;
-	position: fixed
+	position: fixed;
 }
 
 /* #main { */
@@ -184,37 +210,10 @@ h1.title {
     padding-left: 1em;
 }
 
-/* @end */
-
-/* @group Outline Level 2 */
-
-.outline-2 h2 {
-    background: #cce5ff;
-    border-bottom: 1px solid #ccc;
-}
-
-.outline-2 h2, .outline-2 h3 {
-    letter-spacing: -0.05em;
-}
-
-.outline-2 {
-	padding: 5px;
-	/* margin-bottom: 10px; */
-	/* border-top: 1px solid #ccc; */
-}
-
-/* @end */
-
 td {
 	border: 1px solid #ccc;
 }
 
-
-h1 span, h2 span, h3 span, h4 span, h5 span, h6 span {
-    background-color: #eee;
-    padding: 2px;
-    border: 1px solid #ccc;
-}
 
 .outline-1, .outline-2, .outline-3, .outline-4, .outline-5, .outline-6 {
     margin-left: 2em;
@@ -235,6 +234,10 @@ a:hover {
 
 code {
     font-family: monospace;
+    font-size: 100%;
+    color: black;
+    border: 1px solid #DEDEDE;
+    padding: 0px 0.2em;
 }
 
 table {
@@ -244,3 +247,56 @@ table {
 th {
     text-align: center;
 }
+
+/*-------------------------------------*/
+.builtin {
+    /* font-lock-builtin-face */
+    color: #f4a460;
+}
+.comment {
+    /* font-lock-comment-face */
+    color: #737373;
+}
+.comment-delimiter {
+    /* font-lock-comment-delimiter-face */
+    color: #666666;
+}
+.constant {
+    /* font-lock-constant-face */
+    color: #db7093;
+}
+.doc {
+    /* font-lock-doc-face */
+    color: #b3b3b3;
+}
+.function-name {
+    /* font-lock-function-name-face */
+    color: #5f9ea0;
+}
+.headline {
+    /* headline-face */
+    color: #ffffff;
+    background-color: #000000;
+    font-weight: bold;
+}
+.keyword {
+    /* font-lock-keyword-face */
+    color: #4682b4;
+}
+
+    }
+.string {
+    /* font-lock-string-face */
+    color: #ccc79a;
+}
+
+.variable-name {
+    /* font-lock-variable-name-face */
+    color: #ff6a6a;
+}
+.warning {
+    /* font-lock-warning-face */
+    color: #ffffff;
+    background-color: #cd5c5c;
+    font-weight: bold;
+}    

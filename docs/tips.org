@@ -136,8 +136,6 @@ Pipe error output (stderr) to nothing, i.e ignore error printouts.
 2>/dev/null 
 #+END_SRC
 
-
-
 * EMACS
 ** Generally
 *Commands*
