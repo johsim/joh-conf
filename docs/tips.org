@@ -403,3 +403,9 @@ To shrink the VM:
   #+BEGIN_SRC sh
       $ vboxmanage clonehd cloneddist.vdi newdisk.vmdk --format VMDK
   #+END_SRC
+* test
+#+BEGIN_SRC emacs-lisp
+  (defun org-xor (a b)
+     "Exclusive or."
+     (if a (not b) b))
+#+END_SRC

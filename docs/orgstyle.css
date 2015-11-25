@@ -91,7 +91,7 @@ h4 {
     margin-left: 1.45em;
 }
 
-p, ul, blockquote, pre, td, th, label {
+p, blockquote, pre, td, th, label {
 	margin: 0;
 	font-size: 1em;
 	line-height: 1.5em;
@@ -300,4 +300,4 @@ th {
     color: #ffffff;
     background-color: #cd5c5c;
     font-weight: bold;
-}    
+}
