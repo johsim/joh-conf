@@ -1,5 +1,6 @@
 #+HTML_HEAD: <link rel="stylesheet" type="text/css" href="orgstyle.css" />
 #+TITLE: Tips and tricks
+#+AUTHOR: Johanna Simonsson
 * TODO
 ** TODO Check out css file: http://orgmode.org/worg/style/worg.css
 ** TODO Clean section [[EMACS]] (emacs)
@@ -8,12 +9,11 @@
  * Special settings in .emacs file
  * 
 
-** TODO Connect project to bitbucket?
-** TODO ADd git section
+** TODO Add git section
 * ABBRIVATIONS
 
  * *VCS*: Version Control System 
-
+          
 * GLOSSARY
 
  * *Parse*: Analysera en dataström (input) för att få fram en tolkning. Exempel: Parsa xml kod till python.
@@ -115,6 +115,28 @@ the linux distr. version might be too old.
 *Linking*
  * Linking statically(no space!): ~-Wl,-Bstatic~
  * Show linking dependencies: ~ldd <filename>~
+
+* BASH
+
+Set default value for environment variable if it isn't specified:
+#+BEGIN_SRC sh
+${ENV_VAR:=true}
+#+END_SRC
+
+Redirect standard streams:
+#+BEGIN_SRC sh
+>  file #redirects stdout to file
+1> file #redirects stdout to file
+2> file #redirects stderr to file
+&> file #redirects stdout and stderr to file
+#+END_SRC
+
+Pipe error output (stderr) to nothing, i.e ignore error printouts.
+#+BEGIN_SRC sh
+2>/dev/null 
+#+END_SRC
+
+
 
 * EMACS
 ** Generally
@@ -291,7 +313,6 @@ Ingen intabbning vid ny rad:
 More tips:
 http://orgmode.org/worg/org-tutorials/org-latex-export.html
 http://orgmode.org/manual/LaTeX-specific-attributes.html
-
 
 * DOCKER
 
