@@ -2,17 +2,11 @@
 #+TITLE: Tips and tricks
 #+AUTHOR: Johanna Simonsson
 * TODO
-** TODO Clean section [[EMACS]] (emacs)
-*** Sort commands
- * M-x commands
- * Special settings in .emacs file
- * 
-
 ** TODO Add git section
 * ABBRIVATIONS
 
- * *VCS*: Version Control System 
-          
+ * *VCS*: Version Control System
+
 * GLOSSARY
 
  * *Parse*: Analysera en dataström (input) för att få fram en tolkning. Exempel: Parsa xml kod till python.
@@ -33,10 +27,10 @@ In a /Central/ VCS, there idea is that there is only one central copy, and all d
 
 * SOFTWARE ARCHITECTURE
 
-*Lots of configuration*:
+*Lots of configuration*: \\
 If some part of the code requires a lot of settings to be able to configure something, consider putting all settings in a configuration file. This way it is easier to distinguish the logic of the functions and what is pure configuration.
 
-*General questions of code structure*:
+*General questions of code structure*:\\
 It is a good idea to study known modules to get a sense of what is customary when designing code. For example, if a class is designed to handle all communication over a certain session, it might be a good idea to study the 'sockets.py' in Python.
 
 * LINUX
@@ -82,12 +76,12 @@ It is a good idea to study known modules to get a sense of what is customary whe
 
  * Watch a command
   #+BEGIN_SRC sh
-  $ watch -n1 df   
+  $ watch -n1 df
   #+END_SRC
 
  * scp over wlan
   #+BEGIN_SRC sh
-  $ scp <localfile> user@localip:/<folder>  
+  $ scp <localfile> user@localip:/<folder>
   #+END_SRC
 
  * Open emacs within the terminal window
@@ -132,7 +126,7 @@ Redirect standard streams:
 
 Pipe error output (stderr) to nothing, i.e ignore error printouts.
 #+BEGIN_SRC sh
-2>/dev/null 
+2>/dev/null
 #+END_SRC
 
 * EMACS
@@ -153,7 +147,7 @@ Pipe error output (stderr) to nothing, i.e ignore error printouts.
 | ~C-x C-v~         | revert buffer, hämtar filen igen      |
 | ~C-x C-+/-~       | Ändrar sizen på fonten                |
 | ~C-x 0~           | delete current window                 |
- 
+
 
 *Extended commands*
 | Commands                 | Descriptions                 |
@@ -232,10 +226,10 @@ $ sudo apt-get install texlive
 
 *Spell check* \\
 #+BEGIN_SRC emacps-lisp
-$ M-x flyspell-buffer
+M-x flyspell-buffer
 #+END_SRC
 
-List of tables
+*List of tables*
 #+BEGIN_EXAMPLE
 #+TOC: tables
 #+END_EXAMPLE
@@ -244,7 +238,6 @@ List of tables
 #+BEGIN_SRC latex
 \section*{Glossary}
 #+END_SRC
-
 
 *Set line wrap* \\
 För att se till att en rad automatiskt fortsätter på nästa rad kan man göra två saker:
@@ -265,7 +258,6 @@ För att aktivera ~window-margin-mode~ skriv:
 M-x window-margin-mode
 #+END_SRC
 
-
 *References* \\
 För att referera/länka till vad som helst.
 
@@ -279,40 +271,34 @@ Detta kan inkludera:
  * Tables etc. (label-name)
  * etc.
 
-
-_Lås placement för figure_
+*Lås placement för figure*
+#+BEGIN_EXAMPLE
 #+ATTR_LaTeX: placement=[H]
+#+END_EXAMPLE
 
-_Referera inom dokumentet_
+*Referera inom dokumentet* \\ 
 Sätt namn/label på det som ska refereras
+#+BEGIN_EXAMPLE
 #+LABEL: tab:test
+#+END_EXAMPLE
 
-_How to add footnotes_
-#+BEGIN_SRC 
+*How to add footnotes*
+#+BEGIN_SRC
 C-c C-x f
 #+END_SRC
 
-_In org file: (examples)_
-(without spaces)
-
-#+ TITLE: Possibility to automate manual tool test cases
-#+ AUTHOR: Johanna Simonsson
-#+ DATE: November 12, 2015
-#+ BEGIN_abstract
-We demonstrate how to solve the Syracuse problem.
-#+END_abstract
+*Ny sida*
+#+BEGIN_SRC latex
 \newpage
+#+END_SRC
 
-Ingen intabbning vid ny rad:
+*Ingen intabbning vid ny rad*
+#+BEGIN_SRC latex
 \noindent
-
-
-More tips:
-http://orgmode.org/worg/org-tutorials/org-latex-export.html
-http://orgmode.org/manual/LaTeX-specific-attributes.html
+#+END_SRC
 
 * DOCKER
-
+  
 *Free up space*
  * Remove images
   #+BEGIN_SRC sh
@@ -329,17 +315,25 @@ http://orgmode.org/manual/LaTeX-specific-attributes.html
 
 * PYTHON
 
-*python shell*
- * *Continue line:*
-   #+BEGIN_SRC python
-   print("hej" \
-	 "då")
-   #+END_SRC
+*Python shell* \\
+*Continue line:*
+#+BEGIN_SRC python
+print("hej" \
+      "då")
+#+END_SRC
 
 
-_General functions_
-> os.sep = Gives the dir separator in the current OS.
-> re.search('def(.*)\(', string).group(1) = find string between 'def and '('
+*General functions*
+
+Gives the dir separator in the current OS.
+#+BEGIN_SRC python
+os.sep
+#+END_SRC
+
+Find string between 'def and '('
+#+BEGIN_SRC python
+re.search('def(.*)\(', string).group(1)
+#+END_SRC
 
 * PYTEST
 
