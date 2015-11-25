@@ -2,7 +2,6 @@
 #+TITLE: Tips and tricks
 #+AUTHOR: Johanna Simonsson
 * TODO
-** TODO Check out css file: http://orgmode.org/worg/style/worg.css
 ** TODO Clean section [[EMACS]] (emacs)
 *** Sort commands
  * M-x commands
