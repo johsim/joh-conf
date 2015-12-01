@@ -14,6 +14,8 @@
  * *GRUB*: Bootloader för Linux.
  * *BIOS* (/Basic Input/Output System/): Det mest grundläggande programmet som körs i en PC-dator när den startas.
  * *U-boot* (/Universial Bootloader/): Open source, primary boot loader used in embedded devices to package the instructions to boot the device's operating system kernel.
+ * *Payload*: Den faktiska datan i ett skickat meddelande, vilket inte inkluderar headers och metadata.
+ * *Duplex*: Kommunikation som kan ske två riktningar. Full-duplex indikerar att man kan kommunicera i båda riktningarna samtidigt (telefonsamtal). Halv-duplex indikerar att man kan kan kommunicera i en riktning i taget (walkie-talkie).
 
 * GENERAL
 
