@@ -25,6 +25,19 @@
 *Difference between Centralized VCS and Distributed VCS* \\
 In a /Central/ VCS, there idea is that there is only one central copy, and all developers commit only to this central copy. For a DVCS (/Distributed/ VCS), every developer have their own clone of the repository, which can be commited to the main branch. Every distribution of the repository is viewed as equal.
 
+*Convert file between DOS and Unix* \\
+DOS text files (Windows) traditionally have carriage return and line feed pairs as their newline characters while Unix text files have the line feed as their newline character. If something mysterious happends with files created in different OS then the one you are currently working in, the following might be a good idea:
+
+/Convert text files from the DOS format to the Unix:/
+#+BEGIN_SRC sh
+dos2unix <file>
+#+END_SRC
+
+/Convert text files from the Unix format to the DOS format./
+#+BEGIN_SRC sh
+unix2dos <file>
+#+END_SRC
+    
 * SOFTWARE ARCHITECTURE
 
 *Lots of configuration*: \\
