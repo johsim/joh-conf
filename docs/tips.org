@@ -444,3 +444,50 @@ To shrink the VM:
   #+BEGIN_SRC sh
       $ vboxmanage clonehd cloneddist.vdi newdisk.vmdk --format VMDK
   #+END_SRC
+* VCS
+** HG
+To check commits done to a file/directory, please enter:
+
+#+BEGIN_SRC sh
+hg status <file>
+#+END_SRC
+
+** GIT
+
+Create a new local repository:
+#+BEGIN_SRC sh
+git init
+#+END_SRC
+
+To configure local variables:
+#+BEGIN_SRC sh
+git config --global user.name "Joh Sim"
+git config --global user.email johsim@example.com
+#+END_SRC
+
+To commit all changes and add a message:
+#+BEGIN_SRC sh
+git commit -a -m 'My message'
+#+END_SRC
+
+To push to main branch:
+#+BEGIN_SRC sh
+git push origin master
+#+END_SRC
+
+To add a specific file:
+#+BEGIN_SRC sh
+git add <filename>
+#+END_SRC
+
+Pull from remote repository:
+#+BEGIN_SRC sh
+git pull
+#+END_SRC
+
+Check status for repo:
+#+BEGIN_SRC sh
+git status
+#+END_SRC
+
+
