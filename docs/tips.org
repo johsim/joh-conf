@@ -46,8 +46,27 @@ If some part of the code requires a lot of settings to be able to configure some
 *General questions of code structure*:\\
 It is a good idea to study known modules to get a sense of what is customary when designing code. For example, if a class is designed to handle all communication over a certain session, it might be a good idea to study the 'sockets.py' in Python.
 
+* PROJECT MANAGEMENT
+** TOOLS
+
+*Create flowcharts in PowerPoint* \\
+To make placement easier, turn on grids:
+ * View --> Gridlines
+
+To insert flowchart shapes:
+ * Insert --> Shape --> Flowchart
+
+To insert text within a shape:
+ * Right-click --> Insert text
+
+Align and place shapes right *before* creating arrows. To add arrows:
+ * Click on element --> Press insert arrow --> Drag from corners
+
+To save as PNG:
+ * Save as --> Type:PNG --> This slide only
+
 * LINUX
-** General info
+** GENERAL
 *General tips:*
  * Maximize/Minimize windows: ~F11~
  * Switch between workspaces: ~Ctrl + Shift + ARW~
@@ -56,7 +75,7 @@ It is a good idea to study known modules to get a sense of what is customary whe
 *~source~ vs ~./~* \\
 ~./script~ runs the script as an executable file, launching a new shell to run it. ~source script~ or ( ~. script~)  reads and executes commands from filename in the current shell environment.
 
-** CLI commands
+** CLI
  * Print system information:
   #+BEGIN_SRC sh
   $ uname -a
@@ -111,6 +130,15 @@ W: Failed to fetch http://se.archive.ubuntu.com/ubuntu/dists/utopic-updates/univ
 #+END_SRC
 
 the linux distr. version might be too old.
+
+*If no operations can be done* \\
+If no operations can be done on linux, e.g. 'står och tuggar', the harddisk might be mounted as read-only. Start the OS in /Recovery Mode/ (GRUB). Remount root by entering:
+
+#+BEGIN_SRC sh
+mount -o remount,rw /
+exit
+reboot normal
+#+END_SRC
 
 ** CONF
 
