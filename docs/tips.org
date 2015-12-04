@@ -490,4 +490,25 @@ Check status for repo:
 git status
 #+END_SRC
 
+Connect a commit to an issue:
+#+BEGIN_SRC sh
+git commit -m 'Commit connected to issue #X' 
+#+END_SRC
+
+Close an issue with a commit:
+#+BEGIN_SRC sh
+git commit -m 'Commit to fix #X' 
+#+END_SRC
+
+Supported variants are:
+
+ * ~fix #X~
+ * ~fixes #X~
+ * ~fixed #X~
+ * ~close #X~
+ * ~closes #X~
+ * ~closed #X~
+ * ~resolve #X~
+ * ~resolves #X~
+ * ~resolved #X~
 
