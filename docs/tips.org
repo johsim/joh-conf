@@ -25,9 +25,12 @@
 *Difference between Centralized VCS and Distributed VCS* \\
 In a /Central/ VCS, there idea is that there is only one central copy, and all developers commit only to this central copy. For a DVCS (/Distributed/ VCS), every developer have their own clone of the repository, which can be commited to the main branch. Every distribution of the repository is viewed as equal.
 
-*Regular expressions*
+*Regular expressions*\\
 Regular expressions, or /regexp/, is a series of charachters that is usually used for pattern matchning with strings.
-    
+
+*Web browser*
+ * CTRL + TAB: Switch tab
+ * CTRL + W: Close tab
 * SOFTWARE ARCHITECTURE
 
 *Lots of configuration*: \\
