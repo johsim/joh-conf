@@ -16,6 +16,31 @@
  * *U-boot* (/Universial Bootloader/): Open source, primary boot loader used in embedded devices to package the instructions to boot the device's operating system kernel.
  * *Payload*: Den faktiska datan i ett skickat meddelande, vilket inte inkluderar headers och metadata.
  * *Duplex*: Kommunikation som kan ske två riktningar. Full-duplex indikerar att man kan kommunicera i båda riktningarna samtidigt (telefonsamtal). Halv-duplex indikerar att man kan kan kommunicera i en riktning i taget (walkie-talkie).
+ * *CLI*: (/Command Line Interface/) Interface using text. Opposite to /GUI/.
+ * *Shell*: User interface to access operation system services.
+ * *Shell script*: Scripts to be run in a shell environment, e.g bash, sh, ksh.
+ * *Interpreted language*: Executes instructions directly without compiling program into machine-language instructions. The interpreter environment executes the program directly, translating each statement into subroutines already compiled into machine code. Opposite to /Compiled language/. Today languages often utilizes both compilation and interpretation. _Pros/cons_:
+   +  + Platform independence.
+   +  + Smaller executable program size
+   -  - Without static type-checking done by the compiler, programs can be less reliable
+   -  - Slower execution than compiled
+   -  - Susceptible to code injection attacks
+ * *Bytecode*: Instructions set to be executed by a software interpreter. Better performance than direct interpretation of source code. May be executed directly on a virtual machine (interpreter). Examples include: Java (JVM: Java Virtual Machine) and Python.
+ * *JIT*: (/Just-in-time/): Compilers that translate byte-code to machine code at runtime.
+ * *Source code*: Computer instructions written in a human-readable computer language (text.. lol).
+ * *Command prompt*: What a CLI uses to prompt the user to take action, usually ends with ~$~, ~#~, ~:~ or ~>~. Example:
+   #+BEGIN_SRC sh
+   johanna:Desktop$
+   #+END_SRC
+ * *Standard streams*: Preconnected imput and output communication channels. If a program is executed in a shell, streams are usually connected to text output. Usually both stdout and stderr is printed as output. Available streams are:
+   * Standard input (stdin)
+   * Standard output (stdout)
+   * Standard error (stderr): To be able to single out error messages for debugging.
+
+ * *Pipeline*: Feed stdout from one program as stdin to next program. Example:
+   #+BEGIN_SRC sh
+   program1 | program2 | program3
+   #+END_SRC
 
 * GENERAL
 
@@ -171,6 +196,8 @@ reboot normal
  * Show linking dependencies: ~ldd <filename>~
 
 * BASH
+*When to use bash scripts* \\
+Use bash scripts for small utilities programs or simple wrapper scripts.
 
 Set default value for environment variable if it isn't specified:
 #+BEGIN_SRC sh
@@ -188,6 +215,16 @@ Redirect standard streams:
 Pipe error output (stderr) to nothing, i.e ignore error printouts.
 #+BEGIN_SRC sh
 2>/dev/null
+#+END_SRC
+
+Execution flow with ~||~:
+#+BEGIN_SRC sh
+program || echo "Something went wrong" #Only executes if exit code != 0
+#+END_SRC
+
+Execution flow with ~&&~:
+#+BEGIN_SRC sh
+program && echo "Everything went as expected" # Only executes if exit code == 0
 #+END_SRC
 
 * EMACS
