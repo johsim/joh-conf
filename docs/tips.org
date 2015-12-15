@@ -554,11 +554,16 @@ To shrink the VM:
   #+END_SRC
 * VCS
 ** HG
-To check commits done to a file/directory, please enter:
-
+To check commits done to a file/directory:
 #+BEGIN_SRC sh
 hg status <file>
 #+END_SRC
+
+Remove all non-committed files (good when rebuilding)
+#+BEGIN_SRC sh
+hg purge
+#+END_SRC
+
 
 ** GIT
 
