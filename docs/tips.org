@@ -48,10 +48,41 @@
  * *?*: Skickar in variabler via url. Exempel: http://mywebsite.se/?variable=hej
 
 *Difference between Centralized VCS and Distributed VCS* \\
-In a /Central/ VCS, there idea is that there is only one central copy, and all developers commit only to this central copy. For a DVCS (/Distributed/ VCS), every developer have their own clone of the repository, which can be commited to the main branch. Every distribution of the repository is viewed as equal.
+In a /Central/ VCS, there idea is that there is only one central copy, and all developers commit only to this central copy. For a DVCS (/Distributed/ VCS), every developer have their own clone of the repository, which can be committed to the main branch. Every distribution of the repository is viewed as equal.
 
 *Regular expressions*\\
-Regular expressions, or /regexp/, is a series of charachters that is usually used for pattern matchning with strings.
+Regular expressions, or /regexp/, is a series of characters that is usually used for pattern matching with strings.
+| Expression | Explanation                                               |
+|------------+-----------------------------------------------------------|
+| ~^~        | matches begining of the line                              |
+| ~$~        | matches end of the line                                   |
+| ~*~        | matches the preceding character 0 or more times           |
+| ~+~        | matches the preceding character 1 or more times           |
+| ~?~        | matches the preceding character 0 or 1 time               |
+| ~.~        | matches any single character except newline               |
+| ~(x)~      | matches x and remembers the matching expresssion          |
+| ~(?)~      | matches x and does not remember the matching expresssion  |
+| ~x(?=y)~   | matches x if it is followed by y                          |
+| ~x(?!y)~   | matches x if it is not followed by y                      |
+| ~{n}~      | matches previous character repeated n times               |
+| ~{n,m}~    | matches previous character repeated between n and m times |
+| ~[abc]~    | matches any single character in the brackets              |
+| ~[^abc]~   | matches any single character not in the brackets          |
+| ~\b~       | matches word boundary                                     |
+| ~\B~       | matches non-word boundary                                 |
+| ~\d~       | matches a digit                                           |
+| ~\D~       | matches a non-digit                                       |
+| ~\s~       | matches a whitespace character                            |
+| ~\S~       | matches a non-whitespace character                        |
+| ~\t~       | matches a tab                                             |
+| ~\w~       | matches and alphanumberic character or underscore         |
+| ~\W~       | matches character that does not match \w                  |
+
+/Regular expression examples/ \\
+#+BEGIN_SRC python
+    [0-9]{4} # matches a year, example: 2010
+    [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}.[0-9]{1,3} # matches an ip address, example: 192.168.10.1.
+#+END_SRC
 
 *Web browser*
  * CTRL + TAB: Switch tab
@@ -247,7 +278,6 @@ program && echo "Everything went as expected" # Only executes if exit code == 0
 
 
     
-
 * EMACS
 ** Generally
 *Commands*
