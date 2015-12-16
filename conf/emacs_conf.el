@@ -15,8 +15,10 @@
 
 
 (require 'package) ;; You might already have this line
-(add-to-list 'package-archives
-             '("melpa" . "http://melpa.org/packages/") t)
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
+                         ("marmalade" . "https://marmalade-repo.org/packages/")
+                         ("melpa" . "http://melpa.org/packages/")))
+
 (when (< emacs-major-version 24)
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
@@ -27,7 +29,6 @@
 
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
-
 
 
 ;; So that emacs don't complain about the wrong encoding.
@@ -52,7 +53,6 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (add-hook 'python-mode-hook 'jedi:setup)
-(setq jedi:complete-on-dot t)   
 
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -68,5 +68,14 @@
 	("WAITING" . "orange")
 	("UPCOMING" . "deep sky blue")
 	("DONE" . "green")
+	("NOTES" . "magenta")
 	))
 
+
+;;Stylesheet
+
+(setq org-export-html-style-include-scripts nil
+      org-export-html-style-include-default nil)
+
+(setq org-export-html-style
+      "<link rel=\"stylesheet\" type=\"text/css\" href=\"orgstyle.css\" />")
