@@ -9,3 +9,12 @@ cp init.el ~/emacs.d/
 #+END_SRC
 
 The init file assumes that the joh-conf repository is placed in the home folder. 
+
+** Update default packages
+The default packages that Emacs will use are specified in the variable ~package-list~ found in ~emacs_conf.el~. If any new packages have been installed and are to be added to the default list, please follow these steps:
+
+1. List all currently installed packages with: ~C-h v package-activated-list~
+
+2. Copy the array to the ~package-list~ variable in ~emacs_conf.el~.
+
+3. Restart emacs. 
