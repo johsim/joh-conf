@@ -13,16 +13,28 @@
  ;; If there is more than one, they won't work right.
  )
 
+;; Default packages
+(setq package-list '(anaconda-mode f dash s s dash pythonic f dash s s dash clang-format elpy yasnippet pyvenv highlight-indentation find-file-in-project swiper company find-file-in-project swiper flycheck let-alist pkg-info epl dash highlight-indentation htmlize jedi auto-complete popup jedi-core python-environment deferred epc ctable concurrent deferred jedi-core python-environment deferred epc ctable concurrent deferred let-alist pkg-info epl popup py-isort pylint pytest python-environment deferred python-mode pythonic f dash s s dash pyvenv s swiper window-margin yasnippet))
 
-(require 'package) ;; You might already have this line
+;; Set package archives
+(require 'package) 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")))
 
-(when (< emacs-major-version 24)
-  ;; For important compatibility libraries like cl-lib
-  (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
-(package-initialize) ;; You might already have this line
+
+
+;; Activate all the packages (in particular autoloads)
+(package-initialize)
+
+;; Fetch the list of packages available 
+(unless package-archive-contents
+  (package-refresh-contents))
+
+;; Install the missing packages
+(dolist (package package-list)
+  (unless (package-installed-p package)
+    (package-install package)))
 
 ;; set default font size:
 (set-face-attribute 'default nil :height 89)
