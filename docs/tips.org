@@ -276,7 +276,6 @@ program && echo "Everything went as expected" # Only executes if exit code == 0
 
 #+END_SRC
 
-
     
 * EMACS
 ** Generally
@@ -564,12 +563,15 @@ Remove all non-committed files (good when rebuilding)
 hg purge
 #+END_SRC
 
-
 ** GIT
-
-Create a new local repository:
+Clone a repository:
 #+BEGIN_SRC sh
-git init
+git clone https://github.com/johsim/joh-conf
+#+END_SRC
+
+If the network is behind a HTTP-proxy, try specifying the default one:
+#+BEGIN_SRC sh
+git config --global http.proxy http://proxy1:80
 #+END_SRC
 
 To configure local variables:

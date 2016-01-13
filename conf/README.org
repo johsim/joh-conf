@@ -1,15 +1,51 @@
 #+TITLE: README for conf
 #+AUTHOR: johsim
-* Emacs
-** How to setup the Emacs configuration file.
-The emacs_conf.el file can be used without moving it away from the git repository. To do this, copy the init file to the emacs.d directory:
 
-#+BEGIN_SRC sh
-cp init.el ~/emacs.d/
+Instructions on how to setup a new environment and how to modify certain variables.
+* General setup
+To setup the environment on a new platform, please follow these steps (Tested on XUbuntu 15.04, 15.10).
+** Setup Git repository
+Install Git and clone this repository.
+#+BEGIN_SRC 
+sudo apt-get install git
+git clone https://github.com/johsim/joh-conf
 #+END_SRC
 
-The init file assumes that the joh-conf repository is placed in the home folder. 
+If the network is behind a HTTP-proxy, try specifying the default one:
+#+BEGIN_SRC sh
+git config --global http.proxy http://proxy1:80
+#+END_SRC
 
+To configure local variables:
+#+BEGIN_SRC sh
+git config --global user.name "Joh Sim"
+git config --global user.email johsim@example.com
+#+END_SRC
+
+** Setup local configuration files
+Copy the ~.bashrc~ to the home directory
+#+BEGIN_SRC sh
+cp ~/joh-conf/conf/.bashrc ~/
+#+END_SRC
+
+Install Emacs
+#+BEGIN_SRC sh
+sudo apt-get install emacs24 emacs24-el emacs24-common-non-dfsg
+#+END_SRC
+
+The emacs_conf.el file can be used without moving it away from the git repository. To do this, copy the init file to the emacs.d directory:
+#+BEGIN_SRC sh
+cp ~/joh-conf/conf/init.el ~/emacs.d/
+#+END_SRC
+
+** Install preferable software
+*Quicktile*\\
+Quicktile implements keyboard-driven Window Tiling, and can be retrieved from: https://github.com/ssokolow/quicktile
+
+ * Install the required dependencies and follow the instructions.
+ * Open the ./config/quicktile.config and change ModMask to <Mod4> (Windows button)
+
+* Emacs
 ** Update default packages
 The default packages that Emacs will use are specified in the variable ~package-list~ found in ~emacs_conf.el~. If any new packages have been installed and are to be added to the default list, please follow these steps:
 
