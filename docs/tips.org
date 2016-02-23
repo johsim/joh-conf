@@ -275,7 +275,6 @@ program && echo "Everything went as expected" # Only executes if exit code == 0
 # $0 = ./command, $1 = -yes etc.
 
 #+END_SRC
-
     
 * EMACS
 ** Generally
@@ -464,12 +463,16 @@ C-c C-x f
 * PYTHON
 
 *Python shell* \\
-*Continue line:*
+Continue line:
 #+BEGIN_SRC python
 print("hej" \
       "då")
 #+END_SRC
 
+Open the python terminal after executing script.py:
+#+BEGIN_SRC python
+python -i script.py
+#+END_SRC
 
 *General functions*
 
@@ -481,6 +484,15 @@ os.sep
 Find string between 'def and '('
 #+BEGIN_SRC python
 re.search('def(.*)\(', string).group(1)
+#+END_SRC
+
+*Class vs. instance variables*
+#+BEGIN_SRC python
+class Class():
+    class_var = 1 # Belongs to class. Shared by all instances
+
+    def __init__(self, instance_var):
+        self.instance_var = instance_var # Belongs to object instance
 #+END_SRC
 
 * PYTEST
