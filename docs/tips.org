@@ -294,6 +294,7 @@ program && echo "Everything went as expected" # Only executes if exit code == 0
 | ~C-x C-v~         | revert buffer, hämtar filen igen      |
 | ~C-x C-+/-~       | Ändrar sizen på fonten                |
 | ~C-x 0~           | delete current window                 |
+| ~M-\~             | Delete horizontal space               |
 
 
 *Extended commands*
