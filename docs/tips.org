@@ -79,9 +79,24 @@ Regular expressions, or /regexp/, is a series of characters that is usually used
 | ~\W~       | matches character that does not match \w                  |
 
 /Regular expression examples/ \\
-#+BEGIN_SRC python
+#+BEGIN_SRC bash
     [0-9]{4} # matches a year, example: 2010
     [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}.[0-9]{1,3} # matches an ip address, example: 192.168.10.1.
+#+END_SRC
+
+*GLOB* \\
+| Expression | Explanation                                               |
+|------------+-----------------------------------------------------------|
+| ~*~        | Matches any number of any characters including none       |
+| ~?~        | Matches any single character                              |
+| ~[abc]~    | Matches one character given in the bracket                |
+| ~[a-z]~    | Matches one character from the range given in the bracket |
+| ~[!abc]~   | Matches one character that is not given in the bracket    |
+
+/Glob examples/ \\
+#+BEGIN_SRC bash
+    Law*   # Law, Laws, or Lawyer
+    ?at    # Cat, cat, Bat, bat
 #+END_SRC
 
 *Web browser*
@@ -283,6 +298,7 @@ program && echo "Everything went as expected" # Only executes if exit code == 0
 | Commands          | Description                           |
 |-------------------+---------------------------------------|
 | ~M-%~             | Search Replace (space = next)         |
+| ~C-M-%~           | Regexp Search Replace                 |
 | ~C-s RET C-y RET~ | Paste a specific string to search for |
 | ~C-e/a~           | End/beginning of line                 |
 | ~C-x o~           | Change buffer                         |
@@ -494,6 +510,13 @@ class Class():
 
     def __init__(self, instance_var):
         self.instance_var = instance_var # Belongs to object instance
+#+END_SRC
+
+*Notation of error in docstring*
+#+BEGIN_SRC python
+"""
+:raises AssertError:
+"""
 #+END_SRC
 
 * PYTEST
