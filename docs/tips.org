@@ -342,6 +342,19 @@ Gives a tree structure in Emacs.
 | ~H~           | Toggle hidden files |
 | ~A~           | Expands window      |
 
+*TAGS*\\
+Generate a tags file which makes a list with what definitions you can jump to. \\
+
+| Command | Description                      |
+|---------+----------------------------------|
+| ~M-.~   | Go-to tag                        |
+| ~M-*~   | Go back to where tag was invoked |
+
+Generate a tag file for all python files in the current dir.
+#+BEGIN_SRC bash
+find . -name "*.py" -print | etags -
+#+END_SRC
+
 ** Org-Mode
 
 *Emphasis and monospace*
