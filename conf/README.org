@@ -45,6 +45,15 @@ Quicktile implements keyboard-driven Window Tiling, and can be retrieved from: h
  * Install the required dependencies and follow the instructions.
  * Open the ./config/quicktile.config and change ModMask to <Mod4> (Windows button)
 
+*Terminator*\\
+Install terminator through apt-get:
+#+BEGIN_SRC bash
+sudo apt-get install terminator
+#+END_SRC
+
+Go to Preferred Applications > Utilites > Terminal Emulator and choose terminator.
+
+To fix the incompability bug with Quicktile, go to Preferences and unselect 'Window geometry hints'.
 * Emacs
 ** Update default packages
 The default packages that Emacs will use are specified in the variable ~package-list~ found in ~emacs_conf.el~. If any new packages have been installed and are to be added to the default list, please follow these steps:
