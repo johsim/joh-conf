@@ -82,6 +82,9 @@ Regular expressions, or /regexp/, is a series of characters that is usually used
 #+BEGIN_SRC bash
     [0-9]{4} # matches a year, example: 2010
     [0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}.[0-9]{1,3} # matches an ip address, example: 192.168.10.1.
+    .?  # .{0,1} = match any char zero or one times
+    .* # .{0,} = match any char zero or more times
+    .+ # .{1,} = match any char one or more times
 #+END_SRC
 
 *GLOB* \\

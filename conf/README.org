@@ -54,6 +54,8 @@ sudo apt-get install terminator
 Go to Preferred Applications > Utilites > Terminal Emulator and choose terminator.
 
 To fix the incompability bug with Quicktile, go to Preferences and unselect 'Window geometry hints'.
+
+To use the stored configuration, copy ~\~/joh-conf/conf/terminator/config~ to ~\~/.config/terminator/~.
 * Emacs
 ** Update default packages
 The default packages that Emacs will use are specified in the variable ~package-list~ found in ~emacs_conf.el~. If any new packages have been installed and are to be added to the default list, please follow these steps:
