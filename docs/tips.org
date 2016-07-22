@@ -632,12 +632,12 @@ git config --global user.name "Joh Sim"
 git config --global user.email johsim@example.com
 #+END_SRC
 
-To commit all changes and add a message:
+To commit all changes to the stagig area and add a message:
 #+BEGIN_SRC sh
 git commit -a -m 'My message'
 #+END_SRC
 
-To push to main branch:
+Push to remote repository:
 #+BEGIN_SRC sh
 git push origin master
 #+END_SRC
@@ -647,14 +647,31 @@ To add a specific file:
 git add <filename>
 #+END_SRC
 
-Pull from remote repository:
+Fetch from remote repository (pull in hg):
 #+BEGIN_SRC sh
-git pull
+git fetch
 #+END_SRC
+
+*Note:* The option ~git pull~ will fetch and merge with the local branch.\\
 
 Check status for repo:
 #+BEGIN_SRC sh
 git status
+#+END_SRC
+
+List all branches:
+#+BEGIN_SRC sh
+git branch
+#+END_SRC
+
+Switch between branches:
+#+BEGIN_SRC sh
+git checkout <branch>
+#+END_SRC
+
+Origin is a default name for a remote repository. Show remote repositories:
+#+BEGIN_SRC sh
+git remote -v
 #+END_SRC
 
 Connect a commit to an issue:
