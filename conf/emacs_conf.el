@@ -49,6 +49,8 @@
 ;;initalize ido-mode
 (require 'ido)
 (ido-mode t)
+(setq ido-enable-flex-matching t)
+(setq ido-everywhere t)
 
 ;; no startup msg  
 (setq inhibit-startup-message t)        ; Disable startup message 
