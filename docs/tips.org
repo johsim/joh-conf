@@ -298,22 +298,24 @@ program && echo "Everything went as expected" # Only executes if exit code == 0
 ** Generally
 *Commands*
 
-| Commands          | Description                           |
-|-------------------+---------------------------------------|
-| ~M-%~             | Search Replace (space = next)         |
-| ~C-M-%~           | Regexp Search Replace                 |
-| ~C-s RET C-y RET~ | Paste a specific string to search for |
-| ~C-e/a~           | End/beginning of line                 |
-| ~C-x o~           | Change buffer                         |
-| ~C-l~             | Centrera skärmen runt                 |
-| ~C-<~             | Beginning of doc                      |
-| ~C->~             | End of doc                            |
-| ~C-SPC~           | Starta markering                      |
-| ~M-a/e~           | Hoppa stycken                         |
-| ~C-x C-v~         | revert buffer, hämtar filen igen      |
-| ~C-x C-+/-~       | Ändrar sizen på fonten                |
-| ~C-x 0~           | delete current window                 |
-| ~M-\~             | Delete horizontal space               |
+| Commands          | Description                                  |
+|-------------------+----------------------------------------------|
+| ~M-%~             | Search Replace (space = next)                |
+| ~C-M-%~           | Regexp Search Replace                        |
+| ~C-s RET C-y RET~ | Paste a specific string to search for        |
+| ~C-e/a~           | End/beginning of line                        |
+| ~C-x o~           | Change buffer                                |
+| ~C-l~             | Centrera skärmen runt                        |
+| ~C-<~             | Beginning of doc                             |
+| ~C->~             | End of doc                                   |
+| ~C-SPC~           | Starta markering                             |
+| ~M-a/e~           | Hoppa stycken                                |
+| ~C-x C-v~         | revert buffer, hämtar filen igen             |
+| ~C-x C-+/-~       | Ändrar sizen på fonten                       |
+| ~C-x 0~           | delete current window                        |
+| ~M-\~             | Delete horizontal space                      |
+| ~C-x C-f M-f~     | Wide search with glob in current buffer dir. |
+| ~C-s/C-r~         | Rotate beween searches in ido-find-file      |
 
 
 *Extended commands*
@@ -535,7 +537,7 @@ class Class():
 """
 #+END_SRC
 
-* PYTEST
+** PYTEST
 
 *hook* \\
 En hook är där man som användare kan interagera/ändra någonting som redan
@@ -552,6 +554,24 @@ pågår i ett program/system.
 
 *@pytest.mark.timeout(60)* \\
 Sätt time-out på långtidstester annars så dödas de av default-time-outen (satt till 0.5-1h)
+
+* PYCHARM
+| Command              | Explanation         |
+|----------------------+---------------------|
+| Alt-<ARW>            | Switch between tabs |
+| Ctrl-Alt-G           | GoTo Declaration    |
+| Ctrl-Alt-Shift-Left  | Go Back    (Custom) |
+| Ctrl-Alt-Shift-Right | Go Forward (Custom) |
+| Ctrl-x 0, Ctrl-x k   | Close tab           |
+| Ctrl-NumPad-         | Collapse code       |
+| Ctrl-NumPad+         | Expand code         |
+| Ctrl-Shift-Numpad-   | Collapse all code   |
+| Ctrl-Shift-Numpad+   | Expand all code     |
+| Ctrl-Home            | Beginning of file   |
+| Ctrl-End             | End of file         |
+| F11                  | Add bookmark        |
+| Shift-F11            | Show bookmark list  |
+
 
 * VIRTUALBOX
 
