@@ -56,6 +56,58 @@ Go to Preferred Applications > Utilites > Terminal Emulator and choose terminato
 To fix the incompability bug with Quicktile, go to Preferences and unselect 'Window geometry hints'.
 
 To use the stored configuration, copy ~\~/joh-conf/conf/terminator/config~ to ~\~/.config/terminator/~.
+
+*LaTeX*\\
+To be able to generate PDF files from LaTeX and utilize other features, install:
+#+BEGIN_SRC sh
+sudo apt-get install texlive
+#+END_SRC
+
+*ssmtp* \\
+sstmp can be used to send mail via CLI, and is a simple MTA.
+#+BEGIN_SRC sh
+sudo apt-get install ssmtp
+#+END_SRC
+
+The configuration can be done via:
+
+#+BEGIN_SRC sh
+sudo emacs -nw /etc/ssmtp/ssmtp.conf
+#+END_SRC
+
+The configuration should look something like this:
+#+BEGIN_SRC sh
+# Config file for sSMTP sendmail
+#
+# The person who gets all mail for userids < 1000
+# Make this empty to disable rewriting.
+#root=postmaster
+root=MyEmailAddress@gmail.com
+
+# The place where the mail goes. The actual machine name is required no
+# MX records are consulted. Commonly mailhosts are named mail.domain.com
+#mailhub=mail
+mailhub=smtp.gmail.com:587
+# Where will the mail seem to come from?
+#rewriteDomain=
+rewriteDomain=gmail.com
+
+# The full hostname
+#hostname=MyMediaServer.home
+hostname=MyEmailAddress@gmail.com
+
+# Are users allowed to set their own From: address?
+# YES - Allow the user to specify their own From: address
+# NO - Use the system generated From: address
+FromLineOverride=YES
+AuthUser=MyEmailAddress@gmail.com
+AuthPass=MyPassword
+UseTLS=YES
+UseSTARTTLS=YES
+TLS_CA_File=/etc/ssl/certs/ca-certificates.crt
+#+END_SRC
+
+
 * Emacs
 ** Update default packages
 The default packages that Emacs will use are specified in the variable ~package-list~ found in ~emacs_conf.el~. If any new packages have been installed and are to be added to the default list, please follow these steps:
