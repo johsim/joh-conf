@@ -589,6 +589,57 @@ class Class():
 """
 #+END_SRC
 
+
+*Nested functions*
+#+BEGIN_SRC python
+
+def function():
+   def nested_function():
+      do_stuff()
+
+   nested_function()
+#+END_SRC
+
+When a function is defined within another function, it's called a nested function. 
+This implementation slows the main function down, because it'll have to define and recompile the nested
+function every time it's called. Therefore it's better to define the nested funciton as a private function (indicate with '_').
+
+Example:
+#+BEGIN_SRC python
+def function():
+   _private_function()
+
+def _private_function():
+   do_stuff()
+#+END_SRC
+
+*Regex replace sub string*
+#+BEGIN_SRC python
+>>> re.sub(r'test_(.*)(\[.*\])', r'a:\1 b:\2 ', 'test_event_no_pset_selected[a]')
+>>> 'a:event_no_pset_selected b:[a]'
+#+END_SRC
+
+Returns normal string if no match is made.
+#+BEGIN_SRC python
+# r = raw string
+# (...) = parathesis creates groups. (.*) = group 1
+# \1 = first group matched
+#+END_SRC
+
+
+*Regex with verbose flag, for extra comments*
+#+BEGIN_SRC python
+charref = re.compile(r"""
+ &[#]                # Start of a numeric entity reference
+ (
+     0[0-7]+         # Octal form
+   | [0-9]+          # Decimal form
+   | x[0-9a-fA-F]+   # Hexadecimal form
+ )
+ ;                   # Trailing semicolon
+""", re.VERBOSE)
+#+END_SRC
+
 ** PYTEST
 
 *hook* \\
