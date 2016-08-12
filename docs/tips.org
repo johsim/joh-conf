@@ -463,6 +463,14 @@ $ sudo apt-get install texlive
 M-x flyspell-buffer
 #+END_SRC
 
+*Headers*
+#+BEGIN_SRC latex
+#+TITLE: Title
+#+AUTHOR: Johanna Simonsson
+#+DATE: <Overwrite default date>
+#+END_SRC
+
+
 *List of tables*
 #+BEGIN_EXAMPLE
 #+TOC: tables
