@@ -762,6 +762,12 @@ git config --global user.name "Joh Sim"
 git config --global user.email johsim@example.com
 #+END_SRC
 
+To configure email for a local repository:
+#+BEGIN_SRC sh
+cd <repo>
+git config user.email johsim@example.com
+#+END_SRC
+
 To commit all changes to the stagig area and add a message:
 #+BEGIN_SRC sh
 git commit -a -m 'My message'
