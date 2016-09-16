@@ -5,6 +5,7 @@
   title_transmit_bg_color = "#b537c0"
   title_use_system_font = False
 [keybindings]
+  next_tab = <Primary><Shift>Tab
 [layouts]
   [[default]]
     [[[child1]]]
