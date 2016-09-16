@@ -14,7 +14,7 @@
  )
 
 ;; Default packages
-(setq package-list '(anaconda-mode f dash s s dash pythonic f dash s s dash clang-format elpy yasnippet pyvenv highlight-indentation find-file-in-project swiper company find-file-in-project swiper flycheck let-alist pkg-info epl dash highlight-indentation htmlize auto-complete popup python-environment deferred epc ctable concurrent deferred python-environment deferred epc ctable concurrent deferred let-alist pkg-info epl popup py-isort pylint pytest python-environment deferred python-mode pythonic f dash s s dash pyvenv s swiper window-margin yasnippet))
+(setq package-list '(anaconda-mode f dash s s dash pythonic f dash s s dash clang-format elpy yasnippet pyvenv highlight-indentation find-file-in-project swiper company find-file-in-project swiper flycheck let-alist pkg-info epl dash highlight-indentation htmlize auto-complete popup python-environment deferred epc ctable concurrent deferred python-environment deferred epc ctable concurrent deferred let-alist pkg-info epl popup py-isort pylint pytest python-environment deferred python-mode pythonic f dash s s dash pyvenv s swiper window-margin yasnippet yaml-mode))
 
 ;; Set package archives
 (require 'package) 
@@ -42,6 +42,9 @@
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 
+;; Yaml for templates
+(require 'yaml-mode)
+(add-to-list 'auto-mode-alist '("\\.yaml.j2\\'" . yaml-mode))
 
 ;; So that emacs don't complain about the wrong encoding.
 (define-coding-system-alias 'UTF-8 'utf-8)
@@ -53,7 +56,7 @@
 (setq ido-everywhere t)
 
 ;; no startup msg  
-(setq inhibit-startup-message t)        ; Disable startup message 
+(setq inhibit-startup-message t)       
 
 ;;Key-bindings:
 (global-set-key (kbd "M-o") (quote hippie-expand))
