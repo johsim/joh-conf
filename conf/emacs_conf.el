@@ -14,7 +14,7 @@
  )
 
 ;; Default packages
-(setq package-list '(anaconda-mode f dash s s dash pythonic f dash s s dash clang-format elpy yasnippet pyvenv highlight-indentation find-file-in-project swiper company find-file-in-project swiper flycheck let-alist pkg-info epl dash highlight-indentation htmlize auto-complete popup python-environment deferred epc ctable concurrent deferred python-environment deferred epc ctable concurrent deferred let-alist pkg-info epl popup py-isort pylint pytest python-environment deferred python-mode pythonic f dash s s dash pyvenv s swiper window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo))
+(setq package-list '(anaconda-mode f dash s s dash pythonic f dash s s dash clang-format elpy yasnippet pyvenv highlight-indentation find-file-in-project swiper company find-file-in-project swiper flycheck let-alist pkg-info epl dash highlight-indentation htmlize auto-complete popup python-environment deferred epc ctable concurrent deferred python-environment deferred epc ctable concurrent deferred let-alist pkg-info epl popup py-isort pylint pytest python-environment deferred python-mode pythonic f dash s s dash pyvenv s swiper window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode))
 
 ;; Set package archives
 (require 'package) 
