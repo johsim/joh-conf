@@ -39,13 +39,13 @@ cp ~/joh-conf/conf/init.el ~/emacs.d/
 #+END_SRC
 
 ** Install preferable software
-*Quicktile*\\
+*** Quicktile
 Quicktile implements keyboard-driven Window Tiling, and can be retrieved from: https://github.com/ssokolow/quicktile
 
  * Install the required dependencies and follow the instructions.
  * Open the ./config/quicktile.config and change ModMask to <Mod4> (Windows button)
 
-*Terminator*\\
+*** Terminator
 Install terminator through apt-get:
 #+BEGIN_SRC bash
 sudo apt-get install terminator
@@ -57,13 +57,13 @@ To fix the incompability bug with Quicktile, go to Preferences and unselect 'Win
 
 To use the stored configuration, copy ~\~/joh-conf/conf/terminator/config~ to ~\~/.config/terminator/~.
 
-*LaTeX*\\
+*** LaTeX
 To be able to generate PDF files from LaTeX and utilize other features, install:
 #+BEGIN_SRC sh
 sudo apt-get install texlive
 #+END_SRC
 
-*ssmtp* \\
+*** ssmtp
 sstmp can be used to send mail via CLI, and is a simple MTA.
 #+BEGIN_SRC sh
 sudo apt-get install ssmtp
@@ -107,6 +107,20 @@ UseSTARTTLS=YES
 TLS_CA_File=/etc/ssl/certs/ca-certificates.crt
 #+END_SRC
 
+*** autojump
+Install autojump through apt-get:
+#+BEGIN_SRC bash
+sudo apt-get install autojump
+#+END_SRC
+
+Use with
+#+BEGIN_SRC bash
+j <start-of-path>
+#+END_SRC
+
+*** thefuck
+Autocorrection for terminal input. Follow instructions found on:
+https://github.com/nvbn/thefuck
 
 * Emacs
 ** Update default packages
