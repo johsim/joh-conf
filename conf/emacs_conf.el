@@ -99,3 +99,7 @@
 
 (setq org-export-html-style
       "<link rel=\"stylesheet\" type=\"text/css\" href=\"orgstyle.css\" />")
+
+;; set transparency
+(set-frame-parameter (selected-frame) 'alpha '(90 90))
+(add-to-list 'default-frame-alist '(alpha 90 90))
