@@ -2,7 +2,7 @@
 
 # Run as root. This script assumes joh-conf/ is placed at $HOME
 
-apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump
+apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump tig
 
 CURRENTPATH=$(dirname "$0")
 echo $CURRENTPATH
