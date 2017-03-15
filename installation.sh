@@ -1,23 +1,30 @@
 #!/bin/bash
-if [ "$(id -u)" != "0" ]; then
-   echo "This script must be run as root" 1>&2
-   exit 1
-fi
+sudo apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
-apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tig
+sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip
+
+pip3 install --user thefuck
 
 CURRENTPATH=$(dirname "$0")
 
 # Copy terminator settings
 mkdir -p ~/.config/terminator
-cp $CURRENTPATH/conf/terminator/config ~/.config/terminator/
-cp $CURRENTPATH/conf/init.el ~/.emacs.d/
+cp -p $CURRENTPATH/conf/terminator/config ~/.config/terminator/
+cp -p $CURRENTPATH/conf/init.el ~/.emacs.d/
 
 # Set default terminal to terminator
 gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
 
+# Global gitignore
+cp -p $CURRENTPATH/conf/.gitignore_global ~/
+git config --global core.excludesfile '~/.gitignore_global'
+
 # Oh my zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s `which zsh`
+
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $CURRENTPATH/conf/zsh_custom/plugins/zsh-syntax-highlighting
+
+cp -p $CURRENTPATH/conf/.zshrc ~/
 
 echo "Reboot to activate zsh"
