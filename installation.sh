@@ -19,6 +19,9 @@ gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
 cp -p $CURRENTPATH/conf/.gitignore_global ~/
 git config --global core.excludesfile '~/.gitignore_global'
 
+# Git diff to cat
+git config pager.diff false
+
 # Oh my zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s `which zsh`
