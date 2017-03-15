@@ -23,7 +23,11 @@ git config --global core.excludesfile '~/.gitignore_global'
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 chsh -s `which zsh`
 
-git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $CURRENTPATH/conf/zsh_custom/plugins/zsh-syntax-highlighting
+ZSH_CUSTOM=$CURRENTPATH/conf/zsh_custom
+
+# Zsh plugins
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
+git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
 
 cp -p $CURRENTPATH/conf/.zshrc ~/
 
