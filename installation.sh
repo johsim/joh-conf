@@ -10,6 +10,8 @@ CURRENTPATH=$(dirname "$0")
 # Copy terminator settings
 mkdir -p ~/.config/terminator
 cp -p $CURRENTPATH/conf/terminator/config ~/.config/terminator/
+
+# Emacs conf.
 cp -p $CURRENTPATH/conf/init.el ~/.emacs.d/
 
 # Set default terminal to terminator
