@@ -14,15 +14,13 @@
  )
 
 ;; Default packages
-(setq package-list '(anaconda-mode f dash s s dash pythonic f dash s s dash clang-format elpy yasnippet pyvenv highlight-indentation find-file-in-project swiper company find-file-in-project swiper flycheck let-alist pkg-info epl dash highlight-indentation htmlize auto-complete popup python-environment deferred epc ctable concurrent deferred python-environment deferred epc ctable concurrent deferred let-alist pkg-info epl popup py-isort pylint pytest python-environment deferred python-mode pythonic f dash s s dash pyvenv s swiper window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode json-mode simpleclip))
+(setq package-list '(anaconda-mode f dash s pythonic clang-format elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode pythonic window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode highlight-indent-guides json-mode simpleclip))
 
 ;; Set package archives
 (require 'package) 
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
                          ("melpa" . "http://melpa.org/packages/")))
-
-
 
 ;; Activate all the packages (in particular autoloads)
 (package-initialize)
@@ -50,7 +48,6 @@
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
 
-
 ;; So that emacs don't complain about the wrong encoding.
 (define-coding-system-alias 'UTF-8 'utf-8)
 
@@ -72,6 +69,12 @@
 (global-set-key (kbd "M-<down>") 'shrink-window)
 (global-set-key (kbd "M-<up>") 'enlarge-window)
 
+(global-set-key (kbd "C-c <right>") 'hs-show-block)
+(global-set-key (kbd "C-c <left>")  'hs-hide-block)
+(global-set-key (kbd "C-c <up>")    'hs-hide-all)
+(global-set-key (kbd "C-c <down>")  'hs-show-all)
+(add-hook 'prog-mode-hook #'hs-minor-mode)
+
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 (org-babel-do-load-languages
@@ -79,6 +82,13 @@
  '((python . t)))
 ;; fontify code in code blocks
 (setq org-src-fontify-natively t)
+
+;; No tabs
+(setq-default indent-tabs-mode nil)
+
+;; Highlight intendation
+(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(setq highlight-indent-guides-method 'character)
 
 ;; Display Column number
 (setq column-number-mode t)
