@@ -87,7 +87,8 @@
 (setq-default indent-tabs-mode nil)
 
 ;; Highlight intendation
-(add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+(add-hook 'prog-mode-hook #'highlight-indent-guides-mode)
+(add-hook 'yaml-mode-hook #'highlight-indent-guides-mode)
 (setq highlight-indent-guides-method 'character)
 
 ;; Display Column number
