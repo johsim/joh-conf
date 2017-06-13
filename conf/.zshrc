@@ -21,8 +21,8 @@ source $ZSH/oh-my-zsh.sh
 
 eval $(thefuck --alias)
 export EDITOR="emacs -nw"
-alias enw="emacs -nw"
-alias emw="emacs -nw"
+alias enw="env TERM=xterm-256color emacs -nw"
+alias emw="env TERM=xterm-256color emacs -nw"
 zstyle ':completion:*' special-dirs true #Fixes cd ..<TAB>
 
 # Source autojump
