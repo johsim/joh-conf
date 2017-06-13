@@ -4,7 +4,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes (quote (tsdh-dark)))
+ '(custom-enabled-themes (quote (wombat)))
  '(tool-bar-mode nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
@@ -14,7 +14,7 @@
  )
 
 ;; Default packages
-(setq package-list '(anaconda-mode f dash s pythonic clang-format elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode pythonic window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode highlight-indent-guides json-mode simpleclip))
+(setq package-list '(anaconda-mode f dash s pythonic clang-format elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode pythonic window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode highlight-indent-guides json-mode simpleclip rjsx-mode))
 
 ;; Set package archives
 (require 'package) 
@@ -47,6 +47,12 @@
 ;; Markdown
 (require 'markdown-mode)
 (add-to-list 'auto-mode-alist '("\\.md\\'" . markdown-mode))
+
+;; JSX
+(require 'rjsx-mode)
+(add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
+(add-hook 'rjsx-mode-hook (lambda () (setq js2-basic-offset 2)))
+
 
 ;; So that emacs don't complain about the wrong encoding.
 (define-coding-system-alias 'UTF-8 'utf-8)
@@ -102,9 +108,7 @@
 	("NOTES" . "magenta")
 	))
 
-
 ;;Stylesheet
-
 (setq org-export-html-style-include-scripts nil
       org-export-html-style-include-default nil)
 

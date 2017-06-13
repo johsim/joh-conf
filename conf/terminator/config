@@ -9,6 +9,7 @@
   title_use_system_font = False
 [keybindings]
   next_tab = <Primary><Shift>Tab
+  broadcast_group = None
 [layouts]
   [[default]]
     [[[child1]]]
