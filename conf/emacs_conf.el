@@ -52,7 +52,7 @@
 (require 'rjsx-mode)
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))
 (add-hook 'rjsx-mode-hook (lambda () (setq js2-basic-offset 2)))
-
+(setq js2-strict-missing-semi-warning nil)
 
 ;; So that emacs don't complain about the wrong encoding.
 (define-coding-system-alias 'UTF-8 'utf-8)
