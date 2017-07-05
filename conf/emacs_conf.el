@@ -40,6 +40,10 @@
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
 
+;; Groovy mode for Jenkinsfile
+(require 'groovy-mode)
+(add-to-list 'auto-mode-alist '("Jenkinsfile" . groovy-mode))
+
 ;; Yaml for templates
 (require 'yaml-mode)
 (add-to-list 'auto-mode-alist '("\\.yaml.j2\\'" . yaml-mode))
@@ -107,6 +111,9 @@
 	("DONE" . "green")
 	("NOTES" . "magenta")
 	))
+
+;; Set show matching parenthesis
+(show-paren-mode 'on)
 
 ;;Stylesheet
 (setq org-export-html-style-include-scripts nil

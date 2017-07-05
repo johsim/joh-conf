@@ -10,6 +10,7 @@
 [keybindings]
   next_tab = <Primary><Shift>Tab
   broadcast_group = None
+  broadcast_off = None
 [layouts]
   [[default]]
     [[[child1]]]
