@@ -8,9 +8,9 @@
   title_transmit_bg_color = "#b537c0"
   title_use_system_font = False
 [keybindings]
-  next_tab = <Primary><Shift>Tab
   broadcast_group = None
   broadcast_off = None
+  next_tab = <Primary><Shift>Tab
 [layouts]
   [[default]]
     [[[child1]]]
@@ -24,8 +24,8 @@
   [[default]]
     background_color = "#272727"
     background_darkness = 0.92
-    background_image = None
     background_type = transparent
+    cursor_color = "#e4e4e4"
     font = Monospace 9
     foreground_color = "#e4e4e4"
     scroll_on_output = False

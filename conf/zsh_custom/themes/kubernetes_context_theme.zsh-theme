@@ -7,10 +7,47 @@ prompt_kubecontext() {
     local current_context
     current_context=`kubectl config current-context`
     if [[ $current_context  == "minikube" ]]; then
-	echo "%{$fg[green]%}minikube%{$reset_color%}"
+        echo "%{$fg[green]%}minikube%{$reset_color%}"
     else
-	echo "%{$fg_bold[red]%}$current_context%{$reset_color%}"
+        echo "%{$fg_bold[red]%}$current_context%{$reset_color%}"
     fi
 }
 
-PROMPT='$(prompt_kubecontext) %{$fg[yellow]%}🟊 %{$fg_bold[cyan]%}%c%{$reset_color%} $(git_prompt_info)'
+prompt_sep() {
+    echo "%{$fg_bold[yellow]%}🟊 %{$reset_color%}"
+}
+
+prompt_dir() {
+    current_path=${PWD##*/}
+    home=${HOME##*/}
+    typeset -A emojis
+    typeset -A colors
+    emojis[$home]="🏛"
+    colors[$home]="%{$fg_bold[cyan]%}"
+    emojis[python]="🐍"
+    colors[python]="%{$fg_bold[green]%}"
+    emojis[APT]="⭕"
+    colors[APT]="%{$fg_bold[cyan]%}"
+    emojis[credentials]="🗝"
+    colors[credentials]="%{$fg_bold[cyan]%}"
+    emojis[Downloads]="⬇"
+    colors[Downloads]="%{$fg_bold[green]%}"
+    emojis[kubernetes-cluster]="☸ -cluster"
+    colors[kubernetes-cluster]="%{$FG[039]%}"
+
+
+    color="%{$fg_bold[cyan]%}"
+    display_path=$current_path
+    for path emoji in ${(kv)emojis}
+    do
+        if [[ $current_path == $path ]]; then
+            color=$colors[$path]
+            display_path="$emoji "
+            break
+        fi
+    done
+
+    echo "$color$display_path%{$reset_color%}"
+}
+
+PROMPT='$(prompt_kubecontext) $(prompt_dir) $(prompt_sep) $(git_prompt_info)'
