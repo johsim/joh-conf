@@ -96,6 +96,9 @@
 ;; No tabs
 (setq-default indent-tabs-mode nil)
 
+;; No auto indent
+(setq electric-indent-mode nil)
+
 ;; Highlight intendation
 (add-hook 'prog-mode-hook #'highlight-indent-guides-mode)
 (add-hook 'yaml-mode-hook #'highlight-indent-guides-mode)
