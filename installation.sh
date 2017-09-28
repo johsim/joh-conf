@@ -7,9 +7,17 @@ pip3 install --user thefuck
 
 CURRENTPATH=$(dirname "$0")
 
-# Copy terminator settings
+echo -n "Enter host name and press [ENTER]: "
+read hostname
+
+echo $hostname > ~/hostname
+
+# Link terminator settings
 mkdir -p ~/.config/terminator
 ln -s $CURRENTPATH/conf/terminator/config ~/.config/terminator/
+
+# Link .zshrc
+ln -s $CURRENTPATH/conf/.zshrc ~/
 
 # Emacs conf.
 cp -p $CURRENTPATH/conf/init.el ~/.emacs.d/
@@ -33,7 +41,5 @@ ZSH_CUSTOM=$CURRENTPATH/conf/zsh_custom
 # Zsh plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
-
-cp -p $CURRENTPATH/conf/.zshrc ~/
 
 echo "Reboot to activate zsh"
