@@ -1,9 +1,12 @@
 #!/bin/bash
 sudo apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
-sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip
+sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip npm
 
 pip3 install --user thefuck
+
+npm install -g tiny-care-terminal
+npm install -g git-standup
 
 CURRENTPATH=$(dirname "$0")
 
