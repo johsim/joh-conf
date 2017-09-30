@@ -61,7 +61,7 @@ HOSTNAME=$(cat ~/hostname)
 . "$HOME/joh-secrets/profiles/${HOSTNAME}_profile"
 
 #Tiny care terminal
-export TTC_BOTS='tinycarebot,selfcare_bot,GoatUserStories'
+export TTC_BOTS='tinycarebot,selfcare_bot,Puns_Only'
 export TTC_SAY_BOX='parrot'
 export TTC_REPOS_DEPTH=2
 export TTC_GITBOT='gitlog'
