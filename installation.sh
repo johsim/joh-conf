@@ -1,12 +1,12 @@
 #!/bin/bash
 sudo apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
-sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip npm
+sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip npm python-pygments
 
-pip3 install --user thefuck
+pip3 install --user thefuck virtualenvwrapper
 
-npm install -g tiny-care-terminal
-npm install -g git-standup
+sudo npm install -g git-standup
+sudo npm install -g tiny-care-terminal
 
 CURRENTPATH=$(dirname "$0")
 
@@ -17,10 +17,7 @@ echo $hostname > ~/hostname
 
 # Link terminator settings
 mkdir -p ~/.config/terminator
-ln -s $CURRENTPATH/conf/terminator/config ~/.config/terminator/
-
-# Link .zshrc
-ln -s $CURRENTPATH/conf/.zshrc ~/
+ln -s ~/joh-conf/conf/terminator/config ~/.config/terminator/
 
 # Emacs conf.
 cp -p $CURRENTPATH/conf/init.el ~/.emacs.d/
@@ -44,5 +41,9 @@ ZSH_CUSTOM=$CURRENTPATH/conf/zsh_custom
 # Zsh plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+# Link .zshrc
+rm ~/.zshrc
+ln -s ~/joh-conf/conf/.zshrc ~/
 
 echo "Reboot to activate zsh"

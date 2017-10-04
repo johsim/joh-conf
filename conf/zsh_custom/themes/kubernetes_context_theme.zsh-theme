@@ -4,12 +4,15 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 prompt_kubecontext() {
-    local current_context
-    current_context=`kubectl config current-context`
-    if [[ $current_context  == "minikube" ]]; then
-        echo "%{$fg[green]%}minikube%{$reset_color%}"
-    else
-        echo "%{$fg_bold[red]%}$current_context%{$reset_color%}"
+    kubectl_installed=$(type kubectl)
+    if [[ $kubectl_installed == 0 ]]; then
+	local current_context
+	current_context=`kubectl config current-context`
+	if [[ $current_context  == "minikube" ]]; then
+	    echo "%{$fg[green]%}minikube%{$reset_color%}"
+	else
+	    echo "%{$fg_bold[red]%}$current_context%{$reset_color%}"
+	fi
     fi
 }
 
