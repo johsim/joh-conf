@@ -48,7 +48,7 @@ bindkey -e '^W' x-kill-region
 bindkey -e '^Y' x-yank
 
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+source $(which virtualenv)wrapper.sh
 
 
 #Source dotfiles

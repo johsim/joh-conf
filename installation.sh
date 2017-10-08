@@ -1,12 +1,21 @@
 #!/bin/bash
+
+# Chrome
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+
+#nodejs
+curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+
 sudo apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
-sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip npm httpie
+sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip npm python-pygments google-chrome-stable curl nodejs httpie
 
 pip3 install --user thefuck
+sudo pip install virtualenv virtualenvwrapper
 
-npm install -g tiny-care-terminal
-npm install -g git-standup
+sudo npm install -g git-standup
+sudo npm install -g tiny-care-terminal
 
 CURRENTPATH=$(dirname "$0")
 
@@ -17,10 +26,7 @@ echo $hostname > ~/hostname
 
 # Link terminator settings
 mkdir -p ~/.config/terminator
-ln -s $CURRENTPATH/conf/terminator/config ~/.config/terminator/
-
-# Link .zshrc
-ln -s $CURRENTPATH/conf/.zshrc ~/
+ln -s ~/joh-conf/conf/terminator/config ~/.config/terminator/
 
 # Emacs conf.
 cp -p $CURRENTPATH/conf/init.el ~/.emacs.d/
@@ -33,7 +39,12 @@ cp -p $CURRENTPATH/conf/.gitignore_global ~/
 git config --global core.excludesfile '~/.gitignore_global'
 
 # Git diff to cat
-git config pager.diff false
+git config --global core.pager cat
+
+echo -n "Enter email and press [ENTER]: "
+read email
+
+git config --global user.email $email
 
 # Oh my zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
@@ -44,5 +55,9 @@ ZSH_CUSTOM=$CURRENTPATH/conf/zsh_custom
 # Zsh plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+
+# Link .zshrc
+rm ~/.zshrc
+ln -s ~/joh-conf/conf/.zshrc ~/
 
 echo "Reboot to activate zsh"
