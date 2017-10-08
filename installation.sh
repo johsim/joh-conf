@@ -1,9 +1,15 @@
 #!/bin/bash
+
+# Chrome
+wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
+
 sudo apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
-sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip npm python-pygments
+sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip npm python-pygments google-chrome-stable
 
-pip3 install --user thefuck virtualenvwrapper
+pip3 install --user thefuck
+sudo pip install virtualenv virtualenvwrapper
 
 sudo npm install -g git-standup
 sudo npm install -g tiny-care-terminal
@@ -30,7 +36,12 @@ cp -p $CURRENTPATH/conf/.gitignore_global ~/
 git config --global core.excludesfile '~/.gitignore_global'
 
 # Git diff to cat
-git config pager.diff false
+git config --global core.pager cat
+
+echo -n "Enter email and press [ENTER]: "
+read email
+
+git config --global user.email $email
 
 # Oh my zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
