@@ -18,7 +18,7 @@ alias delete-merged="git branch --merged | grep -v '\*\|master\|develop' | xargs
 alias copy='xclip -sel clip'
 
 #Autojump
-[[ -s ~/.autojump/etc/profile.d/autojump.sh ]] && source ~/.autojump/etc/profile.d/autojump.sh
+[[ -s /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
 
 ## Make Terminator support 256 colours
 [[ $COLORTERM = gnome-terminal ]] && TERM=xterm-256color
