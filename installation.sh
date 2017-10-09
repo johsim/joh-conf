@@ -9,7 +9,7 @@ curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
 
 sudo apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
-sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip npm python-pygments google-chrome-stable curl nodejs tig httpie
+sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip npm python-pygments google-chrome-stable curl nodejs tig httpie kdiff3
 
 pip3 install --user thefuck
 sudo pip install virtualenv virtualenvwrapper
@@ -45,6 +45,16 @@ echo -n "Enter email and press [ENTER]: "
 read email
 
 git config --global user.email $email
+
+# Kdiff3 as mergetool
+git config --global --add merge.tool kdiff3
+git config --global --add mergetool.kdiff3.path "$(which kdiff3)"
+git config --global --add mergetool.kdiff3.trustExitCode false
+git config --global mergetool.keepBackup false
+
+git config --global --add diff.guitool kdiff3
+git config --global --add difftool.kdiff3.path "$(which kdiff3)"
+git config --global --add difftool.kdiff3.trustExitCode false
 
 # Oh my zsh
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
