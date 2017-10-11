@@ -5,7 +5,7 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 prompt_kubecontext() {
     kubectl_installed=$(type kubectl)
-    if [[ $kubectl_installed == 0 ]]; then
+    if [[ $kubectl_installed != 0 ]]; then
 	local current_context
 	current_context=`kubectl config current-context`
 	if [[ $current_context  == "minikube" ]]; then
