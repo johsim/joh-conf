@@ -14,18 +14,18 @@
  )
 
 ;; Default packages
-(setq package-list '(anaconda-mode f dash s pythonic clang-format elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode pythonic window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode highlight-indent-guides json-mode simpleclip js2-mode rjsx-mode terraform-mode))
+(setq package-list '(anaconda-mode f dash s pythonic clang-format elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode pythonic window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode highlight-indent-guides json-mode simpleclip js2-mode rjsx-mode terraform-mode use-package counsel))
 
 ;; Set package archives
-(require 'package) 
+(require 'package)
 (setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")
                          ("marmalade" . "https://marmalade-repo.org/packages/")
-                         ("melpa" . "http://melpa.org/packages/")))
+                         ("melpa" . "https://stable.melpa.org/packages/")))
 
 ;; Activate all the packages (in particular autoloads)
 (package-initialize)
 
-;; Fetch the list of packages available 
+;; Fetch the list of packages available
 (unless package-archive-contents
   (package-refresh-contents))
 
@@ -61,14 +61,21 @@
 ;; So that emacs don't complain about the wrong encoding.
 (define-coding-system-alias 'UTF-8 'utf-8)
 
-;;initalize ido-mode
-(require 'ido)
-(ido-mode t)
-(setq ido-enable-flex-matching t)
-(setq ido-everywhere t)
+(ivy-mode 1)
+(setq ivy-use-virtual-buffers t)
+(setq ivy-count-format "(%d/%d) ")
+(setq ivy-height 5)
 
-;; no startup msg  
-(setq inhibit-startup-message t)       
+(global-set-key (kbd "C-s") 'swiper)
+(global-set-key (kbd "M-x") 'counsel-M-x)
+(global-set-key (kbd "C-x C-f") 'counsel-find-file)
+(global-set-key (kbd "<f1> f") 'counsel-describe-function)
+(global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+(global-set-key (kbd "<f1> l") 'counsel-find-library)
+(global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+(global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+
+(setq inhibit-startup-message t)
 
 ;;Key-bindings:
 (global-set-key (kbd "M-o") (quote hippie-expand))
@@ -138,3 +145,6 @@
 
 ;; disable tilde backup files
 (setq make-backup-files nil)
+
+;; Whitespace cleanup
+(add-hook 'before-save-hook 'whitespace-cleanup)

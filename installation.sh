@@ -4,12 +4,17 @@
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main' | sudo tee /etc/apt/sources.list.d/google-chrome.list
 
-#nodejs
+# nodejs
 curl -sL https://deb.nodesource.com/setup_7.x | sudo -E bash -
+
+# Emacs
+sudo add-apt-repository -y ppa:kelleyk/emacs
 
 sudo apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
-sudo apt-get -y install emacs24 emacs24-el emacs24-common-non-dfsg terminator texlive autojump zsh tree python3-dev python3-pip npm python-pygments google-chrome-stable curl nodejs tig httpie kdiff3
+sudo apt-get -y install emacs25 emacs24-common-non-dfsg terminator \
+     texlive autojump zsh tree python3-dev python3-pip npm python-pygments \
+     google-chrome-stable curl nodejs tig httpie kdiff3 xclip
 
 pip3 install --user thefuck
 sudo pip install virtualenv virtualenvwrapper

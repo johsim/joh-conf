@@ -7,8 +7,8 @@ source $ZSH/oh-my-zsh.sh
 
 #Aliases
 export EDITOR="emacs -nw"
-alias enw="emacs -nw"
-alias emw="emacs -nw"
+alias enw="TERM=xterm-256color emacs -nw"
+alias emw="TERM=xterm-256color emacs -nw"
 alias k="kubectl"
 alias todo="emacs -nw ~/Desktop/todo.org"
 alias ccat='pygmentize -g' #Pretty print cat
