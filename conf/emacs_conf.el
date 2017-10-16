@@ -14,7 +14,7 @@
  )
 
 ;; Default packages
-(setq package-list '(anaconda-mode f dash s pythonic clang-format elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode highlight-indent-guides json-mode simpleclip js2-mode rjsx-mode terraform-mode use-package counsel))
+(setq package-list '(anaconda-mode f dash s pythonic elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode json-mode simpleclip js2-mode rjsx-mode terraform-mode use-package ivy counsel))
 
 ;; Set package archives
 (require 'package)
@@ -23,7 +23,8 @@
                          ("melpa" . "https://stable.melpa.org/packages/")))
 
 ;; Activate all the packages (in particular autoloads)
-(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
 
 ;; Fetch the list of packages available
 (package-refresh-contents)
@@ -60,6 +61,7 @@
 ;; So that emacs don't complain about the wrong encoding.
 (define-coding-system-alias 'UTF-8 'utf-8)
 
+(require 'ivy)
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
 (setq ivy-count-format "(%d/%d) ")
@@ -105,21 +107,16 @@
 ;; No auto indent
 (setq electric-indent-mode nil)
 
-;; Highlight intendation
-(add-hook 'prog-mode-hook #'highlight-indent-guides-mode)
-(add-hook 'yaml-mode-hook #'highlight-indent-guides-mode)
-(setq highlight-indent-guides-method 'character)
-
 ;; Display Column number
 (setq column-number-mode t)
 
 (setq org-todo-keyword-faces
       '(("IN-PROGRESS" . "yellow")
-	("WAITING" . "orange")
-	("UPCOMING" . "deep sky blue")
-	("DONE" . "green")
-	("NOTES" . "magenta")
-	))
+        ("WAITING" . "orange")
+        ("UPCOMING" . "deep sky blue")
+        ("DONE" . "green")
+        ("NOTES" . "magenta")
+        ))
 
 ;; Set show matching parenthesis
 (show-paren-mode 'on)

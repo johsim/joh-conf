@@ -12,7 +12,7 @@ sudo add-apt-repository -y ppa:kelleyk/emacs
 
 sudo apt-get update && apt-get -y upgrade && apt-get -y dist-upgrade
 
-sudo apt-get -y install emacs25 emacs24-common-non-dfsg terminator \
+sudo apt -y install emacs25 terminator \
      texlive autojump zsh tree python3-dev python3-pip npm python-pygments \
      google-chrome-stable curl nodejs tig httpie kdiff3 xclip
 
