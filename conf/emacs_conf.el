@@ -14,7 +14,7 @@
  )
 
 ;; Default packages
-(setq package-list '(anaconda-mode f dash s pythonic clang-format elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode pythonic window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode highlight-indent-guides json-mode simpleclip js2-mode rjsx-mode terraform-mode use-package counsel))
+(setq package-list '(anaconda-mode f dash s pythonic clang-format elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode highlight-indent-guides json-mode simpleclip js2-mode rjsx-mode terraform-mode use-package counsel))
 
 ;; Set package archives
 (require 'package)
@@ -26,8 +26,7 @@
 (package-initialize)
 
 ;; Fetch the list of packages available
-(unless package-archive-contents
-  (package-refresh-contents))
+(package-refresh-contents)
 
 ;; Install the missing packages
 (dolist (package package-list)
