@@ -1,20 +1,5 @@
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(ansi-color-names-vector ["#242424" "#e5786d" "#95e454" "#cae682" "#8ac6f2" "#333366" "#ccaa8f" "#f6f3e8"])
- '(custom-enabled-themes (quote (wombat)))
- '(tool-bar-mode nil))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-
 ;; Default packages
-(setq package-list '(anaconda-mode f dash s pythonic elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode json-mode simpleclip js2-mode rjsx-mode terraform-mode use-package ivy counsel))
+(setq package-list '(anaconda-mode f dash s pythonic elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode json-mode simpleclip js2-mode rjsx-mode terraform-mode use-package ivy counsel smart-mode-line atom-one-dark-theme))
 
 ;; Set package archives
 (require 'package)
@@ -26,9 +11,6 @@
 (unless package-archive-contents
   (package-refresh-contents))
 
-;; Fetch the list of packages available
-(package-refresh-contents)
-
 ;; Install the missing packages
 (dolist (package package-list)
   (unless (package-installed-p package)
@@ -39,6 +21,37 @@
 
 (global-font-lock-mode t)
 (setq font-lock-maximum-decoration t)
+
+;; Smart mode line
+(setq sml/theme 'dark)
+(setq sml/no-confirm-load-theme t)
+(sml/setup)
+(if (not window-system)
+    (defvar atom-one-dark-colors-alist
+      '(("atom-one-dark-accent"   . "#528BFF")
+        ("atom-one-dark-fg"       . "#ABB2BF")
+        ("atom-one-dark-bg"       . "gray14")
+        ("atom-one-dark-bg-1"     . "gray13")
+        ("atom-one-dark-bg-hl"    . "gray13")
+        ("atom-one-dark-gutter"   . "#666D7A")
+        ("atom-one-dark-accent"   . "#AEB9F5")
+        ("atom-one-dark-mono-1"   . "#ABB2BF")
+        ("atom-one-dark-mono-2"   . "#828997")
+        ("atom-one-dark-mono-3"   . "#5C6370")
+        ("atom-one-dark-cyan"     . "#56B6C2")
+        ("atom-one-dark-blue"     . "#61AFEF")
+        ("atom-one-dark-purple"   . "#C678DD")
+        ("atom-one-dark-green"    . "#98C379")
+        ("atom-one-dark-red-1"    . "#E06C75")
+        ("atom-one-dark-red-2"    . "#BE5046")
+        ("atom-one-dark-orange-1" . "#D19A66")
+        ("atom-one-dark-orange-2" . "#E5C07B")
+        ("atom-one-dark-gray"     . "#3E4451")
+        ("atom-one-dark-silver"   . "#AAAAAA")
+        ("atom-one-dark-black"    . "#0F1011"))
+      "List of Atom One Dark colors.")
+  )
+(load-theme 'atom-one-dark t)
 
 ;; Groovy mode for Jenkinsfile
 (require 'groovy-mode)
@@ -127,6 +140,7 @@
 
 (setq org-export-html-style
       "<link rel=\"stylesheet\" type=\"text/css\" href=\"orgstyle.css\" />")
+
 
 ;; set transparency
 (set-frame-parameter (selected-frame) 'alpha '(90 90))
