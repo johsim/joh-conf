@@ -29,7 +29,7 @@
 (if (not window-system)
     (defvar atom-one-dark-colors-alist
       '(("atom-one-dark-accent"   . "#528BFF")
-        ("atom-one-dark-fg"       . "#ABB2BF")
+        ("atom-one-dark-fg"       . "#d7dbe2")
         ("atom-one-dark-bg"       . "gray14")
         ("atom-one-dark-bg-1"     . "gray13")
         ("atom-one-dark-bg-hl"    . "gray13")
