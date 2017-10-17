@@ -1,5 +1,5 @@
 ;; Default packages
-(setq package-list '(anaconda-mode f dash s pythonic elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode json-mode simpleclip js2-mode rjsx-mode terraform-mode use-package ivy counsel smart-mode-line atom-one-dark-theme))
+(setq package-list '(anaconda-mode f dash s pythonic elpy pyvenv find-file-in-project swiper company flycheck let-alist pkg-info epl htmlize auto-complete popup python-environment deferred epc ctable concurrent let-alist pkg-info epl py-isort pylint pytest python-mode window-margin yasnippet yaml-mode markdown-mode groovy-mode dired-toggle-sudo dockerfile-mode json-mode simpleclip js2-mode rjsx-mode terraform-mode use-package ivy counsel smart-mode-line atom-one-dark-theme jedi))
 
 ;; Set package archives
 (require 'package)
@@ -90,6 +90,11 @@
 (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
 
 (setq inhibit-startup-message t)
+
+;; Python
+(elpy-enable)
+(setq elpy-rpc-backend "jedi")
+
 
 ;;Key-bindings:
 (global-set-key (kbd "M-o") (quote hippie-expand))
