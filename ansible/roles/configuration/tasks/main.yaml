@@ -66,3 +66,12 @@
   template:
     src: gitconfig.j2
     dest: ~/.gitconfig
+
+- name: "Check default terminal"
+  shell: gsettings get org.gnome.desktop.default-applications.terminal exec
+  register: terminal
+  changed_when: False
+
+- name: "Set terminator as default terminal"
+  shell: gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
+  when: terminal.stdout != "'terminator'"
