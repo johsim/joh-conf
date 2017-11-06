@@ -1,0 +1,8 @@
+- name: "Register base directory path"
+  set_fact:
+    base_dir: "{{ lookup('pipe', 'git rev-parse --show-toplevel') }}"
+
+- name: "Copy emacs file"
+  copy:
+    src: "{{ base_dir }}/conf/init.el"
+    dest: ~/.emacs.d/

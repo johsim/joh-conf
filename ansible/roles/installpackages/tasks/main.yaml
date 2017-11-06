@@ -1,0 +1,71 @@
+- name: "apt-key for chrome"
+  apt_key:
+    keyserver: 'https://dl-ssl.google.com/linux/linux_signing_key.pub'
+    id: 'A040830F7FAC5991'
+
+- name: "Adds apt repository for chrome"
+  apt_repository:
+    repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
+    state: present
+    filename: 'google-chrome'
+
+- name: "PPA for emacs"
+  apt_repository:
+    repo: 'ppa:kelleyk/emacs'
+
+- name: "apt update && autoremove && upgrade "
+  apt:
+    autoremove: yes
+    update_cache: yes
+    upgrade: 'full'
+
+- name: "apt dist-upgrade "
+  apt:
+    upgrade: 'dist'
+
+- name: "apt install packages"
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - emacs25
+    - terminator
+    - texlive
+    - zsh
+    - tree
+    - python3-dev
+    - python3-pip
+    - python-pygments
+    - google-chrome-stable
+    - curl
+    - tig
+    - httpie
+    - kdiff3
+    - xclip
+
+- name: "npm install"
+  npm:
+    name: "{{ item }}"
+    global: yes
+  with_items:
+    - git-standup
+    - tiny-care-terminal
+
+- name: "pip install"
+  pip:
+    name: "{{ item }}"
+  with_items:
+    - thefuck
+    - virtualenv
+    - virtualenvwrapper
+
+- name: "Install ohmyzsh"
+  command:  wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
+  args:
+    creates: ~/.oh-my-zsh
+
+
+- name: "Install zplug"
+  command: curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+  args:
+    creates: ~/.zplug

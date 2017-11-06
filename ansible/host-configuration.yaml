@@ -1,0 +1,7 @@
+---
+- hosts: localhost
+  roles:
+    - role: installpackages
+      tags: installpackages
+    - role: configuration
+      tags: configuration
