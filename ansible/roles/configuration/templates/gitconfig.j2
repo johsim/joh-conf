@@ -1,0 +1,17 @@
+[core]
+        excludesfile = ~/.gitignore_global
+        pager = cat
+[user]
+        email = {{ user_email }}
+[merge]
+        tool = kdiff3
+[mergetool "kdiff3"]
+        path = /usr/bin/kdiff3
+        trustExitCode = false
+[diff]
+        guitool = kdiff3
+[difftool "kdiff3"]
+        path = /usr/bin/kdiff3
+        trustExitCode = false
+[mergetool]
+        keepBackup = false

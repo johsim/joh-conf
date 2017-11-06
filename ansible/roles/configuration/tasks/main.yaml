@@ -2,7 +2,67 @@
   set_fact:
     base_dir: "{{ lookup('pipe', 'git rev-parse --show-toplevel') }}"
 
+- name: "Check existence of hostname"
+  stat: path=~/hostname
+  register: hostname_available
+
+- name: "Prompt for hostname"
+  pause:
+    prompt: "Enter host name (e.g. 'home')"
+  when: not hostname_available.stat.exists
+  register: hostname
+
+- name: "Put hostname into file if missing"
+  copy: content="{{ hostname.user_input }}" dest=~/hostname
+  when: hostname.user_input is defined and not hostname_available.stat.exists
+
 - name: "Copy emacs file"
   copy:
     src: "{{ base_dir }}/conf/init.el"
     dest: ~/.emacs.d/
+
+- name: "Ensures ~/.config/terminator/ exists"
+  file: path=~/.config/terminator/ state=directory recurse=yes
+
+- name: "Check existence of .zshrc"
+  stat: path=~/.zshrc
+  register: zshrc_available
+
+- name: "Remove zshrc if file and not symlink"
+  file: path=~/.zshrc state=absent
+  when: not zshrc_available.stat.islnk
+
+- name: "Symlink configuration files"
+  file:
+    src: "{{ base_dir }}/conf/{{ item.src }}"
+    dest: "~/{{ item.dest }}"
+    state: link
+  with_items:
+  - { src: 'terminator/config', dest: '.config/terminator/config' }
+  - { src: '.zshrc', dest: '.zshrc' }
+  - { src: '.gitignore_global', dest: '.gitignore_global' }
+
+- name: "Check existence of hostname"
+  stat: path={{ base_dir }}/ansible/roles/configuration/vars/local/email.yaml
+  register: email_available
+
+- name: "Prompt for email"
+  pause:
+    prompt: "Enter email"
+  when: not email_available.stat.exists
+  register: email
+
+- name: "Put email into file if missing"
+  copy:
+    content: "user_email: {{ email.user_input }}"
+    dest: "{{ base_dir }}/ansible/roles/configuration/vars/local/email.yaml"
+  when: email.user_input is defined and not email_available.stat.exists
+
+- name: "Include email as variable"
+  include_vars:
+    file: local/email.yaml
+
+- name: "Copy global git config"
+  template:
+    src: gitconfig.j2
+    dest: ~/.gitconfig
