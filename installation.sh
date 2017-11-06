@@ -22,6 +22,13 @@ sudo pip install virtualenv virtualenvwrapper
 sudo npm install -g git-standup
 sudo npm install -g tiny-care-terminal
 
+## fzf
+git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
+~/.fzf/install
+
+# zplug
+curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh| zsh
+
 CURRENTPATH=$(dirname "$0")
 
 echo -n "Enter host name and press [ENTER]: "
@@ -70,6 +77,7 @@ ZSH_CUSTOM=$CURRENTPATH/conf/zsh_custom
 # Zsh plugins
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 git clone git://github.com/zsh-users/zsh-autosuggestions $ZSH_CUSTOM/plugins/zsh-autosuggestions
+git clone https://github.com/changyuheng/zsh-interactive-cd.git $ZSH_CUSTOM/plugins/zsh-interactive-cd
 
 # Link .zshrc
 rm ~/.zshrc

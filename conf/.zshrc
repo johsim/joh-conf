@@ -2,11 +2,11 @@
 export ZSH=~/.oh-my-zsh
 ZSH_THEME="kubernetes_context_theme"
 ZSH_CUSTOM=~/joh-conf/conf/zsh_custom/
-plugins=(git aws pip emoji python zsh-autosuggestions zsh-syntax-highlighting) #NOTE Highlighting must be last
+export EDITOR="emacs -nw"
+plugins=(git aws pip emoji python zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting) #NOTE Highlighting must be last
 source $ZSH/oh-my-zsh.sh
 
 #Aliases
-export EDITOR="emacs -nw"
 alias enw="TERM=xterm-256color emacs -nw"
 alias emw="TERM=xterm-256color emacs -nw"
 alias k="kubectl"
@@ -17,8 +17,23 @@ alias nyan='docker run -it supertest2014/nyan'
 alias delete-merged="git branch --merged | grep -v '\*\|master\|develop' | xargs -n 1 git branch -d"
 alias copy='xclip -sel clip'
 
-#Autojump
-[[ -s /usr/share/autojump/autojump.zsh ]] && source /usr/share/autojump/autojump.zsh
+# fz
+source ~/.zplug/init.zsh
+
+export FZ_CMD=j
+zplug "changyuheng/fz", defer:1
+zplug "rupa/z", use:z.sh
+
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load
 
 ## Make Terminator support 256 colours
 [[ $COLORTERM = gnome-terminal ]] && TERM=xterm-256color
@@ -70,3 +85,19 @@ export TTC_CELSIUS=true
 export TTC_APIKEYS=true
 export TTC_UPDATE_INTERVAL=10
 export TTC_TERMINAL_TITLE=false
+
+# Setup fzf
+# ---------
+if [[ ! "$PATH" == */home/johanna/.fzf/bin* ]]; then
+  export PATH="$PATH:/home/johanna/.fzf/bin"
+fi
+
+# Auto-completion
+# ---------------
+[[ $- == *i* ]] && source "/home/johanna/.fzf/shell/completion.zsh" 2> /dev/null
+
+# Key bindings
+# ------------
+source "/home/johanna/.fzf/shell/key-bindings.zsh"
+
+export FZF_DEFAULT_OPTS="--border"
