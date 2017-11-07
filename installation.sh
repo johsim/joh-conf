@@ -2,15 +2,18 @@
 # Install ansible
 
 # To test
-# $ docker run --name ubuntu_xenial -v $(pwd):/workspace -w /workspace -id --rm ubuntu:xenial
-# $ docker exec -it ubuntu_xenial /bin/bash
+# $ cd ~/joh-conf
+# $ docker build -t ubuntutest:xenial
+# $ docker run -v $(pwd):/home/test --name utest ubuntutest:xenial
+# $ docker exec -it utest /bin/bash
 
 sudo apt -y update
 sudo apt install -y python3-pip virtualenv
-virtualenv default
+virtualenv -p python3 default
+source default/bin/activate
 pip3 install ansible
 cd ansible/
-sudo ansible-playbook host-configuration.yaml
+ansible-playbook host-configuration.yaml
 
 # Setup cron job
 # Example: https://github.com/ansible/ansible-examples/blob/master/language_features/ansible_pull.yml
