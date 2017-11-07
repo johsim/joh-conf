@@ -9,10 +9,10 @@
 
 # Don't use pip3 for ansible
 sudo apt -y update
-sudo apt install -y python3-pip virtualenv
-virtualenv -p python3 default
-source default/bin/activate
-pip3 install ansible
+sudo apt install -y software-properties-common
+sudo apt-add-repository -y ppa:ansible/ansible
+sudo apt -y update
+sudo apt install -y ansible
 cd ansible/
 ansible-playbook host-configuration.yaml
 

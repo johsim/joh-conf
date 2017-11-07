@@ -30,7 +30,7 @@
 
 - name: "Remove zshrc if file and not symlink"
   file: path=~/.zshrc state=absent
-  when: not zshrc_available.stat.islnk
+  when: zshrc_available.stat.exists and not zshrc_available.stat.islnk
 
 - name: "Symlink configuration files"
   file:
