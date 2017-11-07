@@ -1,6 +1,7 @@
 - name: "apt-key dependencies "
   apt:
     name: "{{ item }}"
+  become: yes
   with_items:
     - apt-transport-https
     - curl
@@ -12,19 +13,21 @@
   apt_key:
     keyserver: 'keyserver.ubuntu.com'
     id: '1397BC53640DB551'
-
+  become: yes
 
 - name: "Adds apt repository for chrome"
   apt_repository:
     repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
     state: present
     filename: 'google-chrome'
+  become: yes
 
 - name: "apt-key for docker"
   apt_key:
     url: 'https://download.docker.com/linux/ubuntu/gpg'
     id: '9DC858229FC7DD38854AE2D88D81803C0EBFCD88'
     state: present
+  become: yes
 
 - name: "Query linux code name"
   shell: lsb_release -cs | xargs
@@ -35,10 +38,12 @@
   apt_repository:
     repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ code_name.stdout }} stable'
     state: present
+  become: yes
 
 - name: "PPA for emacs"
   apt_repository:
     repo: 'ppa:kelleyk/emacs'
+  become: yes
 
 - name: "prepare update"
   apt:
@@ -48,15 +53,18 @@
     cache_valid_time: 3600
   with_items:
     - aptitude
+  become: yes
 
 - name: "apt update && upgrade "
   apt:
     update_cache: yes
     upgrade: yes
+  become: yes
 
 - name: "apt dist-upgrade "
   apt:
     upgrade: 'dist'
+  become: yes
 
 - name: "Query linux kernel release"
   shell: uname -r | xargs
@@ -67,11 +75,13 @@
   apt:
     name: "linux-image-extra-{{ kernel_release.stdout }}"
     state: present
+  become: yes
 
 - name: "apt install packages"
   apt:
     name: "{{ item }}"
     state: latest
+  become: yes
   with_items:
     - emacs25
     - terminator
@@ -90,11 +100,13 @@
     - nodejs
     - npm
     - docker-ce
+    - libglib2.0-bin
 
 - name: "npm install"
   npm:
     name: "{{ item }}"
     global: yes
+  become: yes
   with_items:
     - git-standup
     - tiny-care-terminal
@@ -111,9 +123,9 @@
   shell:  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
-
+  become: yes
 
 - name: "Install zplug"
-  shell:  sh -c "$(curl -fsSL https://raw.githubusercontent.com/zplug/installer/master/installer.sh)"
+  shell: export ZPLUG_HOME=$HOME/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME
   args:
     creates: ~/.zplug

@@ -7,6 +7,7 @@
 # $ docker run -v $(pwd):/home/test --name utest ubuntutest:xenial
 # $ docker exec -it utest /bin/bash
 
+# Don't use pip3 for ansible
 sudo apt -y update
 sudo apt install -y python3-pip virtualenv
 virtualenv -p python3 default
