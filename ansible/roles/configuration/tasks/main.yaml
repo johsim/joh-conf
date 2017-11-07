@@ -75,3 +75,14 @@
 - name: "Set terminator as default terminal"
   shell: gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
   when: terminal.stdout != "'terminator'"
+
+- name: "Check if USER is part of docker group"
+  shell: id -nG "$USER" | grep -qw docker
+  register: user_group
+  ignore_errors: yes
+  changed_when: False
+
+- name: "Adds user to docker group"
+  shell: usermod -a -G docker $USER
+  become: yes
+  when: user_group.rc != 0

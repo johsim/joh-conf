@@ -1,5 +1,4 @@
 #!/bin/bash
-
 # Install ansible
 
 # Setup cron job

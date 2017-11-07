@@ -9,6 +9,22 @@
     state: present
     filename: 'google-chrome'
 
+- name: "apt-key for docker"
+  apt_key:
+    url: 'https://download.docker.com/linux/ubuntu/gpg'
+    id: '9DC858229FC7DD38854AE2D88D81803C0EBFCD88'
+    state: present
+
+- name: "Query linux code name"
+  shell: lsb_release -cs | xargs
+  register: code_name
+  changed_when: False
+
+- name: "Adds apt repository for docker"
+  apt_repository:
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ code_name.stdout }} stable'
+    state: present
+
 - name: "PPA for emacs"
   apt_repository:
     repo: 'ppa:kelleyk/emacs'
@@ -23,10 +39,21 @@
   apt:
     upgrade: 'dist'
 
+- name: "Query linux kernel release"
+  shell: uname -r | xargs
+  register: kernel_release
+  changed_when: False
+
+- name: "apt install linux-image-extra"
+  apt:
+    name: "linux-image-extra-{{ kernel_release.stdout }}"
+    state: present
+
 - name: "apt install packages"
   apt:
     name: "{{ item }}"
     state: latest
+    update_cache: yes
   with_items:
     - emacs25
     - terminator
@@ -42,6 +69,11 @@
     - httpie
     - kdiff3
     - xclip
+    - linux-image-extra-virtual
+    - apt-transport-https
+    - ca-certificates
+    - software-properties-common
+    - docker-ce
 
 - name: "npm install"
   npm:
