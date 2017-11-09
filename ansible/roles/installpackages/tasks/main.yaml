@@ -6,6 +6,7 @@
     - apt-transport-https
     - curl
     - python-simplejson
+    - lsb-release
     - software-properties-common
     - aptitude
 
@@ -40,8 +41,17 @@
     state: present
   become: yes
 
-- name: "Get latest nodejs"
-  shell: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+- name: "apt-key for nodejs"
+  apt_key:
+    url: 'https://deb.nodesource.com/setup_8.x'
+    id: '68576280'
+  become: yes
+
+- name: "Adds apt repository for nodejs"
+  apt_repository:
+    repo: 'deb https://deb.nodesource.com/node_8.x xenial main'
+    state: present
+  become: yes
 
 - name: "PPA for emacs"
   apt_repository:
