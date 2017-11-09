@@ -14,7 +14,7 @@ sudo apt-add-repository -y ppa:ansible/ansible
 sudo apt -y update
 sudo apt install -y ansible
 cd ansible/
-ansible-playbook -vvv host-configuration.yaml
+ansible-playbook host-configuration.yaml --ask-become-pass
 
 # Setup cron job
 # Example: https://github.com/ansible/ansible-examples/blob/master/language_features/ansible_pull.yml

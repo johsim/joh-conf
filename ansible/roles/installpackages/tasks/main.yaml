@@ -124,20 +124,42 @@
     - git-standup
     - tiny-care-terminal
 
-# - name: "Install virtualenv"
-#   shell: python3 -m pip install virtualenv
+- name: "Install virtualenv"
+  shell: python3 -m pip install virtualenv
+  args:
+    creates: /usr/local/bin/virtualenv
 
-# - name: "Install virtualenv"
-#   shell: python3 -m pip install virtualenvwrapper
+- name: "Install virtualenv"
+  shell: python3 -m pip install virtualenvwrapper
+  args:
+    creates: /usr/local/bin/virtualenvwrapper.sh
 
-# - name: "Create virtualenv path"
-#   file: path=~/.virtualenvs state=directory recurse=yes
+- name: "Create virtualenv path"
+  file: path=~/.virtualenvs state=directory recurse=yes
 
-# - name: "Set virtualenv home"
-#   shell: export WORKON_HOME=$HOME/.virtualenvs
+- name: "Set virtualenv home"
+  shell: export WORKON_HOME=$HOME/.virtualenvs && VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  changed_when: False
 
-# - name: "Source virtualenv"
-#   shell: source $(which virtualenv)wrapper.sh
+- name: "Check existing default virtualenv"
+  shell: source $(which virtualenv)wrapper.sh && lsvirtualenv -b | grep default
+  args:
+    executable: /bin/bash
+  ignore_errors: yes
+  register: default_virtualenv
+  changed_when: False
+
+- name: "Create default virtualenv if not there"
+  shell: source $(which virtualenv)wrapper.sh && mkvirtualenv default
+  args:
+    executable: /bin/bash
+  when: default_virtualenv.rc == 1
+
+- name: "pip install"
+  pip:
+    name: thefuck
+    state: present
+    virtualenv: ~/.virtualenv/default
 
 - name: "Install ohmyzsh"
   shell:  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
