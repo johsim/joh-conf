@@ -40,6 +40,9 @@
     state: present
   become: yes
 
+- name: "Get latest nodejs"
+  shell: curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+
 - name: "PPA for emacs"
   apt_repository:
     repo: 'ppa:kelleyk/emacs'
@@ -99,7 +102,6 @@
     - linux-image-extra-virtual
     - ca-certificates
     - nodejs
-    - npm
     - docker-ce
     - libglib2.0-bin
 
@@ -112,21 +114,39 @@
     - git-standup
     - tiny-care-terminal
 
-- name: "pip install"
-  pip:
-    name: "{{ item }}"
-  with_items:
-    - thefuck
-    - virtualenv
-    - virtualenvwrapper
+# - name: "Install virtualenv"
+#   shell: python3 -m pip install virtualenv
+
+# - name: "Install virtualenv"
+#   shell: python3 -m pip install virtualenvwrapper
+
+# - name: "Create virtualenv path"
+#   file: path=~/.virtualenvs state=directory recurse=yes
+
+# - name: "Set virtualenv home"
+#   shell: export WORKON_HOME=$HOME/.virtualenvs
+
+# - name: "Source virtualenv"
+#   shell: source $(which virtualenv)wrapper.sh
 
 - name: "Install ohmyzsh"
   shell:  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
   args:
     creates: ~/.oh-my-zsh
-  become: yes
+    chdir: ~/
 
 - name: "Install zplug"
   shell: export ZPLUG_HOME=$HOME/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME
   args:
     creates: ~/.zplug
+
+- name: "Clone fzf"
+  git:
+    depth: 1
+    repo: https://github.com/junegunn/fzf.git
+    dest: ~/.fzf
+
+- name: "Install fzf"
+  shell: yes 'y' | ~/.fzf/install
+  args:
+    creates: ~/.fzf.zsh

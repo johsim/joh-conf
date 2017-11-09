@@ -3,7 +3,7 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="kubernetes_context_theme"
 ZSH_CUSTOM=~/joh-conf/conf/zsh_custom/
 export EDITOR="emacs -nw"
-plugins=(git aws pip emoji python zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting) #NOTE Highlighting must be last
+plugins=(git aws pip python zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting) #NOTE Highlighting must be last
 source $ZSH/oh-my-zsh.sh
 
 #Aliases
@@ -23,7 +23,6 @@ source ~/.zplug/init.zsh
 export FZ_CMD=j
 zplug "changyuheng/fz", defer:1
 zplug "rupa/z", use:z.sh
-zplug "junegunn/fzf-bin", from:gh-r, as:command, rename-to:fzf
 zplug "zsh-users/zsh-syntax-highlighting", defer:2
 zplug "zsh-users/zsh-autosuggestions", at:master
 zplug "changyuheng/zsh-interactive-cd"
@@ -31,10 +30,7 @@ zplug "changyuheng/zsh-interactive-cd"
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read -q; then
-        echo; zplug install
-    fi
+    zplug install
 fi
 
 # Then, source plugins and add commands to $PATH
@@ -96,6 +92,8 @@ export TTC_TERMINAL_TITLE=false
 if [[ ! "$PATH" == */home/johanna/.fzf/bin* ]]; then
   export PATH="$PATH:/home/johanna/.fzf/bin"
 fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Auto-completion
 # ---------------
