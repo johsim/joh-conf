@@ -7,7 +7,6 @@
 # $ docker run -v $(pwd):/home/test/joh-conf --name utest ubuntutest:xenial
 # $ docker exec -it utest /bin/bash
 
-# Don't use pip3 for ansible
 sudo apt -y update
 sudo apt install -y software-properties-common
 sudo apt-add-repository -y ppa:ansible/ansible

@@ -1,7 +1,6 @@
 - name: "apt-key dependencies "
   apt:
     name: "{{ item }}"
-  become: yes
   with_items:
     - apt-transport-https
     - curl
@@ -14,21 +13,18 @@
   apt_key:
     keyserver: 'keyserver.ubuntu.com'
     id: '1397BC53640DB551'
-  become: yes
 
 - name: "Adds apt repository for chrome"
   apt_repository:
     repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
     state: present
     filename: 'google-chrome'
-  become: yes
 
 - name: "apt-key for docker"
   apt_key:
     url: 'https://download.docker.com/linux/ubuntu/gpg'
     id: '9DC858229FC7DD38854AE2D88D81803C0EBFCD88'
     state: present
-  become: yes
 
 - name: "Query linux code name"
   shell: lsb_release -cs | xargs
@@ -39,24 +35,20 @@
   apt_repository:
     repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ code_name.stdout }} stable'
     state: present
-  become: yes
 
 - name: "apt-key for nodejs"
   apt_key:
-    url: 'https://deb.nodesource.com/setup_8.x'
+    url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
     id: '68576280'
-  become: yes
 
 - name: "Adds apt repository for nodejs"
   apt_repository:
     repo: 'deb https://deb.nodesource.com/node_8.x xenial main'
     state: present
-  become: yes
 
 - name: "PPA for emacs"
   apt_repository:
     repo: 'ppa:kelleyk/emacs'
-  become: yes
 
 - name: "prepare update"
   apt:
@@ -66,18 +58,15 @@
     cache_valid_time: 3600
   with_items:
     - aptitude
-  become: yes
 
 - name: "apt update && upgrade "
   apt:
     update_cache: yes
     upgrade: yes
-  become: yes
 
 - name: "apt dist-upgrade "
   apt:
     upgrade: 'dist'
-  become: yes
 
 - name: "Query linux kernel release"
   shell: uname -r | xargs
@@ -88,13 +77,11 @@
   apt:
     name: "linux-image-extra-{{ kernel_release.stdout }}"
     state: present
-  become: yes
 
 - name: "apt install packages"
   apt:
     name: "{{ item }}"
     state: latest
-  become: yes
   with_items:
     - emacs25
     - terminator
@@ -119,7 +106,6 @@
   npm:
     name: "{{ item }}"
     global: yes
-  become: yes
   with_items:
     - git-standup
     - tiny-care-terminal
@@ -133,52 +119,3 @@
   shell: python3 -m pip install virtualenvwrapper
   args:
     creates: /usr/local/bin/virtualenvwrapper.sh
-
-- name: "Create virtualenv path"
-  file: path=~/.virtualenvs state=directory recurse=yes
-
-- name: "Set virtualenv home"
-  shell: export WORKON_HOME=$HOME/.virtualenvs && VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-  changed_when: False
-
-- name: "Check existing default virtualenv"
-  shell: source $(which virtualenv)wrapper.sh && lsvirtualenv -b | grep default
-  args:
-    executable: /bin/bash
-  ignore_errors: yes
-  register: default_virtualenv
-  changed_when: False
-
-- name: "Create default virtualenv if not there"
-  shell: source $(which virtualenv)wrapper.sh && mkvirtualenv default
-  args:
-    executable: /bin/bash
-  when: default_virtualenv.rc == 1
-
-- name: "pip install"
-  pip:
-    name: thefuck
-    state: present
-    virtualenv: ~/.virtualenv/default
-
-- name: "Install ohmyzsh"
-  shell:  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
-  args:
-    creates: ~/.oh-my-zsh
-    chdir: ~/
-
-- name: "Install zplug"
-  shell: export ZPLUG_HOME=$HOME/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME
-  args:
-    creates: ~/.zplug
-
-- name: "Clone fzf"
-  git:
-    depth: 1
-    repo: https://github.com/junegunn/fzf.git
-    dest: ~/.fzf
-
-- name: "Install fzf"
-  shell: yes 'y' | ~/.fzf/install
-  args:
-    creates: ~/.fzf.zsh
