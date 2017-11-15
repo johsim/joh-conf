@@ -69,7 +69,7 @@
 
 - name: "Copy emacs file"
   copy:
-    src: "{{ base_dir }}/conf/init.el"
+    src: files/init.el
     dest: ~/.emacs.d/
 
 - name: "Ensures ~/.config/terminator/ exists"
