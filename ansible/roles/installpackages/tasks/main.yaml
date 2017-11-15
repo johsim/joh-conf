@@ -101,6 +101,7 @@
     - nodejs
     - docker-ce
     - libglib2.0-bin
+    - ssmtp
 
 - name: "npm install"
   npm:

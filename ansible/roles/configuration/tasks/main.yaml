@@ -137,7 +137,7 @@
   become_user: root
 
 - name: "Check if USER is part of docker group"
-  shell: id -nG "$USER" | grep -qw docker
+  shell: 'id -nG "{{ user }}" | grep -qw docker'
   register: user_group
   ignore_errors: yes
   changed_when: False
@@ -145,7 +145,7 @@
   become_user: root
 
 - name: "Adds user to docker group"
-  shell: usermod -a -G docker $USER
+  shell: 'usermod -a -G docker "{{ user }}"'
   when: user_group.rc != 0
   become: yes
   become_user: root
