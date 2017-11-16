@@ -2,9 +2,16 @@
 
 This project contains my preferred development setup for Ubuntu. The repository is arranged as follows:
 
- * _docs_: Tips and tricks that I have accumulated while working.
- * _conf_: Settings-files for my preferred configuration. See the local README for more info.
- * _templates_: Outline for scripts with comments on stuff that I might find useful in the future.
 
-Cheers,
-johsim
+* Installation
+
+#+BEGIN_SRC sh
+$ cd ~/
+$ git clone https://github.com/johsim/joh-conf.git
+$ ./installation.sh
+#+END_SRC
+
+
+** Requiremets
+
+* Licence
