@@ -1,4 +1,4 @@
 MAILTO={{ user_email }}
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
-0 1 * * * root cd /home/{{ user }}/joh-conf/util && ./cron-ansible.sh {{ user }} >>/var/log/ansible-configuration.log 2>&1
+0 0/12 * * * root cd /home/{{ user }}/joh-conf/util && ./cron-ansible.sh {{ user }} >>/var/log/ansible-configuration.log 2>&1
