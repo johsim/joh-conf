@@ -89,18 +89,18 @@ export TTC_TERMINAL_TITLE=false
 
 # Setup fzf
 # ---------
-if [[ ! "$PATH" == */home/johanna/.fzf/bin* ]]; then
-  export PATH="$PATH:/home/johanna/.fzf/bin"
+if [[ ! "$PATH" == *~/.fzf/bin* ]]; then
+  export PATH="$PATH:~/.fzf/bin"
 fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Auto-completion
 # ---------------
-[[ $- == *i* ]] && source "/home/johanna/.fzf/shell/completion.zsh" 2> /dev/null
+[[ $- == *i* ]] && source "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
 
 # Key bindings
 # ------------
-source "/home/johanna/.fzf/shell/key-bindings.zsh"
+source "$HOME/.fzf/shell/key-bindings.zsh"
 
 export FZF_DEFAULT_OPTS="--border"

@@ -12,7 +12,7 @@
   changed_when: False
 
 - name: "Check existing default virtualenv"
-  shell: source $(which virtualenv)wrapper.sh && lsvirtualenv -b | grep default
+  shell: source /usr/local/bin/virtualenvwrapper.sh && lsvirtualenv -b | grep default
   args:
     executable: /bin/bash
   ignore_errors: yes
@@ -69,7 +69,7 @@
 
 - name: "Copy emacs file"
   copy:
-    src: files/init.el
+    src: init.el
     dest: ~/.emacs.d/
 
 - name: "Ensures ~/.config/terminator/ exists"
@@ -152,7 +152,7 @@
 
 - name: "Create crontab entry to clone/pull git repository"
   template:
-    src: templates/cron-ansible.j2
+    src: cron-ansible.j2
     dest: /etc/cron.d/cron-ansible
     owner: root
     group: root
@@ -162,7 +162,7 @@
 
 - name: "Create logrotate entry for ansible-configuration.log"
   copy:
-    src: files/logrotate-ansible
+    src: logrotate-ansible
     dest: /etc/logrotate.d/ansible-configuration
     owner: root
     group: root
