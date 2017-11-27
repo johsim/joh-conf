@@ -160,7 +160,7 @@
   become: yes
   become_user: root
 
-- name: "Create logrotate entry for ansible-pull.log"
+- name: "Create logrotate entry for ansible-configuration.log"
   copy:
     src: files/logrotate-ansible
     dest: /etc/logrotate.d/ansible-configuration

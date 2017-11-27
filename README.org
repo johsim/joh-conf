@@ -1,7 +1,27 @@
 * joh-conf
 
-This project contains my preferred development setup for Ubuntu. The repository is arranged as follows:
+This project contains my preferred development setup for Ubuntu. The configuration is done with ansible,
+to make the setup immutable.
 
+** Setup
+The configuration contains
+- Emacs configuration
+- Python, pip, virtualenvwrapper with a default virtualenv
+- Terminator as preferred terminal
+- oh-my-zsh and linked zshrc
+- Cron-job running the ansible configuration
+- fzf for history search, cd and jumping feature
+- Global gitconfig and gitignore
+
+Also, a number of tools that can be useful:
+- docker
+- tiny-care-terminal
+- httpie
+- tig
+-
+
+
+NOTE: Only tested on Ubuntu 16.04
 
 * Installation
 
@@ -11,7 +31,35 @@ $ git clone https://github.com/johsim/joh-conf.git
 $ ./installation.sh
 #+END_SRC
 
+The shell script will install ansible and then run an ansible playbook for the rest of the setup.
+The repo can currently only be cloned to the home directory.
 
-** Requiremets
+The logs for the ansible cron job can be found at ~/var/log/ansible-configuration.log~
 
-* Licence
+** SSMTP
+To setup a ssmtp server, please run the following:
+
+#+BEGIN_SRC sh
+$ cd ~/joh-conf/ansible
+$ ansible-playbook email-configuration.yaml --ask-become-pass
+#+END_SRC
+
+Please use a throw-away email without 2-factor authentication, as 2-factor won't work with ssmtp.
+
+* Development
+
+To test the setup (for a clean environment), docker can be used:
+
+#+BEGIN_SRC sh
+$ cd ~/joh-conf/
+$ docker build -t ubuntutest:xenial .
+$ docker run -id -v $(pwd):/home/test/joh-conf --name ubtest ubuntutest:xenial
+$ docker exec -it ubtest /bin/bash
+#+END_SRC
+
+
+* Roadmap
+
+Things that might be added:
+- Anacron instead of cron
+- Enable cloning out of homedir
