@@ -1,0 +1,122 @@
+- name: "apt-key dependencies "
+  apt:
+    name: "{{ item }}"
+  with_items:
+    - apt-transport-https
+    - curl
+    - python-simplejson
+    - lsb-release
+    - software-properties-common
+    - aptitude
+
+- name: "apt-key for chrome"
+  apt_key:
+    keyserver: 'keyserver.ubuntu.com'
+    id: '1397BC53640DB551'
+
+- name: "Adds apt repository for chrome"
+  apt_repository:
+    repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
+    state: present
+    filename: 'google-chrome'
+
+- name: "apt-key for docker"
+  apt_key:
+    url: 'https://download.docker.com/linux/ubuntu/gpg'
+    id: '9DC858229FC7DD38854AE2D88D81803C0EBFCD88'
+    state: present
+
+- name: "Query linux code name"
+  shell: lsb_release -cs | xargs
+  register: code_name
+  changed_when: False
+
+- name: "Adds apt repository for docker"
+  apt_repository:
+    repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ code_name.stdout }} stable'
+    state: present
+
+- name: "apt-key for nodejs"
+  apt_key:
+    url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
+    id: '68576280'
+
+- name: "Adds apt repository for nodejs"
+  apt_repository:
+    repo: 'deb https://deb.nodesource.com/node_8.x xenial main'
+    state: present
+
+- name: "PPA for emacs"
+  apt_repository:
+    repo: 'ppa:kelleyk/emacs'
+
+- name: "prepare update"
+  apt:
+    pkg: "{{ item }}"
+    state: latest
+    update_cache: yes
+    cache_valid_time: 3600
+  with_items:
+    - aptitude
+
+- name: "apt update && upgrade "
+  apt:
+    update_cache: yes
+    upgrade: yes
+
+- name: "apt dist-upgrade "
+  apt:
+    upgrade: 'dist'
+
+- name: "Query linux kernel release"
+  shell: uname -r | xargs
+  register: kernel_release
+  changed_when: False
+
+- name: "apt install linux-image-extra"
+  apt:
+    name: "linux-image-extra-{{ kernel_release.stdout }}"
+    state: present
+
+- name: "apt install packages"
+  apt:
+    name: "{{ item }}"
+    state: latest
+  with_items:
+    - emacs25
+    - terminator
+    - texlive
+    - zsh
+    - tree
+    - python3-dev
+    - python3-pip
+    - python-pygments
+    - google-chrome-stable
+    - tig
+    - httpie
+    - kdiff3
+    - xclip
+    - linux-image-extra-virtual
+    - ca-certificates
+    - nodejs
+    - docker-ce
+    - libglib2.0-bin
+    - ssmtp
+
+- name: "npm install"
+  npm:
+    name: "{{ item }}"
+    global: yes
+  with_items:
+    - git-standup
+    - tiny-care-terminal
+
+- name: "Install virtualenv"
+  shell: python3 -m pip install virtualenv
+  args:
+    creates: /usr/local/bin/virtualenv
+
+- name: "Install virtualenv"
+  shell: python3 -m pip install virtualenvwrapper
+  args:
+    creates: /usr/local/bin/virtualenvwrapper.sh

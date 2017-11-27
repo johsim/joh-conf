@@ -1,0 +1,171 @@
+- name: "Register base directory path"
+  set_fact:
+    base_dir: "{{ lookup('pipe', 'git rev-parse --show-toplevel') }}"
+
+- name: "Create virtualenv path"
+  file: path=~/.virtualenvs state=directory recurse=yes
+
+- name: "Set virtualenv home"
+  shell: export WORKON_HOME=$HOME/.virtualenvs && VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+  args:
+    executable: /bin/bash
+  changed_when: False
+
+- name: "Check existing default virtualenv"
+  shell: source /usr/local/bin/virtualenvwrapper.sh && lsvirtualenv -b | grep default
+  args:
+    executable: /bin/bash
+  ignore_errors: yes
+  register: default_virtualenv
+  changed_when: False
+
+- name: "Create default virtualenv if not there"
+  shell: source $(which virtualenv)wrapper.sh && mkvirtualenv default
+  args:
+    executable: /bin/bash
+  when: default_virtualenv.rc == 1
+
+- name: "pip install"
+  pip:
+    name: thefuck
+    state: present
+    virtualenv: ~/.virtualenv/default
+
+- name: "Clone oh-my-zsh"
+  git:
+    depth: 1
+    repo: https://github.com/robbyrussell/oh-my-zsh.git
+    dest: ~/.oh-my-zsh
+
+- name: "Install zplug"
+  shell: export ZPLUG_HOME=$HOME/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME
+  args:
+    creates: ~/.zplug
+
+- name: "Clone fzf"
+  git:
+    depth: 1
+    repo: https://github.com/junegunn/fzf.git
+    dest: ~/.fzf
+
+- name: "Install fzf"
+  shell: yes 'y' | ~/.fzf/install
+  args:
+    creates: ~/.fzf.zsh
+
+- name: "Check existence of hostname"
+  stat: path=~/hostname
+  register: hostname_available
+
+- name: "Prompt for hostname"
+  pause:
+    prompt: "Enter host name (e.g. 'home')"
+  when: not hostname_available.stat.exists
+  register: hostname
+
+- name: "Put hostname into file if missing"
+  copy: content="{{ hostname.user_input }}" dest=~/hostname
+  when: hostname.user_input is defined and not hostname_available.stat.exists
+
+- name: "Copy emacs file"
+  copy:
+    src: init.el
+    dest: ~/.emacs.d/
+
+- name: "Ensures ~/.config/terminator/ exists"
+  file: path=~/.config/terminator/ state=directory recurse=yes
+
+- name: "Check existence of .zshrc"
+  stat: path=~/.zshrc
+  register: zshrc_available
+
+- name: "Remove zshrc if file and not symlink"
+  file: path=~/.zshrc state=absent
+  when: zshrc_available.stat.exists and not zshrc_available.stat.islnk
+
+- name: "Symlink configuration files"
+  file:
+    src: "{{ base_dir }}/conf/{{ item.src }}"
+    dest: "~/{{ item.dest }}"
+    state: link
+  with_items:
+  - { src: 'terminator/config', dest: '.config/terminator/config' }
+  - { src: '.zshrc', dest: '.zshrc' }
+  - { src: '.gitignore_global', dest: '.gitignore_global' }
+
+- name: "Set default shell to zsh"
+  user:
+    name: "{{ user }}"
+    shell: /bin/zsh
+  become: yes
+  become_user: root
+
+- name: "Check existence of hostname"
+  stat: path={{ base_dir }}/ansible/roles/configuration/vars/local/email.yaml
+  register: email_available
+
+- name: "Prompt for email"
+  pause:
+    prompt: "Enter email"
+  when: not email_available.stat.exists
+  register: email
+
+- name: "Put email into file if missing"
+  copy:
+    content: "user_email: {{ email.user_input }}"
+    dest: "{{ base_dir }}/ansible/roles/configuration/vars/local/email.yaml"
+  when: email.user_input is defined and not email_available.stat.exists
+
+- name: "Include email as variable"
+  include_vars:
+    file: local/email.yaml
+
+- name: "Copy global git config"
+  template:
+    src: gitconfig.j2
+    dest: ~/.gitconfig
+
+- name: "Check default terminal"
+  shell: gsettings get org.gnome.desktop.default-applications.terminal exec
+  register: terminal
+  changed_when: False
+
+- name: "Set terminator as default terminal"
+  shell: gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
+  when: terminal.stdout != "'terminator'"
+  become: yes
+  become_user: root
+
+- name: "Check if USER is part of docker group"
+  shell: 'id -nG "{{ user }}" | grep -qw docker'
+  register: user_group
+  ignore_errors: yes
+  changed_when: False
+  become: yes
+  become_user: root
+
+- name: "Adds user to docker group"
+  shell: 'usermod -a -G docker "{{ user }}"'
+  when: user_group.rc != 0
+  become: yes
+  become_user: root
+
+- name: "Create crontab entry to clone/pull git repository"
+  template:
+    src: cron-ansible.j2
+    dest: /etc/cron.d/cron-ansible
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  become_user: root
+
+- name: "Create logrotate entry for ansible-configuration.log"
+  copy:
+    src: logrotate-ansible
+    dest: /etc/logrotate.d/ansible-configuration
+    owner: root
+    group: root
+    mode: 0644
+  become: yes
+  become_user: root

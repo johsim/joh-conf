@@ -1,0 +1,32 @@
+---
+- hosts: localhost
+  roles:
+    - role: installpackages
+      tags: installpackages
+      become: yes
+
+  tasks:
+    - name: "Check user if not set"
+      shell: whoami
+      register: current_user
+      changed_when: False
+      when: user is not defined
+      tags: configuration
+
+    - fail:
+        msg: "User is not set and current user is root"
+      when: current_user.stdout is defined and current_user.stdout == 'root'
+      tags: configuration
+
+    - name: "Set variable user"
+      set_fact:
+        user: "{{ current_user.stdout }}"
+      when: user is not defined
+      tags: configuration
+
+    - name: conditional role
+      include_role:
+        name: configuration
+      tags: configuration
+      become: yes
+      become_user: "{{ user }}"

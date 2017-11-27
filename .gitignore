@@ -1,1 +1,2 @@
 conf/zsh_custom/plugins/*
+ansible/roles/configuration/vars/local/*
