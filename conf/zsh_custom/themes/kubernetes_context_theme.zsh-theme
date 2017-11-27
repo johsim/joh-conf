@@ -49,9 +49,5 @@ prompt_dir() {
 
     echo "$color$display_path%{$reset_color%}"
 }
-kubectl_prompt=''
-kubectl_installed=$(type kubectl)
-if [[ $kubectl_installed != 0 ]]; then
-    kubectl_prompt=$(prompt_kubecontext)
-fi
-PROMPT='$kubectl_prompt $(prompt_dir) $(prompt_sep) $(git_prompt_info)'
+
+PROMPT='$(prompt_kubecontext) $(prompt_dir) $(prompt_sep) $(git_prompt_info)'
