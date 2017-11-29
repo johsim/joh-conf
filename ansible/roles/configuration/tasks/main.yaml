@@ -154,6 +154,18 @@
   become: yes
   become_user: root
 
+- name: "Create parcellite systemd process"
+  copy:
+    src: parcellite.service
+    dest: /lib/systemd/system/parcellite.service
+  become: yes
+  become_user: root
+
+- name: "Make sure parcellite is started"
+  systemd: state=started name=parcellite daemon_reload=yes
+  become: yes
+  become_user: root
+
 - name: "Create crontab entry to clone/pull git repository"
   template:
     src: cron-ansible.j2
