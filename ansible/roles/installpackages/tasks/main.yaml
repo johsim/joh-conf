@@ -103,6 +103,7 @@
     - libglib2.0-bin
     - ssmtp
     - cowsay
+    - parcellite
 
 - name: "npm install"
   npm:
