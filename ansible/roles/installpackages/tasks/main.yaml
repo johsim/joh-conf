@@ -102,6 +102,7 @@
     - docker-ce
     - libglib2.0-bin
     - ssmtp
+    - cowsay
 
 - name: "npm install"
   npm:
