@@ -77,6 +77,7 @@
   with_items:
     - ~/.config/terminator/
     - ~/.config/parcellite/
+    - ~/.config/autostart/
 
 - name: "Check existence of .zshrc"
   stat: path=~/.zshrc
@@ -96,6 +97,7 @@
   - { src: '.zshrc', dest: '.zshrc' }
   - { src: '.gitignore_global', dest: '.gitignore_global' }
   - { src: 'parcellite/parcelliterc', dest: '.config/parcellite/parcelliterc' }
+  - { src: 'autostart', dest: '.config/autostart/parcellite.desktop' }
 
 - name: "Set default shell to zsh"
   user:
@@ -151,18 +153,6 @@
 - name: "Adds user to docker group"
   shell: 'usermod -a -G docker "{{ user }}"'
   when: user_group.rc != 0
-  become: yes
-  become_user: root
-
-- name: "Create parcellite systemd process"
-  copy:
-    src: parcellite.service
-    dest: /lib/systemd/system/parcellite.service
-  become: yes
-  become_user: root
-
-- name: "Make sure parcellite is started"
-  systemd: state=started name=parcellite daemon_reload=yes
   become: yes
   become_user: root
 
