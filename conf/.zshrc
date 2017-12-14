@@ -17,6 +17,9 @@ alias nyan='docker run -it supertest2014/nyan'
 alias delete-merged="git branch --merged | grep -v '\*\|master\|develop' | xargs -n 1 git branch -d"
 alias copy='xclip -sel clip'
 
+# Ansible
+export ANSIBLE_COW_SELECTION=random
+
 # fz
 source ~/.zplug/init.zsh
 
