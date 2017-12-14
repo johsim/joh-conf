@@ -50,6 +50,10 @@
   apt_repository:
     repo: 'ppa:kelleyk/emacs'
 
+- name: "PPA for nvidia drivers"
+  apt_repository:
+    repo: 'ppa:graphics-drivers/ppa'
+
 - name: "prepare update"
   apt:
     pkg: "{{ item }}"
