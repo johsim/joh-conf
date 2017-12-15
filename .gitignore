@@ -1,3 +1,11 @@
 conf/zsh_custom/plugins/*
 ansible/roles/configuration/vars/local/*
 conf/.PyCharm/config/pycharm.key
+conf/.PyCharm/config/options/dimensions.xml
+conf/.PyCharm/config/options/jdk.table.xml
+conf/.PyCharm/config/options/proxy.settings.pwd
+conf/.PyCharm/config/options/recentProjectDirectories.xml
+conf/.PyCharm/config/options/statistics.application.usages.xml
+conf/.PyCharm/config/port
+conf/.PyCharm/config/options/options.xml
+conf/.PyCharm/config/plugins/availables.xml
