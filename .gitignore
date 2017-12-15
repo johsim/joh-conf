@@ -1,2 +1,3 @@
 conf/zsh_custom/plugins/*
 ansible/roles/configuration/vars/local/*
+conf/.PyCharm/config/pycharm.key

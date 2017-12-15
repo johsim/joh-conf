@@ -1,0 +1,34 @@
+<application>
+  <component name="DimensionService">
+    <location key="FileChooserDialogImpl.0.0.1920.1200" x="747" y="255" />
+    <location key="WELCOME_SCREEN.0.0.1920.1200" x="960" y="244" />
+    <location key="com.intellij.ide.util.TipDialog.0.0.1920.1200" x="678" y="428" />
+    <location key="SettingsEditor.0.0.1920.1200" x="702" y="262" />
+    <location key="bookmarks.0.0.1920.1200" x="0" y="425" />
+    <location key="#com.intellij.ide.actions.ChooseComponentsToExportDialog.0.0.1920.1200" x="194" y="478" />
+    <location key="#com.intellij.execution.impl.EditConfigurationsDialog.0.0.1920.1200" x="424" y="251" />
+    <location key="#ESLint.0.0.1920.1200" x="700" y="347" />
+    <location key="jetbrains.nodejs.interpreters-dialog.0.0.1920.1200" x="692" y="391" />
+    <location key="FileChooserDialogImpl.0.0.1920.1080" x="266" y="287" />
+    <location key="SettingsEditor.0.0.1920.1080" x="0" y="206" />
+    <location key="#ESLint.0.0.1920.1080" x="220" y="309" />
+    <location key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate.0.0.1920.1080" x="708" y="418" />
+    <location key="CommitChangelistDialog2.0.0.1920.1080" x="548" y="113" />
+    <location key="com.intellij.openapi.editor.actions.MultiplePasteAction$1.0.0.1920.1200" x="624" y="181" />
+    <location key="#com.intellij.execution.impl.EditConfigurationsDialog.0.0.1920.1080" x="303" y="205" />
+    <location key="#Browse_JetBrains_Plugins_.0.0.1920.1080" x="114" y="229" />
+    <location key="SettingsEditor.0.0.2560.1440" x="754" y="414" />
+    <location key="#com.intellij.ide.actions.ChooseComponentsToExportDialog.0.0.2560.1440" x="989" y="566" />
+    <location key="FileChooserDialogImpl.0.0.2560.1440" x="1048" y="539" />
+    <size key="FileChooserDialogImpl.0.0.1920.1200" width="501" height="494" />
+    <size key="SettingsEditor.0.0.1920.1200" width="1052" height="741" />
+    <size key="GotoFile_FileTypePopup.0.0.1920.1200" width="208" height="201" />
+    <size key="bookmarks.0.0.1920.1200" width="1013" height="344" />
+    <size key="#ESLint.0.0.1920.1200" width="534" height="566" />
+    <size key="#ESLint.0.0.1920.1080" width="534" height="550" />
+    <size key="FileChooserDialogImpl.0.0.1920.1080" width="501" height="494" />
+    <size key="SettingsEditor.0.0.1920.1080" width="1052" height="741" />
+    <size key="SettingsEditor.0.0.2560.1440" width="1052" height="664" />
+    <size key="FileChooserDialogImpl.0.0.2560.1440" width="424" height="466" />
+  </component>
+</application>
