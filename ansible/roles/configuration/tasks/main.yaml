@@ -72,6 +72,21 @@
     src: init.el
     dest: ~/.emacs.d/
 
+- name: "Get pycharm info"
+  shell: apt show pycharm
+  register: pycharm_info
+  ignore_errors: yes
+
+- name: "Get pycharm version"
+  shell: echo "{{ pycharm_info.stdout }}" | grep Version | grep -oE '[0-9]{4}.[0-9]{1}'
+  register: pycharm_version
+  ignore_errors: yes
+
+- name: "Create PyCharm directory"
+  file:
+    path: ~/.PyCharm{{ pycharm_version.stdout }}
+    state: directory
+
 - name: "Ensures path exists"
   file: path={{ item }} state=directory recurse=yes
   with_items:
@@ -98,6 +113,7 @@
   - { src: '.gitignore_global', dest: '.gitignore_global' }
   - { src: 'parcellite/parcelliterc', dest: '.config/parcellite/parcelliterc' }
   - { src: 'autostart', dest: '.config/autostart/parcellite.desktop' }
+  - { src: 'idea.properties', dest: '.PyCharm{{ pycharm_version.stdout }}/idea.properties' }
 
 - name: "Set default shell to zsh"
   user:
