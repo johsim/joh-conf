@@ -113,6 +113,7 @@
     - cowsay
     - parcellite
     - pycharm
+    - xdot
 
 
 - name: "npm install"
