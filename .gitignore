@@ -19,5 +19,6 @@ conf/PyCharm/config/options/window.manager.xml
 conf/PyCharm/config/options/proxy.settings.pwd
 conf/PyCharm/config/options/other.xml
 conf/PyCharm/config/options/disabled_plugins.txt
+conf/PyCharm/config/options/find.xml
 conf/PyCharm/config/eval/*
 conf/PyCharm/config/port.lock
