@@ -4,12 +4,12 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 prompt_kubecontext() {
-    local current_context
     current_context=`kubectl config current-context`
+    current_namespace=$(kubectl config view -o "jsonpath={.contexts[?(@.name==\"$current_context\")].context.namespace}")
     if [[ $current_context  == "minikube" ]]; then
         echo "%{$fg[green]%}minikube%{$reset_color%}"
     else
-        echo "%{$fg_bold[red]%}$current_context%{$reset_color%}"
+        echo "%{$fg_bold[red]%}$current_context/$current_namespace%{$reset_color%}"
     fi
 }
 
@@ -34,7 +34,6 @@ prompt_dir() {
     colors[Downloads]="%{$fg_bold[green]%}"
     emojis[kubernetes-cluster]="☸ -cluster"
     colors[kubernetes-cluster]="%{$FG[039]%}"
-
 
     color="%{$fg_bold[cyan]%}"
     display_path=$current_path

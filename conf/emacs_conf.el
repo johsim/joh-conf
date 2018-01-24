@@ -156,7 +156,7 @@
 (simpleclip-mode 1)
 
 ;; enable clipboard in emacs
-;; (setq x-select-enable-clipboard f)
+(setq x-select-enable-clipboard f)
 
 ;; disable tilde backup files
 (setq make-backup-files nil)
