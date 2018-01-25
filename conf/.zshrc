@@ -75,6 +75,10 @@ for f in ~/joh-secrets/dotfiles/*; do
     . $f
 done
 
+#Source functions
+
+source ~/joh-conf/conf/functions.sh
+
 # Custom profile
 HOSTNAME=$(cat ~/hostname)
 . "$HOME/joh-secrets/profiles/${HOSTNAME}_profile"
