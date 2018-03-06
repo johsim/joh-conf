@@ -62,7 +62,7 @@
   apt:
     pkg: "{{ item }}"
     state: latest
-    update_cache: yes
+    update_cache: no
     cache_valid_time: 3600
   with_items:
     - aptitude
@@ -70,7 +70,8 @@
 - name: "apt update && upgrade "
   apt:
     update_cache: yes
-    upgrade: yes
+    upgrade: safe
+    cache_valid_time: 3600
 
 - name: "apt dist-upgrade "
   apt:
@@ -114,7 +115,7 @@
     - parcellite
     - pycharm
     - xdot
-
+    - task
 
 - name: "npm install"
   npm:

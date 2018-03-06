@@ -114,6 +114,7 @@
   - { src: 'parcellite/parcelliterc', dest: '.config/parcellite/parcelliterc' }
   - { src: 'autostart', dest: '.config/autostart/parcellite.desktop' }
   - { src: 'idea.properties', dest: '.PyCharm{{ pycharm_version.stdout }}/idea.properties' }
+  - { src: '.taskrc', dest: '.taskrc' }
 
 - name: "Set default shell to zsh"
   user:
