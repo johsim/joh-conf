@@ -67,11 +67,15 @@
   with_items:
     - aptitude
 
-- name: "apt update && upgrade "
+- name: "apt update"
+  shell: apt update
+  become: yes
+  become_user: root
+  ignore_errors: yes
+
+- name: "apt upgrade "
   apt:
-    update_cache: yes
     upgrade: safe
-    cache_valid_time: 3600
 
 - name: "apt dist-upgrade "
   apt:

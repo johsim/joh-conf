@@ -2,6 +2,12 @@
   set_fact:
     base_dir: "{{ lookup('pipe', 'git rev-parse --show-toplevel') }}"
 
+- name: "Clone fzf"
+  git:
+    depth: 1
+    repo: https://github.com/junegunn/fzf.git
+    dest: ~/.fzf
+
 - name: "Create virtualenv path"
   file: path=~/.virtualenvs state=directory recurse=yes
 
@@ -25,6 +31,13 @@
     executable: /bin/bash
   when: default_virtualenv.rc == 1
 
+- name: "Copy virtualenv hooks"
+  copy:
+    src: "{{ base_dir }}/conf/virtualenvs/{{ item }}"
+    dest: "~/.virtualenvs/{{ item }}"
+  with_items:
+  - "postactivate"
+
 - name: "pip install"
   pip:
     name: thefuck
@@ -41,12 +54,6 @@
   shell: export ZPLUG_HOME=$HOME/.zplug && git clone https://github.com/zplug/zplug $ZPLUG_HOME
   args:
     creates: ~/.zplug
-
-- name: "Clone fzf"
-  git:
-    depth: 1
-    repo: https://github.com/junegunn/fzf.git
-    dest: ~/.fzf
 
 - name: "Install fzf"
   shell: yes 'y' | ~/.fzf/install
