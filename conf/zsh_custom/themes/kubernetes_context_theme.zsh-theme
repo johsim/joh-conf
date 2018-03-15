@@ -17,6 +17,18 @@ prompt_sep() {
     echo "%{$fg_bold[yellow]%}🟊 %{$reset_color%}"
 }
 
+virtualenv_info(){
+    # Get Virtual Env
+    if [[ -n "$VIRTUAL_ENV" ]]; then
+        # Strip out the path and just leave the env name
+        venv="${VIRTUAL_ENV##*/}"
+    else
+        # In case you don't have one activated
+        venv=''
+    fi
+    [[ -n "$venv" ]] && echo "($venv)"
+}
+
 prompt_dir() {
     current_path=${PWD##*/}
     home=${HOME##*/}
@@ -49,4 +61,4 @@ prompt_dir() {
     echo "$color$display_path%{$reset_color%}"
 }
 
-PROMPT='$(prompt_kubecontext) $(prompt_dir) $(prompt_sep) $(git_prompt_info)'
+PROMPT='$(virtualenv_info) $(prompt_kubecontext) $(prompt_dir) $(prompt_sep) $(git_prompt_info)'
