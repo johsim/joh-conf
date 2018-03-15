@@ -120,6 +120,7 @@
     - pycharm
     - xdot
     - task
+    - direnv
 
 - name: "npm install"
   npm:

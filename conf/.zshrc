@@ -69,6 +69,8 @@ bindkey -e '^Y' x-yank
 export WORKON_HOME=$HOME/.virtualenvs
 source $(which virtualenv)wrapper.sh
 
+#direnv
+eval "$(direnv hook zsh)"
 
 #Source dotfiles
 for f in ~/joh-secrets/dotfiles/*; do
@@ -76,7 +78,6 @@ for f in ~/joh-secrets/dotfiles/*; do
 done
 
 #Source functions
-
 source ~/joh-conf/conf/functions.sh
 
 # Custom profile
