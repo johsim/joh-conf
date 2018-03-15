@@ -97,20 +97,7 @@ export TTC_APIKEYS=true
 export TTC_UPDATE_INTERVAL=10
 export TTC_TERMINAL_TITLE=false
 
-# Setup fzf
-# ---------
-if [[ ! "$PATH" == *~/.fzf/bin* ]]; then
-  export PATH="$PATH:~/.fzf/bin"
-fi
-
+#fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
-# Auto-completion
-# ---------------
-[[ $- == *i* ]] && source "$HOME/.fzf/shell/completion.zsh" 2> /dev/null
-
-# Key bindings
-# ------------
-source "$HOME/.fzf/shell/key-bindings.zsh"
 
 export FZF_DEFAULT_OPTS="--border"
