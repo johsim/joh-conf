@@ -1,5 +1,5 @@
 sr() {
-
+    # Search replace recursively in directory
     if test $# -lt 2; then
         echo "Usage: sr old_str new_str file_glob[opt]"
         return
@@ -29,4 +29,11 @@ sr() {
 
     # Change sed delimiter if any str contains "@"
     rg $1 -l -g "$file_glob" | xargs sed -i -e "s@$1@$2@g"
+}
+
+svenv() {
+    # Switch between python virtual environments
+    local venv=$(lsvirtualenv -b | fzf --height 50% --reverse --border --cycle --select-1 --query "$*")
+    test -z "${venv[*]}" && return
+    workon $venv
 }
