@@ -142,15 +142,3 @@
   shell: python3 -m pip install virtualenvwrapper
   args:
     creates: /usr/local/bin/virtualenvwrapper.sh
-
-- name: "Get golang"
-  get_url:
-    url: https://storage.googleapis.com/golang/go{{ golang_version }}.linux-amd64.tar.gz
-    dest: /tmp/go{{ golang_version }}.linux-amd64.tar.gz
-
-- name: "Install golang"
-  unarchive:
-    src: /tmp/go{{ golang_version }}.linux-amd64.tar.gz
-    dest: ~/
-  args:
-    creates: ~/go

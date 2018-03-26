@@ -97,6 +97,12 @@ export TTC_APIKEYS=true
 export TTC_UPDATE_INTERVAL=10
 export TTC_TERMINAL_TITLE=false
 
+#Go
+export GOROOT=$HOME/go
+export PATH=$PATH:$GOROOT/bin
+export GOPATH=$HOME/goworkspace
+
+
 #fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
