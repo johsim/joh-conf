@@ -2,6 +2,13 @@
   <component name="FileBasedIndex">
     <option name="registeredIndices">
       <list>
+        <option value="go.method.fingerprint" />
+        <option value="go.method" />
+        <option value="go.packages" />
+        <option value="go.type.name" />
+        <option value="go.function" />
+        <option value="go.all.private.name" />
+        <option value="go.all.name" />
         <option value="puppet.node" />
         <option value="puppet.function" />
         <option value="puppet.resource.by.type" />
