@@ -22,3 +22,5 @@ conf/PyCharm/config/options/disabled_plugins.txt
 conf/PyCharm/config/options/find.xml
 conf/PyCharm/config/eval/*
 conf/PyCharm/config/port.lock
+conf/PyCharm/config/options/path.macros.xml
+conf/PyCharm/config/options/updates.xml
