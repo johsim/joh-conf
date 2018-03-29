@@ -50,11 +50,14 @@
   with_items:
   - "postactivate"
 
-- name: "pip install"
-  pip:
-    name: thefuck
-    state: present
-    virtualenv: ~/.virtualenv/default
+- name: "global pip install"
+  become: yes
+  become_user: root
+  shell: pip install {{ item }}
+  with_items:
+  - "thefuck"
+  - "jrnl"
+
 
 - name: "Clone oh-my-zsh"
   git:
