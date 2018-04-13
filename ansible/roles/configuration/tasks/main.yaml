@@ -57,7 +57,7 @@
   with_items:
   - "thefuck"
   - "jrnl"
-
+  - "keyrings.alt"
 
 - name: "Clone oh-my-zsh"
   git:
