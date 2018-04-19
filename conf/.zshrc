@@ -44,7 +44,7 @@ zplug load
 
 #Fixes cd ..<TAB>
 zstyle ':completion:*' special-dirs true
-eval $(thefuck --alias)
+
 
 #Copy paste emacs style
 x-copy-region-as-kill () {
