@@ -49,6 +49,7 @@
     dest: "~/.virtualenvs/{{ item }}"
   with_items:
   - "postactivate"
+  - "postmkvirtualenv"
 
 - name: "global pip install"
   become: yes

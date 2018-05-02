@@ -4,6 +4,10 @@ ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}) %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%})"
 
 prompt_kubecontext() {
+    if test ! -f '/usr/local/bin/kubectl' ; then
+        echo "%{$fg_bold[yellow]%}🟊 %{$reset_color%}"
+        return
+    fi
     current_context=`kubectl config current-context`
     current_namespace=$(kubectl config view -o "jsonpath={.contexts[?(@.name==\"$current_context\")].context.namespace}")
     if [[ $current_context  == "minikube" ]]; then
@@ -18,12 +22,9 @@ prompt_sep() {
 }
 
 virtualenv_info(){
-    # Get Virtual Env
     if [[ -n "$VIRTUAL_ENV" ]]; then
-        # Strip out the path and just leave the env name
         venv="${VIRTUAL_ENV##*/}"
     else
-        # In case you don't have one activated
         venv=''
     fi
     [[ -n "$venv" ]] && echo "($venv)"
