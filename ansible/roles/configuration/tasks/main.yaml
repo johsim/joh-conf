@@ -54,9 +54,9 @@
 - name: "global pip install"
   become: yes
   become_user: root
-  shell: pip install {{ item }}
+  shell: pip3 install {{ item }}
   with_items:
-  - "thefuck"
+  - "ipython"
   - "jrnl"
   - "keyrings.alt"
 
