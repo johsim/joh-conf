@@ -59,6 +59,7 @@
   - "ipython"
   - "jrnl"
   - "keyrings.alt"
+  - "autopep8"
 
 - name: "Generate ipython config"
   shell: ipyhon profile create
