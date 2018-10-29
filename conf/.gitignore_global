@@ -28,3 +28,7 @@
 .\#*
 .envrc
 .idea/*
+
+# Python #
+##########
+.coverage*
