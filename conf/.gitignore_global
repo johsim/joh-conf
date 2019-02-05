@@ -27,7 +27,7 @@
 *~
 .\#*
 .envrc
-.idea/*
+.idea
 
 # Python #
 ##########

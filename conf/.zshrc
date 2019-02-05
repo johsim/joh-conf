@@ -110,3 +110,5 @@ export FZF_DEFAULT_OPTS="--border"
 
 #Pretty less
 export LESS=MQRS
+
+export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0

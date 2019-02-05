@@ -109,6 +109,10 @@
     - xdot
     - taskwarrior
     - direnv
+    - libsqlite0
+    - libsqlite0-dev
+    - libsqlite3-0
+    - libsqlite3-dev
 
 - name: "npm install"
   npm:
