@@ -325,9 +325,9 @@ you should place your code here."
           ("DONE" . "green")
           ("NOTES" . "magenta")
           ))
-
+  (evil-leader/set-key
+    “C-x C-c” ‘spacemacs/frame-killer)
 )
-
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
 (custom-set-variables

@@ -7,8 +7,8 @@ plugins=(git aws pip python zsh-interactive-cd zsh-autosuggestions zsh-syntax-hi
 source $ZSH/oh-my-zsh.sh
 
 #Aliases
-alias enw="TERM=xterm-256color emacs -nw"
-alias emw="TERM=xterm-256color emacs -nw"
+alias enw="TERM=xterm-256color emacsclient -a '' -nw"
+alias emw="TERM=xterm-256color emacsclient -a '' -nw"
 alias k="kubectl"
 alias todo="emacs -nw ~/Desktop/todo.org"
 alias ccat='pygmentize -g' #Pretty print cat
