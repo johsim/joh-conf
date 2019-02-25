@@ -325,8 +325,32 @@ you should place your code here."
           ("DONE" . "green")
           ("NOTES" . "magenta")
           ))
-  (evil-leader/set-key
-    “C-x C-c” ‘spacemacs/frame-killer)
+  (global-set-key (kbd "C-x C-c") 'spacemacs/frame-killer)
+
+  ;; Enable simpleclip
+  (require 'simpleclip)
+  (simpleclip-mode 1)
+
+  ;; enable clipboard in emacs
+  (setq x-select-enable-clipboard nil)
+
+  (defun copy-to-clipboard ()
+    "Copies selection to x-clipboard."
+    (interactive)
+    (if (display-graphic-p)
+        (progn
+          (message "Yanked region to x-clipboard!")
+          (call-interactively 'clipboard-kill-ring-save)
+          )
+      (if (region-active-p)
+          (progn
+            (shell-command-on-region (region-beginning) (region-end) "xsel -i -b")
+            (message "Yanked region to clipboard!")
+            (deactivate-mark))
+        (message "No region active; can't yank to clipboard!")))
+    )
+  (global-set-key (kbd "C-x M-w") 'copy-to-clipboard)
+
 )
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.

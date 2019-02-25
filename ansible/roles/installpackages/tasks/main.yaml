@@ -113,6 +113,7 @@
     - libsqlite0-dev
     - libsqlite3-0
     - libsqlite3-dev
+    - xsel
 
 - name: "npm install"
   npm:
