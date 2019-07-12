@@ -41,6 +41,7 @@ values."
      yaml
      clojure
      helm
+     html
      auto-completion
      better-defaults
      emacs-lisp
@@ -57,6 +58,7 @@ values."
              shell-default-position 'bottom)
       spell-checking
       syntax-checking
+      nixos
      ;; version-control
      )
    ;; List of additional packages that will be installed without being
@@ -347,6 +349,30 @@ you should place your code here."
         (message "No region active; can't yank to clipboard!")))
     )
   (global-set-key (kbd "C-x M-w") 'copy-to-clipboard)
+
+  ;; Indent configuration
+  (setq-default css-indent-offset 2)
+  (setq-default groovy-indent-offset 2)
+  (setq-default js2-basic-offset 2)
+  (setq-default js-indent-level 2)
+  (setq-default js2-strict-missing-semi-warning nil)
+  (setq-default python-indent-offset 4)
+  (setq-default sh-basic-offset 2)
+  (setq-default sh-indentation 2)
+  (setq-default web-mode-markup-indent-offset 2)
+
+  ;; Disable modes
+  (winner-mode 0)
+
+  ;; Clojure
+  (sp-use-smartparens-bindings)
+  (define-key smartparens-mode-map (kbd "C-c <right>") 'sp-forward-slurp-sexp)
+  (define-key smartparens-mode-map (kbd "C-c <left>") 'sp-backward-slurp-sexp)
+  (define-key smartparens-mode-map (kbd "C-c C-<right>") 'sp-forward-barf-sexp)
+  (define-key smartparens-mode-map (kbd "C-c <left>") 'sp-backward-barf-sexp)
+  (define-key smartparens-mode-map (kbd "C-<right>") 'forward-word)
+  (define-key smartparens-mode-map (kbd "C-<left>") 'backward-word)
+  (define-key smartparens-mode-map (kbd "C-k") 'sp-kill-hybrid-sexp)
 
 )
 ;; Do not write anything past this comment. This is where Emacs will
