@@ -1,7 +1,7 @@
 #ZSH
 export ZSH=~/.oh-my-zsh
-ZSH_THEME="kubernetes_context_theme"
-ZSH_CUSTOM=~/joh-conf/conf/zsh_custom/
+ZSH_THEME="johannas_context_theme"
+ZSH_CUSTOM=/home/johannasimonsson/joh-conf/conf/zsh_custom
 export EDITOR="emacs -nw"
 plugins=(git aws pip python zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting) #NOTE Highlighting must be last
 source $ZSH/oh-my-zsh.sh

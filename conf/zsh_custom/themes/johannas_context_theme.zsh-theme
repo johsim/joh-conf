@@ -17,6 +17,16 @@ prompt_kubecontext() {
     fi
 }
 
+prompt_aws() {
+  if [[ -n "$AWS_PROFILE" ]]; then
+    role=$(echo "${AWS_PROFILE%%@*}" | sed s/Klarna_ADFS_//)
+    account="${AWS_PROFILE##*@}"
+    echo "%{$fg_bold[yellow]%}${role##*.}@$account%{$reset_color%}"
+  else
+    return
+  fi
+}
+
 prompt_sep() {
     echo "✨"
 }
@@ -54,4 +64,4 @@ prompt_dir() {
     echo "$color$display_path%{$reset_color%}"
 }
 
-PROMPT='$(virtualenv_info) $(prompt_kubecontext) $(prompt_dir) $(prompt_sep) $(git_prompt_info)'
+PROMPT='$(virtualenv_info) $(prompt_aws) $(prompt_dir) $(prompt_sep) $(git_prompt_info)'

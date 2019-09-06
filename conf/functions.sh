@@ -5,7 +5,7 @@ sr() {
         return
     fi
 
-    if ! $(rg $1 -q); then 
+    if ! $(rg $1 -q); then
         echo "No occurrences of $1 found, exiting..."
         return
     fi
@@ -36,4 +36,38 @@ svenv() {
     local venv=$(lsvirtualenv -b | fzf --height 50% --reverse --border --cycle --select-1 --query "$*")
     test -z "${venv[*]}" && return
     workon $venv
+}
+
+awsl() {
+  local role_args role u
+  user="johanna.simonsson"
+  ignore='klapp|esup|insights|aperture|smog|monitoring'
+
+  # Login
+  echo "Ignoring $ignore ..."
+  avail_roles=$(aws-login-tool list-roles --okta -m -u "$user" --no-keyring)
+  filtered_roles=$(echo $avail_roles | grep -Ev $ignore)
+
+  role_args=($(echo $filtered_roles | sort | fzf --height 50% --border --cycle --select-1 --query "$*"))
+  echo ${role_args[@]}
+  test -z "${role_args[*]}" && return
+  eval "$(aws-login-tool login --okta -u "$user" --no-keyring "${role_args[@]}")"
+
+  role_profile="${role_args[4]}@${role_args[2]}"
+  echo "Account Number: $(aws_account)"
+}
+
+aws() {
+  if [[ -n "$AWS_SESSION_EXPIRATION_TIME" ]] && [[ -n "$AWS_PROFILE" ]] && \
+      (( $(date +%s) > AWS_SESSION_EXPIRATION_TIME )); then
+    echo "AWS session about to expire, acquiring new credentials." >&2
+    eval "$(
+      aws-login-tool login --okta -a "${AWS_PROFILE##*@}" -r "${AWS_PROFILE%%@*}" \
+    )" || return
+  fi
+  command aws "$@"
+}
+
+aws_account() {
+  command aws sts get-caller-identity --profile "$role_profile" --output text --query 'Account'
 }
