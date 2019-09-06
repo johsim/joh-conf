@@ -271,7 +271,7 @@ values."
    ;;                       text-mode
    ;;   :size-limit-kb 1000)
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers t
    ;; Code folding method. Possible values are `evil' and `origami'.
    ;; (default 'evil)
    dotspacemacs-folding-method 'evil
@@ -369,7 +369,7 @@ you should place your code here."
   (define-key smartparens-mode-map (kbd "C-c <right>") 'sp-forward-slurp-sexp)
   (define-key smartparens-mode-map (kbd "C-c <left>") 'sp-backward-slurp-sexp)
   (define-key smartparens-mode-map (kbd "C-c C-<right>") 'sp-forward-barf-sexp)
-  (define-key smartparens-mode-map (kbd "C-c <left>") 'sp-backward-barf-sexp)
+  (define-key smartparens-mode-map (kbd "C-c C-<left>") 'sp-backward-barf-sexp)
   (define-key smartparens-mode-map (kbd "C-<right>") 'forward-word)
   (define-key smartparens-mode-map (kbd "C-<left>") 'backward-word)
   (define-key smartparens-mode-map (kbd "C-k") 'sp-kill-hybrid-sexp)
