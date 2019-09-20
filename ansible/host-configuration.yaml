@@ -24,9 +24,10 @@
       when: user is not defined
       tags: configuration
 
-    - name: conditional role
+    - name: "conditional role"
       include_role:
         name: configuration
       tags: configuration
-      become: yes
-      become_user: "{{ user }}"
+      vars:
+        ansible_become: yes
+        ansible_become_user: "{{ user }}"

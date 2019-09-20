@@ -49,7 +49,6 @@ awsl() {
   filtered_roles=$(echo $avail_roles | grep -Ev $ignore)
 
   role_args=($(echo $filtered_roles | sort | fzf --height 50% --border --cycle --select-1 --query "$*"))
-  echo ${role_args[@]}
   test -z "${role_args[*]}" && return
   eval "$(aws-login-tool login --okta -u "$user" --no-keyring "${role_args[@]}")"
 

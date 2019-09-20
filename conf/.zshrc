@@ -75,7 +75,7 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 eval "$(direnv hook zsh)"
 
 #Source dotfiles
-for f in ~/joh-secrets/dotfiles/*; do
+for f in ~/joh-profiles/dotfiles/*; do
     . $f
 done
 
@@ -84,7 +84,7 @@ source ~/joh-conf/conf/functions.sh
 
 # Custom profile
 HOSTNAME=$(cat ~/hostname)
-. "$HOME/joh-secrets/profiles/${HOSTNAME}_profile"
+. "$HOME/joh-profiles/profiles/${HOSTNAME}_profile"
 
 #Tiny care terminal
 export TTC_BOTS='tinycarebot,selfcare_bot,Puns_Only'

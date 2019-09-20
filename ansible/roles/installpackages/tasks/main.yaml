@@ -3,8 +3,7 @@
 
 - name: "apt-key dependencies "
   apt:
-    name: "{{ item }}"
-  with_items:
+    name:
     - apt-transport-https
     - curl
     - python-simplejson
@@ -14,8 +13,7 @@
 
 - name: "apt-key for chrome"
   apt_key:
-    keyserver: 'keyserver.ubuntu.com'
-    id: '1397BC53640DB551'
+    url: 'https://dl.google.com/linux/linux_signing_key.pub'
 
 - name: "Adds apt repository for chrome"
   apt_repository:
@@ -46,7 +44,7 @@
 
 - name: "Adds apt repository for nodejs"
   apt_repository:
-    repo: 'deb https://deb.nodesource.com/node_8.x xenial main'
+    repo: 'deb https://deb.nodesource.com/node_8.x {{ code_name.stdout }} main'
     state: present
 
 - name: "PPA for emacs"
@@ -59,12 +57,10 @@
 
 - name: "prepare update"
   apt:
-    pkg: "{{ item }}"
+    pkg: aptitude
     state: latest
     update_cache: no
     cache_valid_time: 3600
-  with_items:
-    - aptitude
 
 - name: "apt update"
   shell: apt update
@@ -82,9 +78,8 @@
 
 - name: "apt install packages"
   apt:
-    name: "{{ item }}"
     state: latest
-  with_items:
+    name:
     - emacs25
     - terminator
     - texlive

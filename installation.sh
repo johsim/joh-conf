@@ -20,4 +20,4 @@ case $yn in
 esac
 
 cd ansible/
-ansible-playbook host-configuration.yaml --ask-become-pass
+python3 $(which ansible-playbook) host-configuration.yaml --ask-become-pass
