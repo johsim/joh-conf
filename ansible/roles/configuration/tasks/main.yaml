@@ -188,9 +188,19 @@
   register: terminal
   changed_when: False
 
+- name: "Set terminal name"
+  set_fact:
+    terminal_name: terminator
+
+- name: "Set terminal launch to custom command"
+  shell: gsettings set org.gnome.desktop.default-applications.terminal exec {{ terminal_name }}
+  when: terminal.stdout != "{{ terminal_name }}"
+  become: yes
+  become_user: root
+
 - name: "Set terminator as default terminal"
-  shell: gsettings set org.gnome.desktop.default-applications.terminal exec 'terminator'
-  when: terminal.stdout != "'terminator'"
+  shell: gsettings set org.gnome.desktop.default-applications.terminal exec {{ terminal_name }}
+  when: terminal.stdout != "{{ terminal_name }}"
   become: yes
   become_user: root
 
