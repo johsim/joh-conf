@@ -36,6 +36,7 @@
   apt_repository:
     repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ code_name.stdout }} stable'
     state: present
+    update_cache: no
 
 - name: "apt-key for nodejs"
   apt_key:
@@ -46,14 +47,17 @@
   apt_repository:
     repo: 'deb https://deb.nodesource.com/node_8.x {{ code_name.stdout }} main'
     state: present
+    update_cache: no
 
 - name: "PPA for emacs"
   apt_repository:
     repo: 'ppa:kelleyk/emacs'
+    update_cache: no
 
 - name: "PPA for nvidia drivers"
   apt_repository:
     repo: 'ppa:graphics-drivers/ppa'
+    update_cache: no
 
 - name: "prepare update"
   apt:
@@ -80,35 +84,40 @@
   apt:
     state: latest
     name:
-    - emacs25
-    - terminator
-    - texlive
-    - zsh
-    - tree
-    - python3-pip
-    - python-pygments
+    - ca-certificates
+    - cowsay
+    - direnv
+    - docker-ce
+    - emacs26
     - google-chrome-stable
-    - tig
+    - gtk3-nocsd
     - httpie
     - kdiff3
-    - xclip
-    - linux-image-extra-virtual
-    - ca-certificates
-    - nodejs
-    - docker-ce
     - libglib2.0-bin
-    - ssmtp
-    - cowsay
-    - parcellite
-    - pycharm
-    - xdot
-    - taskwarrior
-    - direnv
     - libsqlite0
     - libsqlite0-dev
     - libsqlite3-0
     - libsqlite3-dev
+    - linux-image-extra-virtual
+    - nodejs
+    - npm
+    - parcellite
+    - python-pygments
+    - python3-pip
+    - ssmtp
+    - taskwarrior
+    - terminator
+    - texlive
+    - tig
+    - tree
+    - xclip
     - xsel
+    - zsh
+
+- name: Install pycharm
+  snap:
+    name: pycharm-professional
+    classic: yes
 
 - name: "npm install"
   npm:
@@ -116,7 +125,7 @@
     global: yes
   with_items:
     - git-standup
-    - tiny-care-terminal
+ #   - tiny-care-terminal Not working on latest Node version
 
 - name: "Install virtualenv"
   shell: python3 -m pip install virtualenv
