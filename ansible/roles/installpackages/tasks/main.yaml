@@ -105,6 +105,7 @@
     - parcellite
     - python-pygments
     - python3-pip
+    - ripgrep
     - ssmtp
     - taskwarrior
     - terminator
