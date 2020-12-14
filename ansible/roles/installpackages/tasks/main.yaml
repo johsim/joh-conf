@@ -84,6 +84,7 @@
   apt:
     state: latest
     name:
+    - awscli
     - ca-certificates
     - cowsay
     - direnv
