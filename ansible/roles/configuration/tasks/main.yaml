@@ -20,6 +20,18 @@
     repo: https://github.com/junegunn/fzf.git
     dest: ~/.fzf
 
+- name: "Clone zsh-autosuggestions"
+  git:
+    depth: 1
+    repo: https://github.com/zsh-users/zsh-autosuggestions
+    dest: ~/joh-conf/conf/zsh_custom/plugins/zsh-autosuggestions
+
+- name: "Clone zsh-syntax-highlighting"
+  git:
+    depth: 1
+    repo: https://github.com/zsh-users/zsh-syntax-highlighting
+    dest: ~/joh-conf/conf/zsh_custom/plugins/zsh-syntax-highlighting
+
 - name: "Create virtualenv path"
   file: path=~/.virtualenvs state=directory recurse=yes
 
