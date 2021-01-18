@@ -93,6 +93,8 @@
     - google-chrome-stable
     - gtk3-nocsd
     - httpie
+    - jo
+    - jq
     - kdiff3
     - libglib2.0-bin
     - libsqlite0
@@ -112,6 +114,7 @@
     - texlive
     - tig
     - tree
+    - watchexec
     - xclip
     - xsel
     - zsh
