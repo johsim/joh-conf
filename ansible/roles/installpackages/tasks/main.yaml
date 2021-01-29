@@ -130,6 +130,7 @@
     global: yes
   with_items:
     - git-standup
+    - emoj
  #   - tiny-care-terminal Not working on latest Node version
 
 - name: "Install virtualenv"
