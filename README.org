@@ -23,15 +23,6 @@ Also, a number of tools that can be useful:
 
 Most configuration files are symlinked, to ensure that all changes will be captured in source control.
 
-** cronjob
-
-The cronjob runs twice a day, and only runs if branch is =master=, see
-#+BEGIN_SRC sh
-cat util/cron-ansible.sh
-#+END_SRC
-
-The logs for the cron job can be found at ~/var/log/ansible-configuration.log~
-
 * Installation
 
 #+BEGIN_SRC sh
@@ -62,9 +53,3 @@ $ docker build -t ubuntutest:xenial .
 $ docker run -id -v $(pwd):/home/test/joh-conf --name ubtest ubuntutest:xenial
 $ docker exec -it ubtest /bin/bash
 #+END_SRC
-
-* Roadmap
-
-Things that might be added:
-- Anacron instead of cron
-- Enable cloning out of homedir
