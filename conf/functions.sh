@@ -33,9 +33,9 @@ sr() {
 
 svenv() {
     # Switch between python virtual environments
-    local venv=$(lsvirtualenv -b | fzf --height 50% --reverse --border --cycle --select-1 --query "$*")
+    local venv=$(pyenv virtualenvs --bare | fzf --height 50% --reverse --border --cycle --select-1 --query "$*")
     test -z "${venv[*]}" && return
-    workon $venv
+    pyenv activate $venv
 }
 
 awsl() {

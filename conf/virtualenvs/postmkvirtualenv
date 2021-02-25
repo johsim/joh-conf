@@ -1,7 +1,0 @@
-#!/usr/bin/zsh
-# This hook is sourced after a new virtualenv is activated.
-venv="${VIRTUAL_ENV##*/}"
-
-echo "layout_virtualenvwrapper $venv" > .envrc
-
-direnv allow

@@ -6,7 +6,7 @@ to make the setup immutable.
 ** Setup
 The configuration contains
 - Emacs configuration
-- Python3, pip, virtualenvwrapper with a default virtualenv
+- Python3, pip, pyenv
 - Terminator as preferred terminal
 - oh-my-zsh
 - cronjob running the ansible configuration
@@ -20,8 +20,6 @@ Also, a number of tools that can be useful:
 - tig
 - chromium
 - etc
-
-*NOTE*: Only tested on Ubuntu 16.04
 
 Most configuration files are symlinked, to ensure that all changes will be captured in source control.
 

@@ -85,6 +85,7 @@
     state: latest
     name:
     - awscli
+    - build-essential
     - ca-certificates
     - cowsay
     - direnv
@@ -96,27 +97,39 @@
     - jo
     - jq
     - kdiff3
+    - libbz2-dev
+    - libffi-dev
     - libglib2.0-bin
-    - libsqlite0
-    - libsqlite0-dev
+    - liblzma-dev
+    - libncurses5-dev
+    - libncursesw5-dev
+    - libreadline-dev
     - libsqlite3-0
     - libsqlite3-dev
+    - libssl-dev
     - linux-image-extra-virtual
+    - llvm
     - nodejs
     - npm
     - parcellite
+    - python-openssl
     - python-pygments
     - python3-pip
+    - python3-venv
     - ripgrep
     - ssmtp
     - taskwarrior
     - terminator
     - texlive
     - tig
+    - tk-dev
     - tree
     - watchexec
+    - wget
     - xclip
     - xsel
+    - xz-utils
+    - zlib1g-dev
     - zsh
 
 - name: Install pycharm
@@ -133,12 +146,7 @@
     - emoj
  #   - tiny-care-terminal Not working on latest Node version
 
-- name: "Install virtualenv"
-  shell: python3 -m pip install virtualenv
+- name: "Install pyenv"
+  shell: curl https://pyenv.run | bash
   args:
-    creates: /usr/local/bin/virtualenv
-
-- name: "Install virtualenv"
-  shell: python3 -m pip install virtualenvwrapper
-  args:
-    creates: /usr/local/bin/virtualenvwrapper.sh
+    creates: ~/.pyenv

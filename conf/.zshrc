@@ -66,10 +66,11 @@ bindkey -e '\eW' x-copy-region-as-kill
 bindkey -e '^W' x-kill-region
 bindkey -e '^Y' x-yank
 
-#virtualenvwrapper
-export WORKON_HOME=$HOME/.virtualenvs
-source $(which virtualenv)wrapper.sh
-export VIRTUAL_ENV_DISABLE_PROMPT=1
+#pyenv
+export PATH=$HOME/.pyenv/bin:$PATH
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+export PYENV_VIRTUALENV_DISABLE_PROMPT=1
 
 #direnv
 eval "$(direnv hook zsh)"

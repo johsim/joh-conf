@@ -32,37 +32,6 @@
     repo: https://github.com/zsh-users/zsh-syntax-highlighting
     dest: ~/joh-conf/conf/zsh_custom/plugins/zsh-syntax-highlighting
 
-- name: "Create virtualenv path"
-  file: path=~/.virtualenvs state=directory recurse=yes
-
-- name: "Set virtualenv home"
-  shell: export WORKON_HOME=$HOME/.virtualenvs && export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
-  args:
-    executable: /bin/bash
-  changed_when: False
-
-- name: "Check existing default virtualenv"
-  shell: source /usr/local/bin/virtualenvwrapper.sh && lsvirtualenv -b | grep default
-  args:
-    executable: /bin/bash
-  ignore_errors: yes
-  register: default_virtualenv
-  changed_when: False
-
-- name: "Create default virtualenv if not there"
-  shell: source $(which virtualenv)wrapper.sh && mkvirtualenv default
-  args:
-    executable: /bin/bash
-  when: default_virtualenv.rc == 1
-
-- name: "Copy virtualenv hooks"
-  copy:
-    src: "{{ base_dir }}/conf/virtualenvs/{{ item }}"
-    dest: "~/.virtualenvs/{{ item }}"
-  with_items:
-  - "postactivate"
-  - "postmkvirtualenv"
-
 - name: "global pip install"
   become: yes
   become_user: root
