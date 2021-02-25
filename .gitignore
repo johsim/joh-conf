@@ -24,3 +24,7 @@ conf/PyCharm/config/eval/*
 conf/PyCharm/config/port.lock
 conf/PyCharm/config/options/path.macros.xml
 conf/PyCharm/config/options/updates.xml
+conf/PyCharm/config/jdbc-drivers/
+conf/PyCharm/config/options/bitbucket-linky.xml
+conf/PyCharm/config/options/databaseDrivers.xml
+conf/PyCharm/config/options/runner.layout.xml
