@@ -96,7 +96,6 @@
     - ~/.config/terminator/
     - ~/.config/parcellite/
     - ~/.config/autostart/
-    - ~/.config/direnv/
 
 - name: "Check existence of .zshrc"
   stat: path=~/.zshrc
@@ -120,7 +119,6 @@
   - { src: 'autostart', dest: '.config/autostart/parcellite.desktop' }
   - { src: 'idea.properties', dest: '.PyCharm{{ pycharm_version.stdout }}/idea.properties' }
   - { src: '.taskrc', dest: '.taskrc' }
-  - { src: 'direnv/direnvrc', dest: '.config/direnv/direnvrc' }
 
 # - name: "Set default shell to zsh"
 #   shell: chsh $USER -s $(which zsh)

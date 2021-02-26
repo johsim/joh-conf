@@ -90,7 +90,7 @@
     - cowsay
     - direnv
     - docker-ce
-    - emacs26
+    - emacs27
     - google-chrome-stable
     - gtk3-nocsd
     - httpie
@@ -124,7 +124,6 @@
     - tig
     - tk-dev
     - tree
-    - watchexec
     - wget
     - xclip
     - xsel
