@@ -70,3 +70,13 @@ aws() {
 aws_account() {
   command aws sts get-caller-identity --profile "$role_profile" --output text --query 'Account'
 }
+
+bwl() {
+  echo "Input password:"
+  read -s password
+  echo "Input Auth code:"
+  read code
+  session_key=$(bw login $HOME_EMAIL $password --code $code --method 0 --raw)
+  export BW_SESSION=$session_key
+  echo "Session key configured to $session_key"
+}

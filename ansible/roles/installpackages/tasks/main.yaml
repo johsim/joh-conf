@@ -143,6 +143,7 @@
   with_items:
     - git-standup
     - emoj
+    - "@bitwarden/cli"
  #   - tiny-care-terminal Not working on latest Node version
 
 - name: "Install pyenv"
