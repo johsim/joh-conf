@@ -93,6 +93,7 @@
     - emacs27
     - google-chrome-stable
     - gtk3-nocsd
+    - htop
     - httpie
     - jo
     - jq
