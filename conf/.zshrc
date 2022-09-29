@@ -46,6 +46,11 @@ zplug load
 zstyle ':completion:*' special-dirs true
 
 
+# Rust
+source $HOME/.cargo/env
+export RUST_SRC_PATH="/home/johannasimonsson/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library"
+
+
 #Copy paste emacs style
 x-copy-region-as-kill () {
     zle copy-region-as-kill
