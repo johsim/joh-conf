@@ -2,7 +2,8 @@
 	excludesfile = ~/.gitignore_global
 	pager = cat
 [user]
-	email = {{ user_email }}
+  email = {{ user_email }}
+  signingkey = {{ signingkey }}
 [merge]
 	tool = kdiff3
 [mergetool "kdiff3"]
@@ -21,3 +22,7 @@
 	autosquash = true
 [pull]
 	ff = only
+[gpg]
+	program = gpg
+[commit]
+	gpgsign = true

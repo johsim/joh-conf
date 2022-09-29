@@ -145,6 +145,26 @@
   include_vars:
     file: local/email.yaml
 
+- name: "Check existence of signingkey"
+  stat: path={{ base_dir }}/ansible/roles/configuration/vars/local/signingkey.yaml
+  register: signingkey_available
+
+- name: "Prompt for signingkey"
+  pause:
+    prompt: "Enter GPG signingkey"
+  when: not signingkey_available.stat.exists
+  register: signingkey
+
+- name: "Put signingkey into file if missing"
+  copy:
+    content: "signingkey: {{ email.user_input }}"
+    dest: "{{ base_dir }}/ansible/roles/configuration/vars/local/signingkey.yaml"
+  when: signingkey.user_input is defined and not signingkey_available.stat.exists
+
+- name: "Include email as variable"
+  include_vars:
+    file: local/signingkey.yaml
+
 - name: "Copy global git config"
   template:
     src: gitconfig.j2
