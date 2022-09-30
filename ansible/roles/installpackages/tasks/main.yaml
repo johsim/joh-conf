@@ -110,6 +110,7 @@
     - libssl-dev
     - linux-image-extra-virtual
     - llvm
+    - net-tools
     - nodejs
     - npm
     - parcellite
