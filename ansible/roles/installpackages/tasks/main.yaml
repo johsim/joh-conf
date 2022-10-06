@@ -38,16 +38,16 @@
     state: present
     update_cache: no
 
-- name: "apt-key for nodejs"
-  apt_key:
-    url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
-    id: '68576280'
+# - name: "apt-key for nodejs"
+#   apt_key:
+#     url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
+#     id: '68576280'
 
-- name: "Adds apt repository for nodejs"
-  apt_repository:
-    repo: 'deb https://deb.nodesource.com/node_8.x {{ code_name.stdout }} main'
-    state: present
-    update_cache: no
+# - name: "Adds apt repository for nodejs"
+#   apt_repository:
+#     repo: 'deb https://deb.nodesource.com/node_8.x {{ code_name.stdout }} main'
+#     state: present
+#     update_cache: no
 
 - name: "PPA for emacs"
   apt_repository:
