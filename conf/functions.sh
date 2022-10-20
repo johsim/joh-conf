@@ -41,16 +41,12 @@ svenv() {
 awsl() {
   local role_args role u
   user="johanna.simonsson"
-  ignore='klapp|esup|insights|aperture|smog|monitoring'
 
   # Login
-  echo "Ignoring $ignore ..."
-  avail_roles=$(aws-login-tool list-roles --okta -m -u "$user" --no-keyring)
-  filtered_roles=$(echo $avail_roles | grep -Ev $ignore)
-
-  role_args=($(echo $filtered_roles | sort | fzf --height 50% --border --cycle --select-1 --query "$*"))
+  avail_roles=$(aws-login-tool list-roles --okta -m -u "$user")
+  role_args=($(echo $avail_roles | sort | fzf --height 50% --border --cycle --select-1 --query "$*"))
   test -z "${role_args[*]}" && return
-  eval "$(aws-login-tool login --okta -u "$user" --no-keyring "${role_args[@]}")"
+  eval "$(aws-login-tool login --okta -u "$user" $role_args)"
 
   role_profile="${role_args[4]}@${role_args[2]}"
   echo "Account Number: $(aws_account)"
