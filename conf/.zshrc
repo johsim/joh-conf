@@ -11,8 +11,8 @@ alias enw="TERM=xterm-256color emacsclient -a '' -nw"
 alias emw="TERM=xterm-256color emacsclient -a '' -nw"
 alias k="kubectl"
 alias todo="emacs -nw ~/Desktop/todo.org"
-alias ccat='pygmentize -g' #Pretty print cat
-alias c='pygmentize -g'
+alias {c,ccat,nyancat,dog}='pygmentize -g -O style=dracula' #Pretty print cat
+
 alias nyan='docker run -it supertest2014/nyan'
 alias delete-merged="git branch --merged | grep -v '\*\|master\|develop' | xargs -n 1 git branch -d"
 alias copy='xclip -sel clip'
