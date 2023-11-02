@@ -1,22 +1,23 @@
-<scheme name="One dark" version="1" parent_scheme="Darcula">
+<scheme name="One dark" version="142" parent_scheme="Darcula">
+  <option name="FONT_SCALE" value="1.0" />
   <option name="LINE_SPACING" value="1.2" />
-  <option name="EDITOR_FONT_SIZE" value="14" />
+  <option name="EDITOR_FONT_SIZE" value="15" />
   <option name="EDITOR_FONT_NAME" value="Menlo" />
   <colors>
     <option name="ADDED_LINES_COLOR" value="98c379" />
-    <option name="DELETED_LINES_COLOR" value="e06c75" />
-    <option name="MODIFIED_LINES_COLOR" value="d19a66" />
     <option name="CARET_COLOR" value="528bff" />
-    <option name="CARET_ROW_COLOR" value="2C323B" />
+    <option name="CARET_ROW_COLOR" value="2c323b" />
     <option name="CONSOLE_BACKGROUND_KEY" value="282c34" />
+    <option name="DELETED_LINES_COLOR" value="e06c75" />
     <option name="GUTTER_BACKGROUND" value="282c34" />
     <option name="INDENT_GUIDE" value="747369" />
     <option name="LINE_NUMBERS_COLOR" value="5c6370" />
+    <option name="MODIFIED_LINES_COLOR" value="d19a66" />
+    <option name="RIGHT_MARGIN_COLOR" value="5c6370" />
     <option name="SELECTED_INDENT_GUIDE" value="747369" />
     <option name="SELECTION_BACKGROUND" value="abb2bf" />
     <option name="SELECTION_FOREGROUND" value="282c34" />
     <option name="WHITESPACES" value="5c6370" />
-    <option name="RIGHT_MARGIN_COLOR" value="5c6370" />
   </colors>
   <attributes>
     <option name="APACHE_CONFIG.ARG_LEXEM">
@@ -1034,21 +1035,21 @@
         <option name="FOREGROUND" value="61afef" />
       </value>
     </option>
-    <option name="LESS_TAG_NAME">
-      <value>
-        <option name="FOREGROUND" value="c678dd" />
-      </value>
+    <option name="LESS_INJECTED_CODE">
+      <value />
+    </option>
+    <option name="LESS_JS_CODE_DELIM">
+      <value />
     </option>
     <option name="LESS_OPERATORS">
       <value>
         <option name="FOREGROUND" value="abb2bf" />
       </value>
     </option>
-    <option name="LESS_INJECTED_CODE">
-      <value />
-    </option>
-    <option name="LESS_JS_CODE_DELIM">
-      <value />
+    <option name="LESS_TAG_NAME">
+      <value>
+        <option name="FOREGROUND" value="c678dd" />
+      </value>
     </option>
     <option name="LESS_VARIABLE">
       <value>
@@ -1559,7 +1560,7 @@
     </option>
     <option name="RUBY_COMMENT">
       <value>
-        <option name="FOREGROUND" value="59626f" />
+        <option name="FOREGROUND" value="5c6370" />
         <option name="FONT_TYPE" value="2" />
       </value>
     </option>
@@ -1570,7 +1571,7 @@
     </option>
     <option name="RUBY_CONSTANT_DECLARATION">
       <value>
-        <option name="FOREGROUND" value="e5c17c" />
+        <option name="FOREGROUND" value="d19a66" />
       </value>
     </option>
     <option name="RUBY_CVAR">
@@ -1585,7 +1586,7 @@
     </option>
     <option name="RUBY_EXPR_IN_STRING">
       <value>
-        <option name="FOREGROUND" value="98c379" />
+        <option name="FOREGROUND" value="be5046" />
       </value>
     </option>
     <option name="RUBY_GVAR">
@@ -1609,9 +1610,7 @@
       </value>
     </option>
     <option name="RUBY_IDENTIFIER">
-      <value>
-        <option name="FOREGROUND" value="df6a73" />
-      </value>
+      <value />
     </option>
     <option name="RUBY_INTERPOLATED_STRING">
       <value>
@@ -1631,7 +1630,7 @@
     </option>
     <option name="RUBY_KEYWORD">
       <value>
-        <option name="FOREGROUND" value="c679dd" />
+        <option name="FOREGROUND" value="c678dd" />
       </value>
     </option>
     <option name="RUBY_LINE_CONTINUATION">
@@ -1641,12 +1640,17 @@
     </option>
     <option name="RUBY_LOCAL_VAR_ID">
       <value>
-        <option name="FOREGROUND" value="df6a73" />
+        <option name="FOREGROUND" value="abb2bf" />
       </value>
     </option>
     <option name="RUBY_METHOD_NAME">
       <value>
         <option name="FOREGROUND" value="61afef" />
+      </value>
+    </option>
+    <option name="RUBY_NTH_REF">
+      <value>
+        <option name="FOREGROUND" value="e06c75" />
       </value>
     </option>
     <option name="RUBY_NUMBER">
@@ -1661,12 +1665,12 @@
     </option>
     <option name="RUBY_PARAMDEF_CALL">
       <value>
-        <option name="FOREGROUND" value="57b6c2" />
+        <option name="FOREGROUND" value="abb2bf" />
       </value>
     </option>
     <option name="RUBY_PARAMETER_ID">
       <value>
-        <option name="FOREGROUND" value="df6a73" />
+        <option name="FOREGROUND" value="abb2bf" />
       </value>
     </option>
     <option name="RUBY_REGEXP">
@@ -1676,7 +1680,7 @@
     </option>
     <option name="RUBY_SPECIFIC_CALL">
       <value>
-        <option name="FOREGROUND" value="c679dd" />
+        <option name="FOREGROUND" value="61afef" />
       </value>
     </option>
     <option name="RUBY_STRING">
@@ -1686,7 +1690,7 @@
     </option>
     <option name="RUBY_SYMBOL">
       <value>
-        <option name="FOREGROUND" value="98c379" />
+        <option name="FOREGROUND" value="56b6c2" />
       </value>
     </option>
     <option name="RUBY_WORDS">
@@ -1945,6 +1949,51 @@
         <option name="ERROR_STRIPE_COLOR" value="ff" />
       </value>
     </option>
+    <option name="TS.CLASS">
+      <value>
+        <option name="FOREGROUND" value="e5c07b" />
+      </value>
+    </option>
+    <option name="TS.GLOBAL_FUNCTION">
+      <value>
+        <option name="FOREGROUND" value="56b6c2" />
+      </value>
+    </option>
+    <option name="TS.INSTANCE_MEMBER_FUNCTION">
+      <value>
+        <option name="FOREGROUND" value="61afef" />
+      </value>
+    </option>
+    <option name="TS.INSTANCE_MEMBER_VARIABLE">
+      <value>
+        <option name="FOREGROUND" value="e06c75" />
+      </value>
+    </option>
+    <option name="TS.INTERFACE">
+      <value>
+        <option name="FOREGROUND" value="e5c07b" />
+      </value>
+    </option>
+    <option name="TS.KEYWORD">
+      <value>
+        <option name="FOREGROUND" value="c678dd" />
+      </value>
+    </option>
+    <option name="TS.MODULE_NAME">
+      <value>
+        <option name="FOREGROUND" value="e5c07b" />
+      </value>
+    </option>
+    <option name="TS.STATIC_MEMBER_FUNCTION">
+      <value>
+        <option name="FOREGROUND" value="61afef" />
+      </value>
+    </option>
+    <option name="TS.STATIC_MEMBER_VARIABLE">
+      <value>
+        <option name="FOREGROUND" value="e06c75" />
+      </value>
+    </option>
     <option name="TWIG_BACKGROUND">
       <value>
         <option name="BACKGROUND" value="2a2d32" />
@@ -2039,10 +2088,6 @@
     <option name="XML_TAG">
       <value />
     </option>
-    <option name="XML_TAG_DATA">
-      <value>
-      </value>
-    </option>
     <option name="XML_TAG_NAME">
       <value>
         <option name="FOREGROUND" value="e06c75" />
@@ -2085,191 +2130,6 @@
       </value>
     </option>
     <option name="YAML_TEXT">
-      <value>
-        <option name="FOREGROUND" value="98c379" />
-      </value>
-    </option>
-    <option name="TS.CLASS">
-      <value>
-        <option name="FOREGROUND" value="e5c07b" />
-      </value>
-    </option>
-    <option name="TS.GLOBAL_FUNCTION">
-      <value>
-        <option name="FOREGROUND" value="56b6c2" />
-      </value>
-    </option>
-    <option name="TS.INSTANCE_MEMBER_FUNCTION">
-      <value>
-        <option name="FOREGROUND" value="61afef" />
-      </value>
-    </option>
-    <option name="TS.INSTANCE_MEMBER_VARIABLE">
-      <value>
-        <option name="FOREGROUND" value="e06c75" />
-      </value>
-    </option>
-    <option name="TS.INTERFACE">
-      <value>
-        <option name="FOREGROUND" value="e5c07b" />
-      </value>
-    </option>
-    <option name="TS.KEYWORD">
-      <value>
-        <option name="FOREGROUND" value="c678dd" />
-      </value>
-    </option>
-    <option name="TS.MODULE_NAME">
-      <value>
-        <option name="FOREGROUND" value="e5c07b" />
-      </value>
-    </option>
-    <option name="TS.STATIC_MEMBER_FUNCTION">
-      <value>
-        <option name="FOREGROUND" value="61afef" />
-      </value>
-    </option>
-    <option name="TS.STATIC_MEMBER_VARIABLE">
-      <value>
-        <option name="FOREGROUND" value="e06c75" />
-      </value>
-    </option>
-    <option name="RUBY_COMMENT">
-      <value>
-        <option name="FOREGROUND" value="5c6370" />
-        <option name="FONT_TYPE" value="2" />
-      </value>
-    </option>
-    <option name="RUBY_CONSTANT">
-      <value>
-        <option name="FOREGROUND" value="d2945d" />
-      </value>
-    </option>
-    <option name="RUBY_CONSTANT_DECLARATION">
-      <value>
-        <option name="FOREGROUND" value="d19a66" />
-      </value>
-    </option>
-    <option name="RUBY_CVAR">
-      <value>
-        <option name="FOREGROUND" value="df6a73" />
-      </value>
-    </option>
-    <option name="RUBY_ESCAPE_SEQUENCE">
-      <value>
-        <option name="FOREGROUND" value="57b6c2" />
-      </value>
-    </option>
-    <option name="RUBY_EXPR_IN_STRING">
-      <value>
-        <option name="FOREGROUND" value="be5046" />
-      </value>
-    </option>
-    <option name="RUBY_GVAR">
-      <value>
-        <option name="FOREGROUND" value="df6a73" />
-      </value>
-    </option>
-    <option name="RUBY_HASH_ASSOC">
-      <value>
-        <option name="FOREGROUND" value="a6b2c0" />
-      </value>
-    </option>
-    <option name="RUBY_HEREDOC_CONTENT">
-      <value>
-        <option name="FOREGROUND" value="98c379" />
-      </value>
-    </option>
-    <option name="RUBY_HEREDOC_ID">
-      <value>
-        <option name="FOREGROUND" value="98c379" />
-      </value>
-    </option>
-    <option name="RUBY_IDENTIFIER">
-      <value />
-    </option>
-    <option name="RUBY_INTERPOLATED_STRING">
-      <value>
-        <option name="FOREGROUND" value="98c379" />
-      </value>
-    </option>
-    <option name="RUBY_INVALID_ESCAPE_SEQUENCE">
-      <value>
-        <option name="FOREGROUND" value="68e868" />
-        <option name="BACKGROUND" value="481515" />
-      </value>
-    </option>
-    <option name="RUBY_IVAR">
-      <value>
-        <option name="FOREGROUND" value="df6a73" />
-      </value>
-    </option>
-    <option name="RUBY_KEYWORD">
-      <value>
-        <option name="FOREGROUND" value="c678dd" />
-      </value>
-    </option>
-    <option name="RUBY_LINE_CONTINUATION">
-      <value>
-        <option name="FOREGROUND" value="a6b2c0" />
-      </value>
-    </option>
-    <option name="RUBY_LOCAL_VAR_ID">
-      <value>
-        <option name="FOREGROUND" value="abb2bf" />
-      </value>
-    </option>
-    <option name="RUBY_METHOD_NAME">
-      <value>
-        <option name="FOREGROUND" value="61afef" />
-      </value>
-    </option>
-    <option name="RUBY_NTH_REF">
-      <value>
-        <option name="FOREGROUND" value="e06c75" />
-      </value>
-    </option>
-    <option name="RUBY_NUMBER">
-      <value>
-        <option name="FOREGROUND" value="d2945d" />
-      </value>
-    </option>
-    <option name="RUBY_OPERATION_SIGN">
-      <value>
-        <option name="FOREGROUND" value="a6b2c0" />
-      </value>
-    </option>
-    <option name="RUBY_PARAMDEF_CALL">
-      <value>
-        <option name="FOREGROUND" value="abb2bf" />
-      </value>
-    </option>
-    <option name="RUBY_PARAMETER_ID">
-      <value>
-        <option name="FOREGROUND" value="abb2bf" />
-      </value>
-    </option>
-    <option name="RUBY_REGEXP">
-      <value>
-        <option name="FOREGROUND" value="57b6c2" />
-      </value>
-    </option>
-    <option name="RUBY_SPECIFIC_CALL">
-      <value>
-        <option name="FOREGROUND" value="61afef" />
-      </value>
-    </option>
-    <option name="RUBY_STRING">
-      <value>
-        <option name="FOREGROUND" value="98c379" />
-      </value>
-    </option>
-    <option name="RUBY_SYMBOL">
-      <value>
-        <option name="FOREGROUND" value="56b6c2" />
-      </value>
-    </option>
-    <option name="RUBY_WORDS">
       <value>
         <option name="FOREGROUND" value="98c379" />
       </value>
