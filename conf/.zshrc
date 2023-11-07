@@ -1,7 +1,7 @@
 #ZSH
 export ZSH=~/.oh-my-zsh
 ZSH_THEME="johannas_context_theme"
-ZSH_CUSTOM=/home/johannasimonsson/joh-conf/conf/zsh_custom
+ZSH_CUSTOM=~/joh-conf/conf/zsh_custom
 export EDITOR="emacs -nw"
 plugins=(git aws pip python zsh-interactive-cd zsh-autosuggestions zsh-syntax-highlighting) #NOTE Highlighting must be last
 source $ZSH/oh-my-zsh.sh
@@ -47,8 +47,8 @@ zstyle ':completion:*' special-dirs true
 
 
 # Rust
-source $HOME/.cargo/env
-export RUST_SRC_PATH="/home/johannasimonsson/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library"
+# source $HOME/.cargo/env
+# export RUST_SRC_PATH="~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library"
 
 
 #Copy paste emacs style
@@ -116,5 +116,4 @@ export FZF_DEFAULT_OPTS="--border"
 
 #Pretty less
 export LESS=MQRS
-
 export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0

@@ -6,57 +6,18 @@
     name:
     - apt-transport-https
     - curl
-    - python-simplejson
     - lsb-release
     - software-properties-common
     - aptitude
-
-- name: "apt-key for chrome"
-  apt_key:
-    url: 'https://dl.google.com/linux/linux_signing_key.pub'
-
-- name: "Adds apt repository for chrome"
-  apt_repository:
-    repo: 'deb [arch=amd64] http://dl.google.com/linux/chrome/deb/ stable main'
-    state: present
-    filename: 'google-chrome'
-
-- name: "apt-key for docker"
-  apt_key:
-    url: 'https://download.docker.com/linux/ubuntu/gpg'
-    id: '9DC858229FC7DD38854AE2D88D81803C0EBFCD88'
-    state: present
 
 - name: "Query linux code name"
   shell: lsb_release -cs | xargs
   register: code_name
   changed_when: False
 
-- name: "Adds apt repository for docker"
-  apt_repository:
-    repo: 'deb [arch=amd64] https://download.docker.com/linux/ubuntu {{ code_name.stdout }} stable'
-    state: present
-    update_cache: no
-
-# - name: "apt-key for nodejs"
-#   apt_key:
-#     url: 'https://deb.nodesource.com/gpgkey/nodesource.gpg.key'
-#     id: '68576280'
-
-# - name: "Adds apt repository for nodejs"
-#   apt_repository:
-#     repo: 'deb https://deb.nodesource.com/node_8.x {{ code_name.stdout }} main'
-#     state: present
-#     update_cache: no
-
-- name: "PPA for emacs"
-  apt_repository:
-    repo: 'ppa:kelleyk/emacs'
-    update_cache: no
-
 - name: "PPA for nvidia drivers"
   apt_repository:
-    repo: 'ppa:graphics-drivers/ppa'
+    repo: "ppa:graphics-drivers/ppa"
     update_cache: no
 
 - name: "prepare update"
@@ -78,7 +39,7 @@
 
 - name: "apt dist-upgrade "
   apt:
-    upgrade: 'dist'
+    upgrade: "dist"
 
 - name: "apt install packages"
   apt:
@@ -89,8 +50,8 @@
     - ca-certificates
     - cowsay
     - direnv
-    - docker-ce
-    - emacs27
+    - emacs
+    - chrome-gnome-shell
     - google-chrome-stable
     - gtk3-nocsd
     - htop
@@ -152,3 +113,4 @@
   shell: curl https://pyenv.run | bash
   args:
     creates: ~/.pyenv
+
