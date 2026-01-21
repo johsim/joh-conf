@@ -1,9 +1,0 @@
-[Desktop Entry]
-Comment=Clipboard Manager
-Exec=bash -c "parcellite &"
-Hidden=true
-Icon=parcellite
-Name=Parcellite
-Terminal=false
-Type=Applicatin
-X-GNOME-Autostart-enabled=true
