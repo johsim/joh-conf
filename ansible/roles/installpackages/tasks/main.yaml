@@ -8,7 +8,6 @@
     - gpg
     - htop
     - httpie
-    - iterm2
     - jq
     - maccy
     - node
@@ -32,4 +31,3 @@
   shell: curl https://pyenv.run | bash
   args:
     creates: ~/.pyenv
-
