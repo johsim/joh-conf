@@ -110,7 +110,7 @@
 
 - name: "Put signingkey into file if missing"
   copy:
-    content: "signingkey: {{ email.user_input }}"
+    content: "signingkey: {{ signingkey.user_input }}"
     dest: "{{ base_dir }}/ansible/roles/configuration/vars/local/signingkey.yaml"
   when: signingkey.user_input is defined and not signingkey_available.stat.exists
 

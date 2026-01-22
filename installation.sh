@@ -9,4 +9,4 @@ brew update
 brew install ansible
 
 cd ansible/
-ansible-playbook host-configuration.yaml --ask-become-pass
+ansible-playbook host-configuration.yaml
