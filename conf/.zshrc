@@ -46,11 +46,6 @@ zplug load
 zstyle ':completion:*' special-dirs true
 
 
-# Rust
-# source $HOME/.cargo/env
-# export RUST_SRC_PATH="~/.rustup/toolchains/stable-x86_64-unknown-linux-gnu/lib/rustlib/src/rust/library"
-
-
 #Copy paste emacs style
 x-copy-region-as-kill () {
     zle copy-region-as-kill
@@ -116,4 +111,5 @@ export FZF_DEFAULT_OPTS="--border"
 
 #Pretty less
 export LESS=MQRS
-export LD_PRELOAD=/usr/lib/x86_64-linux-gnu/libgtk3-nocsd.so.0
+
+export PATH=$HOME/.local/bin:$PATH

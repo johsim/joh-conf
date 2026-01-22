@@ -46,9 +46,7 @@ prompt_dir() {
     typeset -A emojis
     emojis[$home]="🏡"
     emojis[python]="🐍"
-    emojis[APT]="⭕"
     emojis[credentials]="🔑"
-    emojis[fishtank]="🐟🐟🐟"
 
     color="%{$fg_bold[cyan]%}"
     display_path=$current_path
