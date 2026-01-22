@@ -1,3 +1,8 @@
+export LANG=en_US.UTF-8
+
+eval "$('/opt/homebrew/bin/brew' shellenv)"
+export PATH=/opt/homebrew/bin:$PATH
+
 #ZSH
 export ZSH=~/.oh-my-zsh
 ZSH_THEME="johannas_context_theme"
@@ -16,7 +21,7 @@ alias {c,ccat,nyancat,dog}='pygmentize -g -O style=dracula' #Pretty print cat
 alias nyan='docker run -it supertest2014/nyan'
 alias delete-merged="git branch --merged | grep -v '\*\|master\|develop' | xargs -n 1 git branch -d"
 alias copy='xclip -sel clip'
-
+alias list-prs='gh search prs --json repository,number,title,updatedAt,url --template '\''{{tablerow "REPOSITORY" "ID" "TITLE" "UPDATED"}}{{range .}}{{tablerow (.repository.nameWithOwner | autocolor "cyan") (printf "#%v" .number | autocolor "green") (hyperlink .url (truncate 70 .title)) (timeago .updatedAt)}}{{end}}{{tablerender}}'
 # Ansible
 export ANSIBLE_COW_SELECTION=random
 
