@@ -5,6 +5,7 @@
     - awscli
     - direnv
     - emacs
+    - fzf
     - gpg
     - htop
     - httpie
