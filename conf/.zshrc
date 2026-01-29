@@ -1,8 +1,5 @@
 export LANG=en_US.UTF-8
 
-eval "$('/opt/homebrew/bin/brew' shellenv)"
-export PATH=/opt/homebrew/bin:$PATH
-
 #ZSH
 export ZSH=~/.oh-my-zsh
 ZSH_THEME="johannas_context_theme"
@@ -71,12 +68,6 @@ bindkey -e '\eW' x-copy-region-as-kill
 bindkey -e '^W' x-kill-region
 bindkey -e '^Y' x-yank
 
-#pyenv
-export PATH=$HOME/.pyenv/bin:$PATH
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-
 #direnv
 eval "$(direnv hook zsh)"
 
@@ -103,11 +94,6 @@ export TTC_APIKEYS=true
 export TTC_UPDATE_INTERVAL=10
 export TTC_TERMINAL_TITLE=false
 
-#Go
-export GOROOT=$HOME/go
-export PATH=$PATH:$GOROOT/bin
-export GOPATH=$HOME/goworkspace
-
 
 #fzf
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
@@ -118,3 +104,5 @@ export FZF_DEFAULT_OPTS="--border"
 export LESS=MQRS
 
 export PATH=$HOME/.local/bin:$PATH
+
+eval "$('/opt/homebrew/bin/brew' shellenv)"
